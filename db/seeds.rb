@@ -5,3 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+#検証用ユーザー
+User.create!(name: "Example User",
+email: "1@1",
+password: "111111", password_confirmation: "111111")
+
+
+#ユーザーを50人作成
+49.times do |n|
+name = Faker::Name.name
+email = "#{n+1}@#{2}"
+password = "password"
+User.create!(name: name,
+			email: email,
+			password: password,
+			password_confirmation: password)
+end
+
+#ユーザーのポートフォリオを作成
+users = User.order(:created_at).take(6)
+50.times do
+more_about_me = Faker::Lorem.sentence(5)
+users.each { |user| user.portraits.create!(more_about_me: more_about_me) } 
+end

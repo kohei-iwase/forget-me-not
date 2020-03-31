@@ -78,7 +78,7 @@ gem 'bootstrap-sass', '~>3.4.1'
 gem 'jquery-rails'
 
 
-
+gem 'faker'
 # ページャー
 gem 'kaminari','~> 1.1.1'
 

@@ -1,0 +1,65 @@
+<div class="post-meta-top">
+    　 <div class="portrait-image">
+      　 <%= attachment_image_tag @portrait, :image %>
+    　 </div>
+  　 </div>
+    <div class="portrait-content">
+        <h2 class="portrait-title"><%= @portrait.name %></h2>
+        <ul class="meta-info-cells v4 float-wrapper">
+          <li>
+             <i class="fa fa-user"></i>By<a href="#">
+             <%= @portrait.user.name %></a>
+          </li>
+          <li>
+            <i class="fa fa-calendar"></i><%= @portrait.created_at.strftime('%Y/%m/%d') %>
+          </li>
+          <li>
+            <i class="fa fa-heart"></i>
+            <a href="#">202 いいね</a>
+          </li>
+          <li>
+            <i class="fa fa-memories"></i>
+            <a href="#memories"><%= @portrait.memories.count %></a>
+          </li>
+        </ul>
+        <div class="post-content-inner mt-20">
+            <p><%= @portrait.more_about_me %></p>
+        </div>
+    </div>
+    <div class="comment-list bt style-2" id="comments">
+      <div class="float-wrapper">
+        <h2 class="memory-count"><%= @portrait.memories.count %>件の思い出</h2>
+      </div>
+    </div>
+    <ol>
+    <% @portrait.memories.each do |memory| %>
+        <li class="memories">
+            <div class="memory-body bb">
+                <div class="memory-avatar">
+                    <div class="avatar">
+                        <%= image_tag('', style: "width: 60px; height: 60px;") %>
+                    </div>
+                </div>
+                <div class="memory-text">
+                    <div class="memory-user clearfix">
+                        <%= memory.user.name %>
+                        <span class="memory-meta">
+                          <span class="memory-date"><%= memory.created_at.strftime('%Y/%m/%d') %></span>
+                        </span>
+                    </div>
+                    <div class="memory-entry"><%= memory.memory %></div>
+                </div>
+            </div>
+        </li>
+    <% end %>
+</ol>
+
+<%= form_with model:[@portrait, @memory] do |f| %>
+    <div class="row">
+        <div class="col-sm-12">
+          <%= f.attachment_field :image %>
+            <%= f.text_area :memory, rows:'5', class: "form-control",placeholder: "思い出をここに" %>
+        </div>
+    </div>
+    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+<% end %>
