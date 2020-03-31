@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_051000) do
+ActiveRecord::Schema.define(version: 2020_03_31_062849) do
+
+  create_table "portraits", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "image_id"
+    t.string "name"
+    t.integer "gender"
+    t.integer "age"
+    t.string "species"
+    t.string "date_of_birth"
+    t.string "anniversary"
+    t.string "likes_and_dislikes"
+    t.string "interest"
+    t.string "specialty"
+    t.string "family"
+    t.string "personality"
+    t.string "found"
+    t.text "more_about_me"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
