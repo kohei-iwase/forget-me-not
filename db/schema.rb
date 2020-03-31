@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2020_03_31_074509) do
 
   create_table "memories", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "portrait_id"
     t.string "title"
     t.string "when"

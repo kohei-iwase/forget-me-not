@@ -12,11 +12,10 @@ User.create!(name: "Example User",
 email: "1@1",
 password: "111111", password_confirmation: "111111")
 
-
 #ユーザーを50人作成
-49.times do |n|
+49.times do
 name = Faker::Name.name
-email = "#{n+1}@#{2}"
+email = Faker::Internet.email
 password = "password"
 User.create!(name: name,
 			email: email,
@@ -24,9 +23,18 @@ User.create!(name: name,
 			password_confirmation: password)
 end
 
-#ユーザーのポートフォリオを作成
-users = User.order(:created_at).take(6)
-50.times do
-more_about_me = Faker::Lorem.sentence(5)
-users.each { |user| user.portraits.create!(more_about_me: more_about_me) } 
+#ペットのポートフォリオを作成(ポケモンの名前を使用)
+users = User.order(:created_at).take(20)
+3.times do
+name = Faker::Creature::Cat.name
+more_about_me = Faker::Creature::Cat.registry
+users.each { |user| user.portraits.create!(name: name,more_about_me: more_about_me) } 
+end
+
+#メモリーを作成
+portraits = Portrait.order(:created_at).take(20)
+5.times do
+title = Faker::Creature::Dog.sound
+memory = Faker::Quotes::Shakespeare.hamlet_quote
+portraits.each { |portrait| portrait.memories.create!(title: title,memory: memory) } 
 end
