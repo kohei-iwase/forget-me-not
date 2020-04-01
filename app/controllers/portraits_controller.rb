@@ -7,12 +7,15 @@ class PortraitsController < ApplicationController
 	def create
     	@portrait = Portrait.new(portrait_params)
     	@portrait.user_id = current_user.id
-    	@portrait.save
-    	redirect_to portraits_path
+    	if @portrait.save
+    		redirect_to portraits_path
+    	else
+    		render :new
+    	end
 	end
 
 	def index
-		@portraits = Portrait.all
+		@portraits = Portrait.page(params[:page])
 	end
 
 	def show
@@ -27,6 +30,9 @@ class PortraitsController < ApplicationController
 	end
 
 	def destroy
+		@portrait = Portrait.find(params[:id])
+		@portrait.destroy
+		redirect_to portraits_path
 	end
 
 	# ポートレイトのストロングパラメータ

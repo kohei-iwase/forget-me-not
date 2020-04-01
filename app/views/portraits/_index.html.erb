@@ -1,0 +1,42 @@
+<section class="sct-color-1 slice">
+  <div class="container-fluid masonry-container">
+    <div class="row">
+      <div class="col-md-8 col-sm-offset-2">
+        <div class="masonry-wrapper-cols">
+          <div class="masonry-gutter"></div>
+            <% @portraits.each do |portrait| %>
+            <div class="masonry-block">
+              <div class="block block-image v1">
+                <div class="block-image">
+                  <div class="view view-first">
+                    <%= link_to portrait_path(portrait) do %>
+                    <%= attachment_image_tag portrait, :image %>
+                  </div>
+                </div>
+                <div class="block-content">
+
+                  <h3 class="block-title">
+                     <i class="fa fa-map-marker"></i>
+                     <%= portrait.name %>
+                  <% end %>
+                  </h3>
+                  <p><%= portrait.more_about_me %></p>
+                  <ul class="inline-meta">
+  <li>By
+    <%= portrait.user.name %>
+  </li>
+  <li>
+    <%= link_to "#{portrait.memories.count} 個の思い出", portrait_path(portrait.id) %>
+  </li>
+</ul>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <% end %>
+            <%= paginate @portraits, class: "paginate" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
