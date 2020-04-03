@@ -1,0 +1,2 @@
+class WithsController < ApplicationController
+end

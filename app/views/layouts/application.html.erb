@@ -2,15 +2,32 @@
 <html>
   <head>
     <title>ForgetMeNot</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/696371b99a.js" crossorigin="anonymous"></script>
   </head>
-
   <body>
-    <%= render 'layouts/header' %>
-    <%= yield %>
+    <div class="container">
+      <div class="header-wrapper">
+          <div class="header-box-wrapper">
+              <div class="header-content">
+                  <%= render 'layouts/header' %>
+              </div>
+          </div>
+      </div>
+      <div class="content-wrapper">
+        <div class="main-content">
+              <%= yield %>
+        </div>
+        <div class="side-bar-content ">
+          <%= render 'layouts/sidebar' %>
+        </div>
+      </div>
+      <div class="footer">
+          <%= render 'layouts/footer' %>
+      </div>
+    </div>
   </body>
 </html>

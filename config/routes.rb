@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   	resource :bouquets, only: [:create,:destroy]
   end
   root 'portraits#index'
+   # トップとアバウトページのrouting
+   get 'homes/top' => 'homes#top'
+   get 'homes/about' => 'homes#about'
+
 end

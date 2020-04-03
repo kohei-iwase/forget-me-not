@@ -20,13 +20,18 @@ class PortraitsController < ApplicationController
 
 	def show
 		@portrait = Portrait.find(params[:id])
+		@memrories = @portrait.memories.all
 		@memory = Memory.new
 	end
 
 	def edit
+		@portrait = Portrait.find(params[:id])
 	end
 
 	def update
+		@portrait = Portrait.find(params[:id])
+    	@portrait.update(portrait_params)
+	    redirect_to portrait_path(@portrait.id)
 	end
 
 	def destroy

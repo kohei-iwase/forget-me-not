@@ -7,6 +7,15 @@ class MemoriesController < ApplicationController
     redirect_to portrait_path(portrait)
 	end
 
+    def edit
+    end
+
+    def update
+    end
+
+    def destroy
+    end
+
 		private
 			def memory_params
     			params.require(:memory).permit(:memory,:image)

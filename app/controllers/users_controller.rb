@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
   	@portraits = @user.portraits.page(params[:page])
+  	@memories = Memory.all
+  	@portrait = Portrait.find(params[:id])
   end
 
   def edit

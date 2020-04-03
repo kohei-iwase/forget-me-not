@@ -1,0 +1,156 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+/* initialize */
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	color: #6c6b6b;
+}
+
+a{
+	text-decoration: none;
+}
+
+.clearfix::after{
+	content: "";
+	display:block;
+	clear:both;
+}
+
+/* header */
+
+header,nav,footer{
+	font-family:Chalkduster,"Bradley Hand",Courier,"Segoe Print",sans-serif;
+}
+
+.header{
+	width:auto;
+	height: 100px;
+	}
+
+.navbar{
+	border-bottom:3px groove #FFFFFF;
+}
+
+.navbar-middle {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.navbar-right {
+	margin-top: 40px;
+}
+
+.navbar-link{
+	font-family: 'yasashisa';
+		padding-right: 30px;
+		border:0px groove #FFFFFF;
+		background-color: rbga(224, 225, 255, 0.2);
+}
+
+.header-message {
+　margin-left: 300px;
+}
+
+        .container {
+            padding: 1%;
+        }
+
+        .header-wrapper {
+            width: 100%;
+            justify-content: flex-start;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .header-box-wrapper {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            background: #000000;
+            margin: 0 auto;
+        }
+
+        a {
+            color: white;
+        }
+
+        .header-content {
+            text-align: center;
+            color: white;
+            margin: 15px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            padding: 20px 0;
+        }
+
+        .main-content {
+            width: 90%;
+            display: flex;
+            justify-content: left;
+            height: 2000px;
+            margin-right: 10px;
+            background: #ccc;
+        }
+
+        .content-box{
+            margin: 20px;
+        }
+
+        .side-bar-content {
+            display: flex;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 125px;
+            width: 185px;
+            height: auto;
+            border: 1px solid;
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            color: white;
+            background: #000000;
+        }
+
+/*動くボタン用*/
+.btn {
+border-radius:8px;
+border-bottom: solid 5px #627295;
+}
+
+.btn:active {
+  -webkit-transform: translateY(4px);  /*ボタンを押したとき*/
+  transform: translateY(2px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+/* イメージ */
+.img-circle{
+	width:200px;
+}
