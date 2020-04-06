@@ -1,24 +1,35 @@
-<section>
-  <% @portraits.each do |portrait| %>
+<% @portraits.each do |portrait| %>
+<div class ="row album">
+  <div class="col-xs-6 portrait">
     <%= link_to portrait_path(portrait) do %>
-      <%= attachment_image_tag portrait, :image %>
-        <i class="fa fa-map-marker"></i>
-          <%= portrait.name %>
-            <% end %>
-          <p><%= portrait.more_about_me %></p>
-                  <ul class="inline-meta">
-  <li>By
-    <%= portrait.user.name %>
-  </li>
-  <li>
-    <%= link_to "#{portrait.memories.count} 個の思い出", portrait_path(portrait.id) %>
-  </li>
-</ul>
-    <% if portrait.user.id == current_user.id %>
-      <div class="edit">
-        <%= link_to "編集", edit_portrait_path(portrait), class: "btn btn-success" %>
-        </div>
+      <h2>
+        <i class="fa fa-bell"></i>
+        <%= portrait.name %>
+      </h2>
+      <%= attachment_image_tag portrait, :image, size: "400x300" %>
+    <% end %>
+    <h3>僕について</h3>
+      <p>
+        <%= portrait.more_about_me %>
+      </p>
+        <% if portrait.user.id == current_user.id %>
+          <div class="edit">
+            <%= link_to "編集", edit_portrait_path(portrait), class: "btn btn-success" %>
+          </div>
         <% end %>
-            <% end %>
-            <%= paginate @portraits, class: "paginate" %>
-</section>
+  </div>
+  <div class="col-xs-6 memories-list">
+    <h2>
+      <%= link_to "#{portrait.memories.count} 個の思い出", portrait_path(portrait.id) %>
+    </h2>
+    <% portrait.memories.each do |memories| %>
+      <%= link_to memory_path(portrait.memory_ids) do %>
+      <div class="col-xs-3 memory-box">
+      </div>
+      <% end %>
+      <% end %>
+  </div>
+</div>
+<% end %>
+<%= paginate @portraits, class: "paginate" %>
+

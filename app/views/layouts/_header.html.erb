@@ -1,7 +1,30 @@
-<header class="navbar">
-<div id="slidemenu">
-  <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
-    <% if user_signed_in? %>
+<!-- top nav -->
+<nav class="navbar navbar-default">
+
+    <div class="container"><!-- 無くても良い -->
+
+        <div class="navbar-header">
+
+            <!-- logo img -->
+            <a class="navbar-brand" href="">
+                <img src="img/logo.png" id="logo-img">
+            </a>
+
+            <!-- toggle -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+
+        <!-- top menu -->
+        <div class="collapse navbar-collapse" id="top-nav">
+
+            <!-- main navbar -->
+            <ul class="nav navbar-nav">
+              <% if user_signed_in? %>
       <li class="">
         <%= link_to "トップページ", homes_top_path %>
       </li>
@@ -12,10 +35,10 @@
         <%= link_to 'マイページ', user_path(current_user.id) %>
       </li>
       <li class="">
-        <%= link_to '投稿フォーム', new_portrait_path %>
+        <%= link_to 'アルバムを作る', new_portrait_path %>
       </li>
       <li class="">
-        <%= link_to 'ポートレート一覧', portraits_path %>
+        <%= link_to 'アルバム一覧', portraits_path %>
       </li>
       <li class="">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
@@ -34,6 +57,16 @@
         <%= link_to "ログイン", new_user_session_path %>
       </li>
     <% end %>
-  </ul>
-</div>
-</header>
+            </ul>
+
+            <!-- right navbar -->
+            <ul class="nav navbar-nav navbar-right">
+                  <li class="">
+        <%= link_to "ログイン", new_user_session_path %>
+      </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end container -->
+</nav>
+<!-- end nav -->

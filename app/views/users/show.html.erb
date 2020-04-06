@@ -1,19 +1,22 @@
-<div class ="row">
-	<div class="col-xs-6 content-box">
-		<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
+<div class="container content">
+<div class="row content">
+<div class="col-xs-12 content-box">
+		<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img inline-box", fallback: "no_image.jpg" %>
+	<br>
     <h3 class="profile-name"><%= @user.name %></h3>
+    <br>
 		<% if @user.id == current_user.id %>
 			<div class="edit">
 				<%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %>
     		</div>
     	<% end %>
-	</div>
-	<div class="col-xs-6 content-box">
+</div>
+</div>
+<div class="row portrait">
+	<div class="col-xs-12 content-box">
 		<div class="portraits_box">
 			<%= render 'portraits/index' %>
 		</div>
 	</div>
 </div>
-		<div class = "col-xs-12 your-memory">
-			<%= render 'portraits/index' %>
-		</div>
+</div>
