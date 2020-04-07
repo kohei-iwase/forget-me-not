@@ -4,6 +4,7 @@ class BouquetsController < ApplicationController
         bouquet = current_user.bouquets.new(portrait_id: portrait.id)
         bouquet.save
         redirect_to portrait_path(portrait)
+        portrait.create_notification_bouquet!(current_user)
 	end
 
 	def destroy

@@ -1,12 +1,12 @@
 <% @portraits.each do |portrait| %>
 <div class ="row album">
-  <div class="col-xs-6 portrait">
+  <div class="col-xs-6 portrait-box">
     <%= link_to portrait_path(portrait) do %>
       <h2>
         <i class="fa fa-bell"></i>
         <%= portrait.name %>
       </h2>
-      <%= attachment_image_tag portrait, :image, size: "400x300" %>
+      <%= attachment_image_tag portrait, :image, size: "500x400" %>
     <% end %>
     <h3>僕について</h3>
       <p>
@@ -20,11 +20,37 @@
   </div>
   <div class="col-xs-6 memories-list">
     <h2>
-      <%= link_to "#{portrait.memories.count} 個の思い出", portrait_path(portrait.id) %>
+      <%= link_to "#{portrait.memories.count} 個の思い出", portrait_memories_path(portrait.id) %>
     </h2>
-    <% portrait.memories.each do |memories| %>
-      <%= link_to memory_path(portrait.memory_ids) do %>
-      <div class="col-xs-3 memory-box">
+    <% portrait.memories.each do |memory| %>
+      <%= link_to '#' do %>
+      <div class="col-xs-4">
+         <div class="memory-box">
+        <table>
+          <tbody>
+          <tr>
+            <td>
+              <h3><%= memory.title %></h3>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <%= image_tag('koinu001.jpg', style: "width: 130px; height: 100px;") %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4><%= memory.when %></h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4><%= memory.memory %></h4>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+</div>
       </div>
       <% end %>
       <% end %>

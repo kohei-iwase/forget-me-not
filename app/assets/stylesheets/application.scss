@@ -109,20 +109,20 @@ header,nav,footer{
 /* body */
 .content-wrapper {
     display: flex;
-    padding: 20px 0;
+    width:100%;
     }
 
 .main-content {
-    width: 95%;
+    width: 98%;
     display: flex;
-    justify-content: left;
     height: 2000px;
-    margin-right: 10px;
+    margin: auto;
     background: #ccc;
+    border-radius: 4px;
         }
 
         .content-box{
-            margin: 20px;
+            margin: 10px;
         }
 
         .side-bar-content {
@@ -143,6 +143,16 @@ header,nav,footer{
             color: white;
             background: #000000;
         }
+
+.memory-box{
+    margin-left:5px;
+    margin-top:15px;
+    height: 280px;
+    width:100%;
+    border: 2px solid #FFFFFF;
+    border-radius:16px;
+    text-align: center;
+}
 
 /*動くボタン用*/
 .btn {

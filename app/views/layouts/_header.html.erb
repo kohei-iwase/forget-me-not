@@ -1,15 +1,12 @@
 <!-- top nav -->
 <nav class="navbar navbar-default">
 
-    <div class="container"><!-- 無くても良い -->
+    <div class="container">
 
         <div class="navbar-header">
 
             <!-- logo img -->
-            <a class="navbar-brand" href="">
-                <img src="img/logo.png" id="logo-img">
-            </a>
-
+            <%=link_to image_tag('logo.jpg', style: "height:75px;"),homes_top_path %>
             <!-- toggle -->
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-nav">
                 <span class="icon-bar"></span>
@@ -26,9 +23,6 @@
             <ul class="nav navbar-nav">
               <% if user_signed_in? %>
       <li class="">
-        <%= link_to "トップページ", homes_top_path %>
-      </li>
-      <li class="">
         <%= link_to "ワスレナグサについて", homes_about_path %>
       </li>
       <li class="">
@@ -44,9 +38,6 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
-      <li class="">
-        <%= link_to "トップページ", homes_top_path %>
-      </li>
       <li class="">
         <%= link_to "ワスレナグサについて", homes_about_path %>
       </li>

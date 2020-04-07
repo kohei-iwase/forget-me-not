@@ -4,6 +4,7 @@ class MemoriesController < ApplicationController
     memory = current_user.memories.new(memory_params)
     memory.portrait_id = portrait.id
     memory.save
+    memory
     redirect_to portrait_path(portrait)
 	end
 
