@@ -1,32 +1,26 @@
-        <% portrait.memories.each do |memory| %>
-      <div class="col-xs-3">
-        <%= link_to portrait_memories_path(memory) do %>
         <div class="memory-box">
           <table>
             <tbody>
             <tr>
               <td>
-                <h4><%= memory.title %></h4>
+                <h4><%= @memory.title %></h4>
               </td>
             </tr>
             <tr>
               <td>
-              <%= attachment_image_tag memory, :image, width: "90%" %>
+              <%= attachment_image_tag @memory, :image, width: "90%" %>
               </td>
             </tr>
             <tr>
               <td>
-                <h4><%= memory.when %></h4>
+                <h4><%= @memory.when %></h4>
               </td>
             </tr>
             <tr>
               <td>
-                <h5><%= memory.memory %></h5>
+                <h5><%= @memory.memory %></h5>
               </td>
             </tr>
             </tbody>
           </table>
         </div>
-          <% end %>
-      </div>
-        <% end %>

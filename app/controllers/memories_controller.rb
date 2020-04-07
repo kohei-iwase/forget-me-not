@@ -7,6 +7,10 @@ class MemoriesController < ApplicationController
     redirect_to portrait_path(@portrait)
 	end
 
+    def show
+        @memory = Memory.find(params[:id])
+    end
+
     def edit
     end
 
