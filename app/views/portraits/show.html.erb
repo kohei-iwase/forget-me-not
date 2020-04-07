@@ -1,77 +1,32 @@
-<div class="post-meta-top">
-    　 <div class="portrait-image">
-      　 <%= attachment_image_tag @portrait, :image, :size => "200✖200" %>
-    　 </div>
-  　 </div>
-    <div class="portrait-content">
-        <h2 class="portrait-title"><%= @portrait.name %></h2>
-        <ul class="meta-info-cells v4 float-wrapper">
-          <li>
-             <i class="fa fa-user"></i>By<a href="#">
-             <%= @portrait.user.name %></a>
-          </li>
-<% if @portrait.bouquet_by?(current_user) %>
-  <li>
-    <%= link_to portrait_bouquets_path(@portrait), method: :delete do %>
-      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-      <%= @portrait.bouquets.count %> いいね
-    <% end %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to portrait_bouquets_path(@portrait), method: :post do %>
-      <i class="fa fa-heart-o" aria-hidden="true"></i>
-      <%= @portrait.bouquets.count %> いいね
-    <% end %>
-  </li>
-<% end %>          <li>
-            <i class="fa fa-memories"></i>
-            <a href="#memories"><%= @portrait.memories.count %></a>
-          </li>
-        </ul>
-        <div class="post-content-inner mt-20">
-            <p><%= @portrait.more_about_me %></p>
-        </div>
+<div class="container">
+  <div class ="row album">
+    <div class="form-body">
+      <div class="form-group has-icon">
+      <h2><%= @portrait.name %>について</h2>
     </div>
-    <div class="comment-list bt style-2" id="comments">
-      <div class="float-wrapper">
-        <h2 class="memory-count"><%= @portrait.memories.count %>件の思い出</h2>
+     <div class="col-xs-6 portrait-box">
+      <%= attachment_image_tag @portrait, :image, width:"95%" %>
+    </div>
+    <div class="col-xs-5 portrait-box">
+      <%= render 'portraits/table', portrait: @portrait %>
+    </div>
+  </div>
+ </div>
+  <div class="row memories">
+    <div class="col-xs-12 memories-list">
+      <div class="title">
+        <h2><%= @portrait.memories.count %> 個の思い出</h2>
       </div>
+      <%= render 'memories/index', portrait: @portrait %>
     </div>
-     <li>
-      <% if @portrait.user == current_user %>
-      <%= link_to "削除する", portrait_path(@portrait), method: :delete %>
-      <% end %>
-    </li>
-    <ol>
-    <% @portrait.memories.each do |memory| %>
-        <li class="memories">
-            <div class="memory-body bb">
-                <div class="memory-avatar">
-                    <div class="avatar">
-                        <%= image_tag('', style: "width: 60px; height: 60px;") %>
-                    </div>
-                </div>
-                <div class="memory-text">
-                    <div class="memory-user clearfix">
-                        <%= memory.portrait.user.name %>
-                        <span class="memory-meta">
-                          <span class="memory-date"><%= memory.created_at.strftime('%Y/%m/%d') %></span>
-                        </span>
-                    </div>
-                    <div class="memory-entry"><%= memory.memory %></div>
-                </div>
-            </div>
-        </li>
-    <% end %>
-</ol>
-
-<%= form_with model:[@portrait, @memory] do |f| %>
-    <div class="row">
-        <div class="col-sm-12">
-          <%= f.attachment_field :image %>
-            <%= f.text_area :memory, rows:'5', class: "form-control",placeholder: "思い出をここに" %>
-        </div>
+  </div>
+  <hr>
+  <div class="row new_memories">
+    <div class="col-xs-12 memories-list">
+      <div class="title">
+        <h2>思い出を加える</h2>
+      </div>
+       <%= render 'memories/form', portrait: @portrait, memory: @memory %>
     </div>
-    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
-<% end %>
+  </div>
+</div>

@@ -68,9 +68,9 @@
             </tr>
           </tbody>
         </table>
-      </div>
-              <%= f.submit "変更を保存", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
         <% end %>
+        <%= link_to "削除する", portrait_path(@portrait), method: :delete,class: "btn btn-danger" %>
+      </div>
     </div>
   </div>
-  </div></div></div>

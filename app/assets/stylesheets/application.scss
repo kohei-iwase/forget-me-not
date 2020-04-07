@@ -148,12 +148,12 @@ header,nav,footer{
 }
 .form-table{
     width:100%;
+    border: solid 1px;
 }
 
 .memory-box{
-    margin-left:5px;
-    margin-top:15px;
-    height: 280px;
+    margin:15px;
+    height: auto;
     width:100%;
     border: 2px solid #FFFFFF;
     border-radius:16px;

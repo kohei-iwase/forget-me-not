@@ -8,7 +8,7 @@ class PortraitsController < ApplicationController
     	@portrait = Portrait.new(portrait_params)
     	@portrait.user_id = current_user.id
     	if @portrait.save
-    		redirect_to portraits_path
+    		redirect_to edit_portrait_path(@portrait.id)
     	else
     		render :new
     	end

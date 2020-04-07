@@ -1,11 +1,10 @@
 class MemoriesController < ApplicationController
 	def create
-    portrait = Portrait.find(params[:portrait_id])
-    memory = current_user.memories.new(memory_params)
-    memory.portrait_id = portrait.id
-    memory.save
-    memory
-    redirect_to portrait_path(portrait)
+    @portrait = Portrait.find(params[:portrait_id])
+    @memory = Memory.new(memory_params)
+    @memory.portrait_id = @portrait.id
+    @memory.save
+    redirect_to portrait_path(@portrait)
 	end
 
     def edit
@@ -19,6 +18,6 @@ class MemoriesController < ApplicationController
 
 		private
 			def memory_params
-    			params.require(:memory).permit(:memory,:image)
+    			params.require(:memory).permit(:memory,:image,:when,:title)
 			end
 end

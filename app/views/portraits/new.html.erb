@@ -1,26 +1,11 @@
 <%= form_with model:@portrait do |f| %>
   <div class="row">
-    <div class="col-sm-12">
-      <%= f.attachment_field :image %>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="form-group has-icon">
-        <label class="control-label sr-only">名前</label>
-        <%= f.text_field :name, class:"form-control", placeholder:"お名前" %>
-        <span class="fa fa-building form-control-icon" aria-hidden="true"></span>
-      </div>
-    </div>
-    <div class="col-sm-6">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12">
-      <%= f.text_area :more_about_me, class:"form-control", rows:"3", placeholder:"もっと僕について" %>
+    <div class="col-xs-12">
+      <%= f.attachment_field :image%>
+      <%= f.text_field :name, class:"form-control", placeholder:"名前" %>
+      <%= f.text_area :more_about_me, class:"form-control", rows:"5", placeholder:"僕について" %>
     </div>
   </div>
   <hr>
-  <%= f.submit "送信", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+  <%= f.submit "アルバムを作成", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
 <% end %>
