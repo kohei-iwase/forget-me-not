@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(version: 2020_04_06_033255) do
   end
 
   create_table "notificarions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "portrait_id"
+    t.integer "memory_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_033255) do
     t.integer "user_id"
     t.string "image_id"
     t.string "name"
-    t.integer "gender"
+    t.string "gender"
     t.integer "age"
     t.string "species"
     t.string "date_of_birth"
@@ -60,10 +65,10 @@ ActiveRecord::Schema.define(version: 2020_04_06_033255) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "image_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

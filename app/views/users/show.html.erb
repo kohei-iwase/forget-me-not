@@ -1,7 +1,7 @@
 <div class="container content">
 <div class="row content">
 <div class="col-xs-12 content-box">
-		<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img inline-box", fallback: "no_image.jpg" %>
+		<%= attachment_image_tag @user, :image_id, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img inline-box", fallback: "no_image.jpg" %>
 	<br>
     <h3 class="profile-name"><%= @user.name %></h3>
     <br>
@@ -13,6 +13,7 @@
 </div>
 </div>
 <div class="row portrait">
+<h2><%= @user.name %>さんのアルバム</h2>
 	<div class="col-xs-12 content-box">
 		<div class="portraits_box">
 			<%= render 'portraits/index' %>

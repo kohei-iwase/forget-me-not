@@ -115,7 +115,7 @@ header,nav,footer{
 .main-content {
     width: 98%;
     display: flex;
-    height: 2000px;
+    height: auto;
     margin: auto;
     background: #ccc;
     border-radius: 4px;
@@ -143,6 +143,12 @@ header,nav,footer{
             color: white;
             background: #000000;
         }
+.portrait-box{
+    margin:20px;
+}
+.form-table{
+    width:100%;
+}
 
 .memory-box{
     margin-left:5px;

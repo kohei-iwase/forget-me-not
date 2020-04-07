@@ -43,8 +43,9 @@ class PortraitsController < ApplicationController
 	# ポートレイトのストロングパラメータ
 	private
     	def portrait_params
-        	params.require(:portrait).permit(:name, :image, :age)
+        	params.require(:portrait).permit(:name, :image, :age, :gender, :species, :date_of_birth,:anniversary,
+        								:likes_and_dislikes,:interest,:specialty,:family,:personality,:found,
+        								:more_about_me)
     	end
-
 
 end

@@ -30,12 +30,12 @@
           <tbody>
           <tr>
             <td>
-              <h3><%= memory.title %></h3>
+              <h4><%= memory.title %></h4>
             </td>
           </tr>
           <tr>
             <td>
-            <%= image_tag('koinu001.jpg', style: "width: 130px; height: 100px;") %>
+            <%= attachment_image_tag memory, :image, width: "130px" %>
             </td>
           </tr>
           <tr>
@@ -45,7 +45,7 @@
           </tr>
           <tr>
             <td>
-              <h4><%= memory.memory %></h4>
+              <h5><%= memory.memory %></h5>
             </td>
           </tr>
           </tbody>
