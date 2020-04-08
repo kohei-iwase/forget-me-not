@@ -12,6 +12,10 @@ User.create!(name: "ジョン・ウィック",
 			email: "1@1",
 			password: "111111", password_confirmation: "111111")
 
+User.create!(name: "検証用ユーザー",
+			email: "2@2",
+			password: "222222", password_confirmation: "222222")
+
 Portrait.create!(user_id:1,
 				image: File.open("./app/assets/images/beagle1.jpg"),
 				name: "デイジー",
