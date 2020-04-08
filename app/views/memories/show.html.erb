@@ -30,6 +30,10 @@
               <%= link_to "思い出に書き加える", edit_portrait_memory_path(@portrait,@memory), class: "btn btn-success" %>
               <%= link_to "この思い出と別れる", portrait_memory_path(@portrait,@memory), method: :delete,class: "btn btn-danger" %>
             </div>
+            <% else %>
+            <div class="flower_button">
+            <%= render 'flowers/flowers', memory: @memory %>
+          </div>
       <% end %>
         </div>
         <%= link_to "アルバムに戻る", portrait_path(@portrait), class: "btn btn-primary" %>

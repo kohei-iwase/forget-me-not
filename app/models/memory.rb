@@ -1,6 +1,6 @@
 class Memory < ApplicationRecord
 	belongs_to  :portrait
-	has_many	:flower
+	has_many	:flowers
 	attachment  :image
 
 	def flower_by?(user)
