@@ -1,4 +1,4 @@
-class WithsController < ApplicationController
+class FlowersController < ApplicationController
 	def create
 		memory = Memory.find(params[:memory_id])
         flower = current_user.flowers.new(memory_id: memory.id)

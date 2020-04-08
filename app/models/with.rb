@@ -1,2 +1,0 @@
-class With < ApplicationRecord
-end

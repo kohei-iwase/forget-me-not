@@ -2,13 +2,17 @@
   <div class ="row album">
     <div class="form-body">
       <div class="form-group has-icon">
-      <h2><%= @portrait.name %>について</h2>
+        <div class="ribbon6">
+      <h2><%= @portrait.name %>のアルバム</h2>
+    </div>
     </div>
      <div class="col-xs-6 portrait-box">
       <%= attachment_image_tag @portrait, :image, width:"95%" %>
     </div>
     <div class="col-xs-5 portrait-box">
       <%= render 'portraits/table', portrait: @portrait %>
+      <br>
+    <%= render 'bouquets/bouquet', portrait: @portrait %>
     </div>
   </div>
  </div>
@@ -26,7 +30,7 @@
       <div class="title">
         <h2>思い出を加える</h2>
       </div>
-       <%= render 'memories/form', portrait: @portrait, memory: @memory %>
+       <%= render 'memories/form', portrait:@portrait, memory: @memory%>
     </div>
   </div>
 </div>

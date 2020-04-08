@@ -1,61 +1,32 @@
-<% @portraits.each do |portrait| %>
 <div class ="row album">
+  <% @portraits.each do |portrait| %>
+  <div class="row album">
   <div class="col-xs-6 portrait-box">
     <%= link_to portrait_path(portrait) do %>
       <h2>
         <i class="fa fa-bell"></i>
         <%= portrait.name %>
       </h2>
-      <%= attachment_image_tag portrait, :image, size: "500x400" %>
+      <%= attachment_image_tag portrait, :image, width: "90%" %>
     <% end %>
     <h3>僕について</h3>
       <p>
         <%= portrait.more_about_me %>
       </p>
-        <% if portrait.user.id == current_user.id %>
+      <%= render 'bouquets/bouquet', portrait: portrait %>
+            <% if portrait.user.id == current_user.id %>
           <div class="edit">
             <%= link_to "編集", edit_portrait_path(portrait), class: "btn btn-success" %>
           </div>
         <% end %>
   </div>
-  <div class="col-xs-6 memories-list">
-    <h2>
-      <%= link_to "#{portrait.memories.count} 個の思い出", portrait_memories_path(portrait.id) %>
-    </h2>
-    <% portrait.memories.each do |memory| %>
-      <%= link_to '#' do %>
-      <div class="col-xs-4">
-         <div class="memory-box">
-        <table>
-          <tbody>
-          <tr>
-            <td>
-              <h4><%= memory.title %></h4>
-            </td>
-          </tr>
-          <tr>
-            <td>
-            <%= attachment_image_tag memory, :image, width: "130px" %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h4><%= memory.when %></h4>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h5><%= memory.memory %></h5>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-</div>
-      </div>
-      <% end %>
-      <% end %>
+  <div class="col-xs-5 memories-list">
+    <div class="ribbon6">
+      <h2><%= link_to "#{portrait.name}との思い出", portrait_memories_path(portrait.id) %></h2>
+    </div>
+    <%= render 'memories/index', portrait: portrait %>
   </div>
 </div>
-<% end %>
-<%= paginate @portraits, class: "paginate" %>
+  <% end %>
+</div>
 

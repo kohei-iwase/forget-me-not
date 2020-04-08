@@ -5,7 +5,8 @@ class User < ApplicationRecord
          	:recoverable, :rememberable, :validatable
   has_many 	:portraits, dependent: :destroy
   has_many	:bouquets, dependent: :destroy
+  has_many	:flowers,	dependent: :destroy
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'user_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'user_id', dependent: :destroy
-  attachment :profile_image
+  attachment :image
 end

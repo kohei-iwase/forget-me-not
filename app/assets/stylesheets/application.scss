@@ -34,16 +34,65 @@ a{
 	clear:both;
 }
 
+/* ribon */
+.ribbon6 {
+  display: inline-block;
+  position: relative;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  padding: 7px 0;
+  font-size: 18px;
+  background: #acd879;
+  color: #FFF;
+  box-sizing: border-box;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.ribbon6 h2 {
+  margin: 0;
+  padding: 0 30px;
+  border-top: dashed 2px rgba(255, 255, 255, 0.5);
+  border-bottom: dashed 2px rgba(255, 255, 255, 0.5);
+  line-height: 42px;
+}
+
+.ribbon6:before, .ribbon6:after {
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 0px;
+  z-index: 1;
+}
+
+.ribbon6:before {
+  top: -2px;
+  left: -2px;
+  border-width: 32px 0px 32px 15px;
+  border-color: transparent transparent transparent #fff;
+  border-style: solid;
+}
+
+.ribbon6:after {
+  top: -2px;
+  right: -2px;
+  border-width: 32px 15px 32px 0px;
+  border-color: transparent #fff transparent transparent;
+  border-style: solid;
+}
+
+
 /* header */
 
 header,nav,footer{
 	font-family:Chalkduster,"Bradley Hand",Courier,"Segoe Print",sans-serif;
+    background-color:#a3c9ee;
 }
 
 .header{
 	width:100%;
 	height: 100px;
-	}
+    }
 
 .navbar-middle {
 	text-align: center;
@@ -61,11 +110,6 @@ header,nav,footer{
 .navbar{
     border-radius: 0;
     border: none;
-    background-color: #003355; /* ベース基調となる濃い青 */
-}
-
-#logo-img{
-    height: 20px;
 }
 
 .navbar-default .navbar-nav >li > a{
@@ -107,6 +151,13 @@ header,nav,footer{
         }
 
 /* body */
+body{
+    padding-top: 100px;
+    background-image: url(back4.png);
+    background-size: auto;
+    font-family: 'yasashisa';
+    }
+
 .content-wrapper {
     display: flex;
     width:100%;
@@ -117,8 +168,8 @@ header,nav,footer{
     display: flex;
     height: auto;
     margin: auto;
-    background: #ccc;
-    border-radius: 4px;
+    background:rgba(255,255,255,0.9);
+    border-radius: 8px;
         }
 
         .content-box{
@@ -135,14 +186,18 @@ header,nav,footer{
             border: 1px solid;
         }
 
-        .footer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100px;
-            color: white;
-            background: #000000;
+/* footer */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    color: white;
+    background-color: #a3c9ee; /* ロゴの青 */
+    border-radius: 8px;
         }
+
 .portrait-box{
     margin:20px;
 }
@@ -158,6 +213,9 @@ header,nav,footer{
     border: 2px solid #FFFFFF;
     border-radius:16px;
     text-align: center;
+}
+.memory-table{
+    margin:auto;
 }
 
 /*動くボタン用*/
