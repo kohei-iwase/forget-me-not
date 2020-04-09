@@ -8,8 +8,8 @@ class CreatePortraits < ActiveRecord::Migration[5.2]
     	t.string 	:gender
     	t.integer	:age
     	t.string	:species
-    	t.string	:date_of_birth
-    	t.string	:anniversary
+    	t.date	    :birthday
+    	t.date	    :anniversary
     	t.string	:likes_and_dislikes
     	t.string	:interest
     	t.string	:specialty

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_104636) do
+ActiveRecord::Schema.define(version: 2020_04_09_011808) do
+
+  create_table "anniversaries", force: :cascade do |t|
+    t.date "date"
+    t.string "title"
+    t.text "memo"
+    t.integer "portrait_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "bouquets", force: :cascade do |t|
     t.integer "user_id"
@@ -53,8 +62,8 @@ ActiveRecord::Schema.define(version: 2020_04_08_104636) do
     t.string "gender"
     t.integer "age"
     t.string "species"
-    t.string "date_of_birth"
-    t.string "anniversary"
+    t.date "birthday"
+    t.date "anniversary"
     t.string "likes_and_dislikes"
     t.string "interest"
     t.string "specialty"
@@ -83,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_04_08_104636) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "image_id"
+    t.text "introduction"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -2,6 +2,7 @@ class Portrait < ApplicationRecord
 	belongs_to 	:user
 	has_many	:memories, dependent: :destroy
 	has_many	:bouquets, dependent: :destroy
+	has_many 	:anniversaries, dependent: :destroy
 	attachment 	:image
 
 	validates :name, presence: true

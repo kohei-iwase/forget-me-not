@@ -3,7 +3,7 @@ class PortraitsController < ApplicationController
 		@portrait = Portrait.new
 	end
 
-	# ポートレイトの保存
+	# アルバムの保存
 	def create
     	@portrait = Portrait.new(portrait_params)
     	@portrait.user_id = current_user.id
@@ -21,6 +21,7 @@ class PortraitsController < ApplicationController
 	end
 
 	def show
+		@user = current_user
 		@portrait = Portrait.find(params[:id])
 		@memrories = @portrait.memories.all
 		@memory = Memory.new

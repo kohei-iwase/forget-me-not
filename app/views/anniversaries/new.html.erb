@@ -1,0 +1,11 @@
+<%= form_with model:[@portrait, @anniversary] do |f| %>
+  <div><%= f.label :title %></div>
+  <div><%= f.text_field :titel %></div>
+    <div><%= f.label :memo %></div>
+  <div><%= f.text_area :memo %></div>
+    <div><%= f.label :date %></div>
+  <div><%= f.date_field :date, placeholder:@portrait.anniversary %></div>
+  <div><%= f.submit %>
+  	   <%= link_to '戻る', portrait_path(@portrait) %>
+ </div>
+<% end %>

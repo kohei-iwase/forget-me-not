@@ -18,11 +18,15 @@
             </tr>
             <tr>
               <th>誕生日</th>
-              <td><%= portrait.date_of_birth %></td>
+              <td><%= portrait.birthday %></td>
             </tr>
             <tr>
               <th>命日</th>
-              <td><%= portrait.anniversary %></td>
+              <td><%= portrait.anniversary %>
+                <% if @portrait.user == current_user %>
+                <%= link_to "命日の通知設定", portrait_anniversaries_path(portrait), class: "btn btn-success" %>
+                <% end %>
+              </td>
             </tr>
             <tr>
               <th>好きなもの<br>嫌いなもの</th>

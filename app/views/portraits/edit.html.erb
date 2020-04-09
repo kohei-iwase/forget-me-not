@@ -36,11 +36,12 @@
             </tr>
             <tr>
               <th>誕生日</th>
-              <td><%= f.text_field :date_of_birth, autofocus: true, class:"form-control",　placeholder:"誕生日"%></td>
+              <td><%= f.date_field :birthday, autofocus: true, class:"form-control" %></td>
             </tr>
             <tr>
               <th>命日</th>
-              <td><%= f.text_field :anniversary, autofocus: true, class:"form-control",　placeholder:"命日"%></td>
+              <td><%= f.date_field :anniversary, autofocus: true, class:"form-control"%>
+                </td>
             </tr>
             <tr>
               <th>好きなもの<br>嫌いなもの</th>
