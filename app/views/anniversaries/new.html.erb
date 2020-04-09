@@ -1,6 +1,6 @@
-<%= form_with model:[@portrait, @anniversary] do |f| %>
+<%= form_with model:[@portrait, @anniversary], local: true do |f| %>
   <div><%= f.label :title %></div>
-  <div><%= f.text_field :titel %></div>
+  <div><%= f.text_field :title %></div>
     <div><%= f.label :memo %></div>
   <div><%= f.text_area :memo %></div>
     <div><%= f.label :date %></div>

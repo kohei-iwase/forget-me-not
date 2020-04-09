@@ -12,23 +12,23 @@ class AnniversariesController < ApplicationController
 
 	def show
 		@user = current_user
-		@anniversary = Anniversary.find(params[:portrait_id])
+		@portrait = Portrait.find(params[:portrait_id])
+		@anniversary = Anniversary.find(params[:id])
 	end
 
 	def create
     	@anniversary = Anniversary.new(anniversary_params)
-    	@anniversary.user_id = current_user.id
+    	@portrait = Portrait.find(params[:portrait_id])
 	    @anniversary.portrait_id = @portrait.id
-    	@anniversary.save
-    	if @portrait.save
-    		redirect_to portrait_path(@portrait.id)
+    	if @anniversary.save
+    		redirect_to portrait_anniversaries_path(@portrait,@anniversary)
     	else
     		render :new
     	end
     end
 
     private
-		def aniversary_params
-    		params.require(:anniversary).permit(:title, :memo, :user_id, :portrait_id, :date)
+		def anniversary_params
+    		params.require(:anniversary).permit(:title, :memo, :portrait_id, :date)
 		end
 end

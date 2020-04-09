@@ -31,6 +31,12 @@ Portrait.create!(user_id:1,
     			personality:"甘えん坊でおっちょこちょい",
     			found:"単身赴任がおおっ飼った時に、妻が誕生日に贈ってくれました",
 				more_about_me:  "亡き妻の最期の贈り物でした、私に安らぎを与えてくれました")
+
+Anniversary.create!(title: "デイジーの命日",
+					date:"20200309",
+    				memo: "犬用チュール",
+ 	   				portrait_id: 1)
+
 Memory.create!(portrait_id: 1,
     			title:"初めてのお散歩",
     			when:"最初にうちに来た時",
