@@ -12,6 +12,11 @@ class MemoriesController < ApplicationController
         @memory = Memory.find(params[:id])
     end
 
+    def index
+        portrait = Portrait.find(params[:portrait_id])
+        
+    end
+
     def edit
         @portrait = Portrait.find(params[:portrait_id])
         @memory = Memory.find(params[:id])

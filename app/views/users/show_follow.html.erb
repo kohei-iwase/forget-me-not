@@ -1,0 +1,32 @@
+<div class="row">
+<aside class="col-xs-4"> 
+	<section class="user_info"> 
+		<%= attachment_image_tag @user, :image, class: "img-circle pull-left profile-img inline-box", fallback: "no_image.jpg" %>
+<h1><%= @user.name %></h1>
+<span><%= link_to "view my profile", @user %></span> 
+<span><b>アルバム:</b> <%= @user.portraits.count %></span>
+    </section>
+    <section class="status">
+<%= render 'users/status' %> 
+<% if @users.any? %>
+<div class="user_avatars">
+<% @users.each do |user| %>
+<div class="col-xs-4">
+<%= link_to user_path(user) do %> 
+<%= attachment_image_tag user, :image, class: "img-circle pull-left profile-img inline-box", fallback: "no_image.jpg" %>
+<p><%= user.name %></p>
+</div>
+<% end %>
+<% end %>
+</div> 
+<% end %>
+</section>
+</aside>
+<div class="col-xs-8">
+<h3><%= @title %></h3> <% if @users.any? %>
+<ul class="users follow"> 
+<%= render 'users/index' %>
+</ul>
+<% end %>
+  </div>
+</div>

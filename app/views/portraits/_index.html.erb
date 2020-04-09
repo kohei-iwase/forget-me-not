@@ -1,5 +1,5 @@
 <div class ="row album">
-  <% @portraits.each do |portrait| %>
+  <% @portraits.reverse_each do |portrait| %>
   <div class="row album">
   <div class="col-xs-6 portrait-box">
     <%= link_to portrait_path(portrait) do %>
@@ -22,7 +22,7 @@
   </div>
   <div class="col-xs-5 memories-list">
     <div class="ribbon6">
-      <h2><%= link_to "#{portrait.name}との思い出", portrait_memories_path(portrait.id) %></h2>
+      <h2><%= link_to "#{portrait.name}との思い出", portrait_memories_path(portrait) %></h2>
     </div>
     <%= render 'memories/index', portrait: portrait %>
   </div>

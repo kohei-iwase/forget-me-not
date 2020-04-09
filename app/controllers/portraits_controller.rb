@@ -15,7 +15,9 @@ class PortraitsController < ApplicationController
 	end
 
 	def index
-		@portraits = Portrait.page(params[:page])
+		@portraits = Portrait.all
+		@memrories = Memory.all
+
 	end
 
 	def show

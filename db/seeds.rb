@@ -51,7 +51,7 @@ Memory.create!(portrait_id: 1,
     			)
 
 
-#ユーザーを50人作成
+#ユーザーを30人作成
 30.times do
 name = Faker::Name.name
 email = Faker::Internet.email
@@ -62,18 +62,28 @@ User.create!(name: name,
 			password_confirmation: password)
 end
 
-#最初の20名のユーザーにポートレートを作成(ポケモンの名前を使用)
-users = User.order(:created_at).take(20)
-3.times do
+#最初の20名のユーザーにポートレートを作成
+users = User.order(:created_at).take(30)
+2.times do
 name = Faker::Creature::Cat.name
 more_about_me = Faker::Creature::Cat.registry
 users.each { |user| user.portraits.create!(name: name,more_about_me: more_about_me) } 
 end
 
 #ポートレートにメモリーを作成
-portraits = Portrait.order(:created_at).take(20)
+portraits = Portrait.order(:created_at).take(60)
 5.times do
 title = Faker::Creature::Dog.sound
 memory = Faker::Quotes::Shakespeare.hamlet_quote
 portraits.each { |portrait| portrait.memories.create!(title: title,memory: memory) } 
 end
+
+# リレーションシップ
+users = User.all
+user = users.first 
+following = users[2..30] 
+followers = users[3..30]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
+
+
