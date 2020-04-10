@@ -1,6 +1,7 @@
 <div class="container content">
 <div class="row content">
-<div class="col-xs-6 content-box">
+<div class="content-box">
+	<div class="col-xs-6">
 		<%= attachment_image_tag @user, :image, class: "img-circle pull-left profile-img inline-box", fallback: "no_image.jpg" %>
 	<br>
     <h3 class="profile-name"><%= @user.name %>さん</h3>
@@ -13,7 +14,11 @@
     	<% else %>
     		 <%= render 'follow_form'  %>
     	<% end %>
+    </div>
 
+    <div class="col-xs-6">
+    	<%= render 'anniversaries/index', anniversaries: @anniversaries %>
+    </div>
 </div>
 </div>
 <div class="row portrait">

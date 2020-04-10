@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   	@portrait = Portrait.find(params[:id])
   	@memories = @portrait.memories
   	@memory = Memory.find(params[:id])
+  	@anniversaries = @portrait.anniversaries.all
   end
 
   def edit
