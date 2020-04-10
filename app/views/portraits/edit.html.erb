@@ -1,0 +1,77 @@
+
+  <div class ="row album">
+    <div class="form-body">
+      <div class="col-xs-6 portrait-box">
+       <%= form_for(@portrait) do |f| %>
+        <div class="form-group has-icon">
+          <label class="control-label sr-only" for="inputEmail">Name</label>
+            <h2><%= @portrait.name %>について</h2>
+        </div>
+        <div class="form-group has-icon">
+            <div class="album-edit-image">
+              <%= attachment_image_tag @portrait, :image, width:"95%" %>
+              </div>
+            <label class="control-label sr-only" for="inputEmail">ProfileImage</label>
+              <%= f.attachment_field :image, placeholder: "ペット画像", class: "portrait-edit-form" %>
+        </div>
+      </div>
+      <div class="col-xs-5 portrait-box">
+        <table class = "form-table">
+          <tbody>
+            <tr>
+              <th>名前</th>
+              <td><%= f.text_field :name, autofocus: true, class:"form-control",　placeholder:"名前"%></td>
+            </tr>
+            <tr>
+              <th>性別</th>
+              <td><%= f.text_field :gender, autofocus: true, class:"form-control",　placeholder:"性別"%></td>
+            </tr>
+            <tr>
+              <th>年齢</th>
+              <td><%= f.text_field :age, autofocus: true, class:"form-control",　placeholder:"年齢"%></td>
+            </tr>
+            <tr>
+              <th>種類</th>
+              <td><%= f.text_field :species, autofocus: true, class:"form-control",　placeholder:"ペットの種類を書いてね"%></td>
+            </tr>
+            <tr>
+              <th>誕生日</th>
+              <td><%= f.date_field :birthday, autofocus: true, class:"form-control" %></td>
+            </tr>
+            <tr>
+              <th>命日</th>
+              <td><%= f.date_field :anniversary, autofocus: true, class:"form-control"%>
+                </td>
+            </tr>
+            <tr>
+              <th>好きなもの<br>嫌いなもの</th>
+              <td><%= f.text_area :likes_and_dislikes, autofocus: true, class:"form-control",　placeholder:"好きなもの嫌いなもの"%></td>
+            </tr>
+            <tr>
+              <th>興味あるもの</th>
+              <td><%= f.text_area :interest, autofocus: true, class:"form-control",　placeholder:"興味あるもの"%></td>
+            </tr>
+            <tr>
+              <th>家蔵構成</th>
+              <td><%= f.text_area :family, autofocus: true, class:"form-control",　placeholder:"家族構成"%></td>
+            </tr>
+            <tr>
+              <th>性格</th>
+              <td><%= f.text_area :personality, autofocus: true, class:"form-control",　placeholder:"性格"%></td>
+            </tr>
+            <tr>
+              <th>出会い</th>
+              <td><%= f.text_area :found, autofocus: true, class:"form-control",　placeholder:"出会い"%></td>
+            </tr>
+            <tr>
+              <th>その他、もっと<br>僕について</th>
+              <td><%= f.text_area :more_about_me, autofocus: true, class:"form-control",　placeholder:"もっと僕について！"%></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= f.submit "変更を保存", class: "btn btn-success" %>
+        <% end %>
+        <%= link_to "削除する", portrait_path(@portrait), method: :delete,class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>

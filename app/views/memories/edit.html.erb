@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+        <div class="memory-box">
+          <%= form_with model: [ @portrait, @memory ],local: true do |f| %>
+          <table class="memory-table">
+            <tbody>
+            <tr>
+              <td>
+                <h4>どんな思い出？</h4>
+                <%= f.text_field :title, class:"form-control", placeholder:"思い出のタイトル" %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+              <%= attachment_image_tag @memory, :image, width: "90%" %>
+              <%= f.attachment_field :image%>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4>いつの思い出？</h4>
+                <%= f.text_field :when, class:"form-control", placeholder:"いつの思い出" %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4>詳しく書いて！</h4>
+                <%= f.text_area :memory, class:"form-control", rows:"5", placeholder:"思い出を書いて！" %>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+            <div class="edit">
+            <%= f.submit "思い出を更新！", class:"btn btn-success" %>
+            <% end %>
+            </div>
+        </div>
+                <%= link_to "アルバムに戻る", portrait_path(@portrait), class: "btn btn-primary" %>
+      </div>
+    </div>
+
+

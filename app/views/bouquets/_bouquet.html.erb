@@ -1,0 +1,9 @@
+<% if portrait.bouquet_by?(current_user) %>
+    <%= link_to portrait_bouquets_path(portrait), method: :delete do %>
+	<%= image_tag 'bouquet.png', :size =>'90x60' %>
+      <!-- <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i> -->
+    <%= portrait.bouquets.count %> ブーケ
+    <% end %>
+<% else %>
+    <%= link_to "献花する" ,portrait_bouquets_path(portrait), class: "btn btn-primary", method: :post %>
+<% end %>

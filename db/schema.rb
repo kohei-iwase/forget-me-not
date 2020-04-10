@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_074509) do
+ActiveRecord::Schema.define(version: 2020_04_09_011808) do
+
+  create_table "anniversaries", force: :cascade do |t|
+    t.date "date"
+    t.string "title"
+    t.text "memo"
+    t.integer "portrait_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bouquets", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "portrait_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "flowers", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "memory_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "memories", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "portrait_id"
     t.string "title"
     t.string "when"
@@ -23,15 +45,25 @@ ActiveRecord::Schema.define(version: 2020_03_31_074509) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notificarions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "portrait_id"
+    t.integer "memory_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "portraits", force: :cascade do |t|
     t.integer "user_id"
     t.string "image_id"
     t.string "name"
-    t.integer "gender"
+    t.string "gender"
     t.integer "age"
     t.string "species"
-    t.string "date_of_birth"
-    t.string "anniversary"
+    t.date "birthday"
+    t.date "anniversary"
     t.string "likes_and_dislikes"
     t.string "interest"
     t.string "specialty"
@@ -43,12 +75,24 @@ ActiveRecord::Schema.define(version: 2020_03_31_074509) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id", "follower_id"], name: "index_relationships_on_followed_id_and_follower_id", unique: true
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "image_id"
+    t.text "introduction"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

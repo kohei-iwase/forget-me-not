@@ -1,0 +1,56 @@
+<table class = "form-table">
+  <tbody>
+            <tr>
+              <th>名前</th>
+              <td><%= portrait.name %></td>
+            </tr>
+            <tr>
+              <th>性別</th>
+              <td><%= portrait.gender %></td>
+            </tr>
+            <tr>
+              <th>年齢</th>
+              <td><%= portrait.age %></td>
+            </tr>
+            <tr>
+              <th>種類</th>
+              <td><%= portrait.species %></td>
+            </tr>
+            <tr>
+              <th>誕生日</th>
+              <td><%= portrait.birthday %></td>
+            </tr>
+            <tr>
+              <th>命日</th>
+              <td><%= portrait.anniversary %>
+                <% if @portrait.user == current_user %>
+                <%= link_to "命日の通知設定", portrait_anniversaries_path(portrait), class: "btn btn-success" %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th>好きなもの<br>嫌いなもの</th>
+              <td><%= portrait.likes_and_dislikes %></td>
+            </tr>
+            <tr>
+              <th>興味あるもの</th>
+              <td><%= portrait.interest %></td>
+            </tr>
+            <tr>
+              <th>家蔵構成</th>
+              <td><%= portrait.family %></td>
+            </tr>
+            <tr>
+              <th>性格</th>
+              <td><%= portrait.personality %></td>
+            </tr>
+            <tr>
+              <th>出会い</th>
+              <td><%= portrait.found %></td>
+            </tr>
+            <tr>
+              <th>その他、もっと<br>僕について</th>
+              <td><%= portrait.more_about_me %></td>
+            </tr>
+  </tbody>
+</table>

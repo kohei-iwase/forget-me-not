@@ -61,7 +61,6 @@ group :test do
   gem 'rspec-rails'
   gem "factory_bot_rails"
   gem 'rspec-parameterized'
-  gem 'faker' #ランダム値の生成
   gem 'shoulda-matchers'
   gem 'rails-controller-testing'
 
@@ -78,7 +77,7 @@ gem 'bootstrap-sass', '~>3.4.1'
 gem 'jquery-rails'
 
 
-gem 'faker'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 # ページャー
 gem 'kaminari','~> 1.1.1'
 
@@ -86,7 +85,14 @@ gem 'kaminari','~> 1.1.1'
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
 
+#カレンダー設定
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 # 環境変数の管理
 gem 'dotenv-rails', require: 'dotenv/rails-now'
+
+group :production do
+  gem 'mysql2'
+end
 
