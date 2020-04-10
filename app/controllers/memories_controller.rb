@@ -14,7 +14,6 @@ class MemoriesController < ApplicationController
 
     def index
         portrait = Portrait.find(params[:portrait_id])
-        
     end
 
     def edit
