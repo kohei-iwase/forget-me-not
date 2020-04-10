@@ -92,3 +92,7 @@ gem 'momentjs-rails'
 # 環境変数の管理
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 
+group :production do
+  gem 'mysql2'
+end
+
