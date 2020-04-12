@@ -1,6 +1,5 @@
 <% @users.each do |user| %>
 <li>
-<%= attachment_image_tag user, :image, class: "img-circle pull-left profile-img inline-box", fallback: "no_image.jpg" %>
 <%= link_to user.name, user_path(user) %> 
 </li>
 <% end %> 
