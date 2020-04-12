@@ -1,5 +1,6 @@
 <% @users.each do |user| %>
 <li>
 <%= link_to user.name, user_path(user) %> 
+<!-- 画像データがエラーの原因になっていたため一旦削除 -->
 </li>
 <% end %> 
