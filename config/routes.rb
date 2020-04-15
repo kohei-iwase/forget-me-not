@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit,:update,:index] do
     member do
       get :following, :followers
-	end 
+	end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :portraits do
@@ -15,8 +15,11 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create,:destroy]
+  
+  #通知用のルーティング
+  resources :notifications, only: :index
 
-  root 'portraits#index'
+  root 'homes#top'
    # トップとアバウトページのrouting
    get 'homes/top' => 'homes#top'
    get 'homes/about' => 'homes#about'

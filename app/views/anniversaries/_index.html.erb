@@ -1,5 +1,18 @@
+<table class = "anniversary-table">
+	<thead>
+		<tr>
+			<th>日付</th>
+			<th>要件</th>
+			<th>メモ</th>
+		</tr>
+	</thead>
 <% anniversaries.each do |anniversary| %>
-<p><%= anniversary.title %></p>
-<p><%= anniversary.memo %></p>
-<p><%= anniversary.date %></p>
+    <tbody>
+          <tr>
+        	<td><%= anniversary.date %></td>
+			<td><%= anniversary.title %></td>
+			<td><%= anniversary.memo %></td>
+		</tr>
+	</tbody>
+</table>
 <% end %>

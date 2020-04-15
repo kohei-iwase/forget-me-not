@@ -4,7 +4,7 @@ class CreatePortraits < ActiveRecord::Migration[5.2]
 
     	t.integer	:user_id
     	t.string	:image_id
-    	t.string 	:name
+    	t.string 	:name        ,null: false, default: ""
     	t.string 	:gender
     	t.integer	:age
     	t.string	:species

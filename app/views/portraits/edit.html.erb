@@ -75,3 +75,14 @@
       </div>
     </div>
   </div>
+
+  <script>
+$(function() {
+    // jQuery Upload Thumbs 
+    $('form input:file').uploadThumbs({
+        position : 1,      // 0:before, 1:after, 2:parent.prepend, 3:parent.append,
+                           // any: arbitrarily jquery selector
+        imgbreak : false   // append <br> after thumbnail images
+    });
+});
+</script>

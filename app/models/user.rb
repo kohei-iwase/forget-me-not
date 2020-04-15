@@ -33,6 +33,10 @@ class User < ApplicationRecord
 
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'user_id', dependent: :destroy
 
+  #バリデーション
+  validates :email, length: {minimum: 3, maximum: 80}
+  validates :name, length: {minimum: 2, maximum: 30}
+  validates :introduction, length: {maximum: 200}
 
 	# ユーザーをフォローする 
 	def follow(other_user)
