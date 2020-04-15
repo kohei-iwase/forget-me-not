@@ -36,13 +36,13 @@ describe 'ヘッダーのテスト' do
       it 'ロゴをクリックするとHome画面に遷移する' do
         home_link = find_all('a')[0].native.inner_text
         click_link home_link
-        is_expected.to eq(root_path)
+        is_expected.to eq(homes_top_path)
       end
       it 'About画面に遷移する' do
         about_link = find_all('a')[1].native.inner_text
         about_link = about_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link about_link
-        is_expected.to eq('/home/about')
+        is_expected.to eq(homes_about_path)
       end
       it '新規登録画面に遷移する' do
         signup_link = find_all('a')[2].native.inner_text
@@ -61,60 +61,82 @@ describe 'ヘッダーのテスト' do
 
   describe 'ログインしている場合' do
     let(:user) { create(:user) }
+    let!(:portrait) { create(:portrait, user: user) }
+    let!(:memory) { create(:memory, portrait: portrait) }
+
     before do
       visit new_user_session_path
-      fill_in 'user[name]', with: user.name
+      fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
-      click_button 'Log in'
+      click_button 'サインイン'
     end
     context 'ヘッダーの表示を確認' do
       subject { page }
       it 'タイトルが表示される' do
-        is_expected.to have_content 'Bookers'
+        is_expected.to have_content 'ワスレナグサ'
       end
-      it 'Homeリンクが表示される' do
-        home_link = find_all('a')[0].native.inner_text
-        expect(home_link).to match(/home/i)
+      it 'Aboutページへのリンクが表示される' do
+        home_link = find_all('a')[1].native.inner_text
+        expect(home_link).to match("ワスレナグサについて")
       end
-      it 'Usersリンクが表示される' do
-        users_link = find_all('a')[1].native.inner_text
-        expect(users_link).to match(/users/i)
+      it 'マイページへのリンクが表示される' do
+        mypage_link = find_all('a')[2].native.inner_text
+        expect(mypage_link).to match("マイページ")
       end
-      it 'Booksリンクが表示される' do
-        books_link = find_all('a')[2].native.inner_text
-        expect(books_link).to match(/books/i)
+      it 'アルバム作成へのリンクが表示される' do
+        album_link = find_all('a')[3].native.inner_text
+        expect(album_link).to match("アルバムを作る")
+      end
+      it 'タイムラインへのリンクが表示される' do
+        albums_link = find_all('a')[4].native.inner_text
+        expect(albums_link).to match("アルバム一覧")
       end
       it 'logoutリンクが表示される' do
-        logout_link = find_all('a')[3].native.inner_text
-        expect(logout_link).to match(/logout/i)
+        logout_link = find_all('a')[5].native.inner_text
+        expect(logout_link).to match("ログアウト")
       end
     end
 
     context 'ヘッダーのリンクを確認' do
       subject { current_path }
-      it 'Home画面に遷移する' do
+
+      it 'ロゴをクリックするとHome画面に遷移する' do
         home_link = find_all('a')[0].native.inner_text
-        home_link = home_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link home_link
-        is_expected.to eq('/users/'+user.id.to_s)
+        is_expected.to eq(homes_top_path)
       end
-      it 'Users画面に遷移する' do
-        users_link = find_all('a')[1].native.inner_text
-        users_link = users_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link users_link
-        is_expected.to eq('/users')
+
+      it 'About画面に遷移する' do
+        about_link = find_all('a')[1].native.inner_text
+        about_link = about_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link about_link
+        is_expected.to eq(homes_about_path)
       end
-      it 'Books画面に遷移する' do
-        books_link = find_all('a')[2].native.inner_text
-        books_link = books_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link books_link
-        is_expected.to eq('/books')
+      it 'マイページ画面に遷移する' do
+        mypage_link = find_all('a')[2].native.inner_text
+        mypage_link = mypage_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link mypage_link
+        is_expected.to eq('/users/' + user.id.to_s)
       end
-      it 'logoutする' do
-        logout_link = find_all('a')[3].native.inner_text
+
+      it 'アルバム作成へのリンクが表示される' do
+        album_link = find_all('a')[3].native.inner_text
+        album_link = album_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link album_link
+        is_expected.to eq('/portraits/new')
+
+      end
+      it 'タイムラインへのリンクが表示される' do
+        albums_link = find_all('a')[4].native.inner_text
+        albums_link = albums_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+        click_link albums_link
+        is_expected.to eq('/portraits')
+      end
+      it 'ログアウトする' do
+        logout_link = find_all('a')[5].native.inner_text
         logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link logout_link
-        expect(page).to have_content 'Signed out successfully.'
+        is_expected.to eq(root_path)
       end
     end
   end

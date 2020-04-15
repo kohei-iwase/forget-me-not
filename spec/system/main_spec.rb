@@ -2,34 +2,35 @@ require 'rails_helper'
 
 describe 'ユーザー権限のテスト'  do
   let!(:user) { create(:user) }
-  let!(:book) { create(:book, user: user) }
+  let!(:portrait) { create(:portrait, user: user) }
+  let!(:memory) { create(:memory, portrait: portrait) }
   describe 'ログインしていない場合' do
     context '投稿関連のURLにアクセス' do
-      it '一覧画面に遷移できない' do
-        visit books_path
+      it 'アルバム一覧画面に遷移できない' do
+        visit portraits_path
         expect(current_path).to eq('/users/sign_in')
       end
-      it '編集画面に遷移できない' do
-        visit edit_book_path(book.id)
+      it 'アルバム編集画面に遷移できない' do
+        visit edit_portrait_path(portrait.id)
         expect(current_path).to eq('/users/sign_in')
       end
-      it '詳細画面に遷移できない' do
-        visit book_path(book.id)
+      it 'アルバム詳細画面に遷移できない' do
+        visit portrait_path(portrait.id)
         expect(current_path).to eq('/users/sign_in')
       end
     end
   end
   describe 'ログインしていない場合にユーザー関連のURLにアクセス' do
     context 'ユーザー関連のURLにアクセス' do
-      it '一覧画面に遷移できる' do
+      it 'ユーザー一覧画面に遷移できない' do
         visit users_path
         expect(current_path).to eq('/users/sign_in')
       end
-      it '編集画面に遷移できる' do
+      it 'ユーザー編集画面に遷移できない' do
         visit edit_user_path(user.id)
         expect(current_path).to eq('/users/sign_in')
       end
-      it '詳細画面に遷移できる' do
+      it 'ユーザー詳細画面に遷移できない' do
         visit user_path(user.id)
         expect(current_path).to eq('/users/sign_in')
       end

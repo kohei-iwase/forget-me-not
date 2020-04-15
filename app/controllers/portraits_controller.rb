@@ -10,7 +10,7 @@ class PortraitsController < ApplicationController
     	if @portrait.save
     		redirect_to edit_portrait_path(@portrait.id)
     	else
-    		render :new
+    		redirect_to new_portrait_path
     	end
 	end
 
@@ -29,12 +29,21 @@ class PortraitsController < ApplicationController
 
 	def edit
 		@portrait = Portrait.find(params[:id])
+
+		#正規ユーザー以外の編集を認めない
+		if @portrait.user != current_user
+        redirect_to portraits_path
+      end
 	end
 
 	def update
 		@portrait = Portrait.find(params[:id])
-    	@portrait.update(portrait_params)
-	    redirect_to portrait_path(@portrait.id)
+
+    	if @portrait.update(portrait_params)
+	    	redirect_to portrait_path(@portrait)
+		else
+			redirect_to edit_portrait_path(@portrait)
+		end
 	end
 
 	def destroy

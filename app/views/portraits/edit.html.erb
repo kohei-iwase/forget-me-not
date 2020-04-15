@@ -71,6 +71,7 @@
         </table>
         <%= f.submit "変更を保存", class: "btn btn-success" %>
         <% end %>
+        <%= link_to "アルバムに戻る", portrait_path(@portrait),class: "btn btn-primary" %>
         <%= link_to "削除する", portrait_path(@portrait), method: :delete,class: "btn btn-danger" %>
       </div>
     </div>

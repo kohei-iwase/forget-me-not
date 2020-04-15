@@ -57,7 +57,7 @@ describe 'トップページのテスト' do
         expect(current_path).to eq(new_user_session_path)
       end
       it '新規登録リンクをクリックしたら新規登録画面に遷移する' do
-        signup_link = find_all('a')[4].native.inner_text
+        signup_link = find_all('a')[2].native.inner_text
         click_link signup_link
         expect(current_path).to eq(new_user_registration_path)
       end

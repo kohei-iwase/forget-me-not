@@ -1,40 +1,48 @@
 require 'rails_helper'
 
-describe '投稿のテスト' do
+describe 'アルバム投稿のテスト' do
   let(:user) { create(:user) }
   let!(:user2) { create(:user) }
-  let!(:book) { create(:book, user: user) }
-  let!(:book2) { create(:book, user: user2) }
+  let!(:portrait) { create(:portrait, user: user) }
+  let!(:portrait2) { create(:portrait, user: user2) }
   before do
   	visit new_user_session_path
-  	fill_in 'user[name]', with: user.name
+  	fill_in 'user[email]', with: user.email
   	fill_in 'user[password]', with: user.password
-  	click_button 'Log in'
+  	click_button 'サインイン'
   end
-  describe 'サイドバーのテスト' do
-		context '表示の確認' do
-		  it 'New bookと表示される' do
-	    	expect(page).to have_content 'New book'
+  describe '投稿のテスト' do
+		context 'アルバム作成' do
+      before do
+        visit new_portrait_path
+      end
+
+      it '投稿ページへ遷移できる' do
+        expect(current_path).to eq('/portraits/new')
+      end
+		  it '「アルバム作成」と表示される' do
+	    	expect(page).to have_content 'アルバム作成'
 		  end
 		  it 'titleフォームが表示される' do
-		  	expect(page).to have_field 'book[title]'
+		  	expect(page).to have_field 'portrait[name]'
 		  end
-		  it 'opinionフォームが表示される' do
-		  	expect(page).to have_field 'book[body]'
+		  it 'more_about_meフォームが表示される' do
+		  	expect(page).to have_field 'portrait[more_about_me]'
 		  end
-		  it 'Create Bookボタンが表示される' do
-		  	expect(page).to have_button 'Create Book'
+		  it 'アルバム作成ボタンが表示される' do
+		  	expect(page).to have_button 'アルバムを作成'
 		  end
-		  it '投稿に成功する' do
-		  	fill_in 'book[title]', with: Faker::Lorem.characters(number:5)
-		  	fill_in 'book[body]', with: Faker::Lorem.characters(number:20)
-		  	click_button 'Create Book'
-		  	expect(page).to have_content 'successfully'
+		  it 'アルバム作成に成功する' do
+		  	fill_in 'portrait[name]', with: Faker::Lorem.characters(number:5)
+		  	fill_in 'portrait[more_about_me]', with: Faker::Lorem.characters(number:20)
+		  	click_button 'アルバムを作成'
+		  	expect(page).to have_content 'について'
+        expect(current_path).to eq('/portraits/3/edit')
 		  end
-		  it '投稿に失敗する' do
-		  	click_button 'Create Book'
-		  	expect(page).to have_content 'error'
-		  	expect(current_path).to eq('/books')
+		  it 'アルバム作成に失敗する' do
+		  	click_button 'アルバムを作成'
+		  	# expect(page).to have_content 'error'
+		  	expect(current_path).to eq('/portraits/new')
 		  end
 		end
   end
@@ -42,49 +50,51 @@ describe '投稿のテスト' do
   describe '編集のテスト' do
   	context '自分の投稿の編集画面への遷移' do
   	  it '遷移できる' do
-	  		visit edit_book_path(book)
-	  		expect(current_path).to eq('/books/' + book.id.to_s + '/edit')
+	  		visit edit_portrait_path(portrait)
+	  		expect(current_path).to eq('/portraits/' + portrait.id.to_s + '/edit')
 	  	end
 	  end
 		context '他人の投稿の編集画面への遷移' do
 		  it '遷移できない' do
-		    visit edit_book_path(book2)
-		    expect(current_path).to eq('/books')
+		    visit edit_portrait_path(portrait2)
+		    expect(current_path).to eq('/portraits')
 		  end
 		end
 		context '表示の確認' do
 			before do
-				visit edit_book_path(book)
+				visit edit_portrait_path(portrait)
 			end
-			it 'Editing Bookと表示される' do
-				expect(page).to have_content('Editing Book')
+			it 'アルバムのタイトルが表示される' do
+				expect(page).to have_content(portrait.name)
 			end
-			it 'title編集フォームが表示される' do
-				expect(page).to have_field 'book[title]', with: book.title
+			it 'name編集フォームが表示される' do
+				expect(page).to have_field 'portrait[name]', with: portrait.name
 			end
-			it 'opinion編集フォームが表示される' do
-				expect(page).to have_field 'book[body]', with: book.body
+			it 'more_about_me編集フォームが表示される' do
+				expect(page).to have_field 'portrait[more_about_me]', with: portrait.more_about_me
 			end
-			it 'Showリンクが表示される' do
-				expect(page).to have_link 'Show', href: book_path(book)
+			it '削除ボタンが表示される' do
+				expect(page).to have_link '削除', href: portrait_path(portrait)
 			end
-			it 'Backリンクが表示される' do
-				expect(page).to have_link 'Back', href: books_path
+			it 'アルバムに戻るリンクが表示される' do
+				expect(page).to have_link 'アルバムに戻る', href: portrait_path(portrait)
 			end
 		end
 		context 'フォームの確認' do
+      before do
+        visit edit_portrait_path(portrait)
+      end
 			it '編集に成功する' do
-				visit edit_book_path(book)
-				click_button 'Update Book'
-				expect(page).to have_content 'successfully'
-				expect(current_path).to eq '/books/' + book.id.to_s
+        fill_in 'portrait[name]', with: 'ねこです'
+				click_button '変更を保存'
+				# expect(page).to have_content 'successfully'
+				expect(current_path).to eq '/portraits/' + portrait.id.to_s
 			end
 			it '編集に失敗する' do
-				visit edit_book_path(book)
-				fill_in 'book[title]', with: ''
-				click_button 'Update Book'
-				expect(page).to have_content 'error'
-				expect(current_path).to eq '/books/' + book.id.to_s
+				fill_in 'portrait[name]', with: ''
+				click_button '変更を保存'
+				# expect(page).to have_content 'error'
+				expect(current_path).to eq '/portraits/' + portrait.id.to_s + '/edit'
 			end
 		end
 	end

@@ -12,14 +12,14 @@ describe 'boostrapのテスト' do
 		end
 		context 'ユーザー関連画面' do
 			it '一覧画面' do
-				visit users_path
-				expect(page).to have_selector('.container .row .col-xs-3')
-				expect(page).to have_selector('.container .row .col-xs-9')
+				visit users_portrait_path
+				expect(page).to have_selector('.container .row')
+				expect(page).to have_selector('.container .row')
 			end
 			it '詳細画面' do
 				visit user_path(user)
-				expect(page).to have_selector('.container .row .col-xs-3')
-				expect(page).to have_selector('.container .row .col-xs-9')
+				expect(page).to have_selector('.container .row')
+				expect(page).to have_selector('.container .row')
 			end
 		end
 		context '投稿関連画面' do
