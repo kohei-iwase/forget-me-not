@@ -99,67 +99,67 @@ describe 'アルバム投稿のテスト' do
 		end
 	end
 
-  describe '一覧画面のテスト' do
+  describe 'タイムラインのテスト' do
   	before do
-  		visit books_path
+  		visit portraits_path
   	end
   	context '表示の確認' do
-  		it 'Booksと表示される' do
-  			expect(page).to have_content 'Books'
+  		it 'タイムラインと表示される' do
+  			expect(page).to have_content 'タイムライン'
   		end
   		it '自分と他人の画像のリンク先が正しい' do
-  			expect(page).to have_link '', href: user_path(book.user)
-  			expect(page).to have_link '', href: user_path(book2.user)
+  			expect(page).to have_link '', href: user_path(portrait.user)
+  			expect(page).to have_link '', href: user_path(portrait2.user)
   		end
   		it '自分と他人のタイトルのリンク先が正しい' do
-  			expect(page).to have_link book.title, href: book_path(book)
-  			expect(page).to have_link book2.title, href: book_path(book2)
+  			expect(page).to have_link portrait.name, href: portrait_path(portrait)
+  			expect(page).to have_link portrait2.name, href: portrait_path(portrait2)
   		end
   		it '自分と他人のオピニオンが表示される' do
-  			expect(page).to have_content book.body
-  			expect(page).to have_content book2.body
+  			expect(page).to have_content portrait.more_about_me
+  			expect(page).to have_content portrait2.more_about_me
   		end
   	end
   end
 
   describe '詳細画面のテスト' do
   	context '自分・他人共通の投稿詳細画面の表示を確認' do
-  		it 'Book detailと表示される' do
-  			visit book_path(book)
-  			expect(page).to have_content 'Book detail'
+  		it 'アルバム名が正しく表示される' do
+  			visit portrait_path(portrait)
+  			expect(page).to have_content(portrait.name)
   		end
   		it 'ユーザー画像・名前のリンク先が正しい' do
-  			visit book_path(book)
-  			expect(page).to have_link book.user.name, href: user_path(book.user)
+  			visit portrait_path(portrait)
+  			expect(page).to have_link portrait.user.name, href: user_path(portrait.user)
   		end
   		it '投稿のtitleが表示される' do
-  			visit book_path(book)
-  			expect(page).to have_content book.title
+  			visit portrait_path(portrait)
+  			expect(page).to have_content portrait.name
   		end
   		it '投稿のopinionが表示される' do
-  			visit book_path(book)
-  			expect(page).to have_content book.body
+  			visit portrait_path(portrait)
+  			expect(page).to have_content portrait.more_about_me
   		end
   	end
   	context '自分の投稿詳細画面の表示を確認' do
   		it '投稿の編集リンクが表示される' do
-  			visit book_path book
-  			expect(page).to have_link 'Edit', href: edit_book_path(book)
+  			visit portrait_path portrait
+  			expect(page).to have_link '編集', href: edit_portrait_path(portrait)
   		end
-  		it '投稿の削除リンクが表示される' do
-  			visit book_path book
-  			expect(page).to have_link 'Destroy', href: book_path(book)
+  		it '献花のリンクが表示される' do
+  			visit portrait_path portrait
+  			expect(page).to have_link '献花', href: portrait_bouquets_path(portrait)
   		end
   	end
   	context '他人の投稿詳細画面の表示を確認' do
   		it '投稿の編集リンクが表示されない' do
-  			visit book_path(book2)
-  			expect(page).to have_no_link 'Edit', href: edit_book_path(book2)
+  			visit portrait_path(portrait2)
+  			expect(page).to have_no_link '編集', href: edit_portrait_path(portrait2)
   		end
-  		it '投稿の削除リンクが表示されない' do
-  			visit book_path(book2)
-  			expect(page).to have_no_link 'Destroy', href: book_path(book2)
-  		end
+      it '献花のリンクが表示される' do
+        visit portrait_path portrait
+        expect(page).to have_link '献花', href: portrait_bouquets_path(portrait)
+      end
   	end
   end
 end

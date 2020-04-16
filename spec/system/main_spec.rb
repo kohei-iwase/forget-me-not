@@ -36,4 +36,16 @@ describe 'ユーザー権限のテスト'  do
       end
     end
   end
+  describe 'ログインしていない場合にユーザー関連のURLにアクセス' do
+    context '思い出関連のURLにアクセス' do
+      it '思い出編集画面に遷移できない' do
+        visit edit_portrait_memory_path(portrait.id,memory.id)
+        expect(current_path).to eq('/users/sign_in')
+      end
+      it '思い出詳細画面に遷移できない' do
+        visit portrait_memory_path(portrait.id,memory.id)
+        expect(current_path).to eq('/users/sign_in')
+      end
+    end
+  end
 end
