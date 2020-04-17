@@ -14,8 +14,8 @@ RSpec.describe '思い出モデルのテスト', type: :model do
     end
     context '本文カラム' do
       it '200文字以下であること' do
-        portrait.more_about_me = Faker::Lorem.characters(number:201)
-        expect(portrait.valid?).to eq false;
+        memory.memory = Faker::Lorem.characters(number:201)
+        expect(memory.valid?).to eq false;
       end
     end
   end

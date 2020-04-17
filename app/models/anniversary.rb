@@ -1,5 +1,8 @@
 class Anniversary < ApplicationRecord
   	belongs_to :portrait
+  	validates :title, presence: true, length: {minimum: 2, maximum: 30}
+  	validates :memo, length: {maximum: 200}
+
 
 
   	def one_anniversary?

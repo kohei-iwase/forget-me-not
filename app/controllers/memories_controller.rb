@@ -3,8 +3,11 @@ class MemoriesController < ApplicationController
     @portrait = Portrait.find(params[:portrait_id])
     @memory = Memory.new(memory_params)
     @memory.portrait_id = @portrait.id
-    @memory.save
-    redirect_to portrait_memory_path(@portrait,@memory)
+        if @memory.save
+            redirect_to portrait_memory_path(@portrait,@memory)
+        else
+            redirect_to portrait_path(@portrait)
+        end
 	end
 
     def show
@@ -24,8 +27,11 @@ class MemoriesController < ApplicationController
     def update
         @portrait = Portrait.find(params[:portrait_id])
         @memory = Memory.find(params[:id])
-        @memory.update(memory_params)
-        redirect_to portrait_memory_path(@memory)
+        if @memory.update(memory_params)
+            redirect_to portrait_memory_path(@memory)
+        else
+            redirect_to portrait_path(@portrait)
+        end
     end
 
     def destroy

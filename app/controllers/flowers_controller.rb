@@ -1,6 +1,6 @@
 class FlowersController < ApplicationController
 	def create
-		memory = Memory.find(params[:memory_id])
+	memory = Memory.find(params[:memory_id])
         flower = current_user.flowers.new(memory_id: memory.id)
         flower.save
         # redirect_to portrait_path(portrait)
@@ -8,7 +8,7 @@ class FlowersController < ApplicationController
 	end
 
 	def destroy
-		memory = Memory.find(params[:memory_id])
+	memory = Memory.find(params[:memory_id])
         flower = current_user.flowers.find_by(memory_id: memory.id)
         flower.destroy
         # redirect_to portrait_path(portrait)

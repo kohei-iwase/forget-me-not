@@ -11,8 +11,7 @@ describe 'ヘッダーのテスト' do
         is_expected.to have_content 'ワスレナグサ'
       end
       it 'ロゴイメージが表示される' do
-        home_link = find_all('a')[0].native.inner_text
-        expect(home_link).to have_css('img')
+        is_expected.to have_css('img')
         #is_expected.to have_content 'Home'
       end
       it 'Aboutリンクが表示される' do
@@ -91,7 +90,7 @@ describe 'ヘッダーのテスト' do
         albums_link = find_all('a')[4].native.inner_text
         expect(albums_link).to match("アルバム一覧")
       end
-      it 'logoutリンクが表示される' do
+      it 'ログアウトリンクが表示される' do
         logout_link = find_all('a')[5].native.inner_text
         expect(logout_link).to match("ログアウト")
       end

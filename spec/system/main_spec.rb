@@ -36,7 +36,7 @@ describe 'ユーザー権限のテスト'  do
       end
     end
   end
-  describe 'ログインしていない場合にユーザー関連のURLにアクセス' do
+  describe 'ログインしていない場合に思い出関連のURLにアクセス' do
     context '思い出関連のURLにアクセス' do
       it '思い出編集画面に遷移できない' do
         visit edit_portrait_memory_path(portrait.id,memory.id)

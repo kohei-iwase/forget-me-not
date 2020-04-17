@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    before_action :baria_user, only: [:edit,:update]
+      #本人以外のアクセスを防ぐ
+
   def show
   	@user = User.find(params[:id])
   	@portraits = @user.portraits.page(params[:page])
@@ -16,8 +19,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if  @user.update(user_params)
+        redirect_to user_path(@user)
+    else
+        redirect_to edit_user_path(@user)
+    end
   end
 
   def following
@@ -38,6 +44,12 @@ class UsersController < ApplicationController
 
 	private
 		def user_params
-    		params.require(:user).permit(:name, :image, :password)
+    		params.require(:user).permit(:name, :image, :password,:introduction)
 		end
+
+    def baria_user
+    unless params[:id].to_i == current_user.id
+      redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
+    end
+  end
 end

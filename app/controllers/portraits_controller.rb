@@ -28,8 +28,8 @@ class PortraitsController < ApplicationController
 	end
 
 	def edit
+		@user = current_user
 		@portrait = Portrait.find(params[:id])
-
 		#正規ユーザー以外の編集を認めない
 		if @portrait.user != current_user
         redirect_to portraits_path
@@ -38,11 +38,10 @@ class PortraitsController < ApplicationController
 
 	def update
 		@portrait = Portrait.find(params[:id])
-
     	if @portrait.update(portrait_params)
-	    	redirect_to portrait_path(@portrait)
+	    	redirect_to portrait_path(@portrait.id)
 		else
-			redirect_to edit_portrait_path(@portrait)
+			redirect_to edit_portrait_path(@portrait.id)
 		end
 	end
 
@@ -58,6 +57,10 @@ class PortraitsController < ApplicationController
         	params.require(:portrait).permit(:name, :image, :age, :gender, :species, :date_of_birth,:anniversary,
         								:likes_and_dislikes,:interest,:specialty,:family,:personality,:found,
         								:more_about_me)
+    	end
+    	def baria_user
+    		unless params[:id].to_i == current_user.id
+      		redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
     	end
 
 end

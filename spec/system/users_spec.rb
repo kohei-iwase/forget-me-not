@@ -53,7 +53,7 @@ end
 
 describe 'ユーザーのテスト' do
   let(:user) { create(:user) }
-  let!(:test_user2) { create(:user) }
+  let!(:user2) { create(:user) }
   let!(:portrait) { create(:portrait, user: user) }
   let!(:memory) { create(:memory, portrait: portrait) }
   before do
@@ -64,8 +64,10 @@ describe 'ユーザーのテスト' do
   end
   describe '表示のテスト' do
     context 'マイページのテスト' do
-      it '遷移できる' do
+      before do
         visit user_path(user)
+      end
+      it '遷移できる' do
         expect(current_path).to eq('/users/' + user.id.to_s)
       end
       it '画像が表示される' do
@@ -83,7 +85,7 @@ describe 'ユーザーのテスト' do
     end
   end
 
-  describe '編集のテスト' do
+  describe 'プロフィール編集のテスト' do
     context '自分の編集画面への遷移' do
       it '遷移できる' do
         visit edit_user_path(user)
@@ -92,38 +94,42 @@ describe 'ユーザーのテスト' do
     end
     context '他人の編集画面への遷移' do
       it '遷移できない' do
-        visit edit_user_path(test_user2)
+        visit edit_user_path(user2)
         expect(current_path).to eq('/users/' + user.id.to_s)
       end
     end
 
-    context '表示の確認' do
+    context '編集画面の表示の確認' do
       before do
         visit edit_user_path(user)
       end
-      it 'User pageと表示される' do
-        expect(page).to have_content('User page')
+      it 'タイトルが表示されている' do
+        expect(page).to have_content('プロフィール編集')
       end
       it '名前編集フォームに自分の名前が表示される' do
         expect(page).to have_field 'user[name]', with: user.name
       end
       it '画像編集フォームが表示される' do
-        expect(page).to have_field 'user[profile_image]'
+        expect(page).to have_field 'user[image]'
       end
       it '自己紹介編集フォームに自分の自己紹介が表示される' do
         expect(page).to have_field 'user[introduction]', with: user.introduction
       end
+      it '自己紹介編集フォームに自分の自己紹介が表示される' do
+        expect(page).to have_button '変更を保存'
+      end
       it '編集に成功する' do
-        click_button 'Update User'
-        expect(page).to have_content 'successfully'
+        fill_in 'user[name]', with: Faker::Lorem.characters(number:5)
+        click_button '変更を保存'
+#        expect(page).to have_content 'successfully'
         expect(current_path).to eq('/users/' + user.id.to_s)
       end
       it '編集に失敗する' do
         fill_in 'user[name]', with: ''
-        click_button 'Update User'
-        expect(page).to have_content 'error'
+        click_button '変更を保存'
+#        expect(page).to have_content 'error'
 				#もう少し詳細にエラー文出したい
-        expect(current_path).to eq('/users/' + user.id.to_s)
+        expect(current_path).to eq('/users/' + user.id.to_s + '/edit')
       end
     end
   end
@@ -133,19 +139,16 @@ describe 'ユーザーのテスト' do
       visit users_path
     end
     context '表示の確認' do
-      it 'Usersと表示される' do
-        expect(page).to have_content('Users')
-      end
       it '自分と他の人の画像が表示される' do
-        expect(all('img').size).to eq(3)
+        expect(all('img').size).to eq(2)
       end
       it '自分と他の人の名前が表示される' do
         expect(page).to have_content user.name
-        expect(page).to have_content test_user2.name
+        expect(page).to have_content user2.name
       end
-      it 'showリンクが表示される' do
-        expect(page).to have_link 'Show', href: user_path(user)
-        expect(page).to have_link 'Show', href: user_path(test_user2)
+      it 'ユーザーへのリンクが表示される' do
+        expect(page).to have_link user.name, href: user_path(user)
+        expect(page).to have_link user2.name, href: user_path(user2)
       end
     end
   end
@@ -154,17 +157,17 @@ describe 'ユーザーのテスト' do
       visit user_path(user)
     end
     context '表示の確認' do
-      it 'Booksと表示される' do
-        expect(page).to have_content('Books')
+      it 'アルバムの表記がある' do
+        expect(page).to have_content('アルバム')
       end
       it '投稿一覧のユーザーの画像のリンク先が正しい' do
         expect(page).to have_link '', href: user_path(user)
       end
-      it '投稿一覧のtitleのリンク先が正しい' do
-        expect(page).to have_link book.title, href: book_path(book)
+      it 'アルバムのリンク先が正しい' do
+        expect(page).to have_link portrait.name, href: portrait_path(portrait)
       end
-      it '投稿一覧にopinionが表示される' do
-        expect(page).to have_content(book.body)
+      it '投稿一覧にmore_about_meが表示される' do
+        expect(page).to have_content(portrait.more_about_me)
       end
     end
   end

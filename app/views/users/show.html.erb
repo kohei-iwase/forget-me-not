@@ -15,8 +15,10 @@
     		 <%= render 'follow_form'  %>
     	<% end %>
     </div>
-
-    <div class="col-xs-6">
+    <div class="col-xs-3">
+    	<%= @user.introduction %>
+    </div>
+    <div class="col-xs-3">
     	<%= render 'anniversaries/index', anniversaries: @anniversaries %>
     </div>
 </div>
