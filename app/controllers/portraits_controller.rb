@@ -1,4 +1,5 @@
 class PortraitsController < ApplicationController
+    before_action :baria_user, only: [:edit,:update]
 	def new
 		@portrait = Portrait.new
 	end
@@ -31,9 +32,6 @@ class PortraitsController < ApplicationController
 		@user = current_user
 		@portrait = Portrait.find(params[:id])
 		#正規ユーザー以外の編集を認めない
-		if @portrait.user != current_user
-        redirect_to portraits_path
-      end
 	end
 
 	def update
