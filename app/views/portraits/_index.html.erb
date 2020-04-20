@@ -2,7 +2,7 @@
   <h2>タイムライン</h2>
   <% @portraits.reverse_each do |portrait| %>
   <div class="row album">
-  <div class="col-xs-6 portrait-box">
+  <div class="portrait-box">
     <%= link_to portrait_path(portrait) do %>
       <h2>
         <i class="fa fa-bell"></i>
@@ -21,7 +21,7 @@
           </div>
         <% end %>
   </div>
-  <div class="col-xs-5 memories-list">
+  <div class="memories-list">
     <div class="ribbon6">
       <h2><%= link_to "#{portrait.name}との思い出", portrait_memories_path(portrait) %></h2>
     </div>
@@ -29,5 +29,8 @@
   </div>
 </div>
   <% end %>
+  <div class ="row">
+    <%= paginate @portraits %>
+  </div>
 </div>
 

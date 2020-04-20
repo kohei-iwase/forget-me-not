@@ -5,6 +5,7 @@ class Portrait < ApplicationRecord
 	has_many 	:anniversaries, dependent: :destroy
 	attachment 	:image
 
+  #バリデーション
 	validates :name, presence: true, length: {minimum: 2, maximum: 30}
   validates :more_about_me, length: {maximum: 200}
 

@@ -12,6 +12,8 @@
  *
  *= require_tree .
  *= require_self
+ *= require mvp.css
+
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
@@ -87,37 +89,9 @@ a{
 header,nav,footer{
 	font-family:Chalkduster,"Bradley Hand",Courier,"Segoe Print",sans-serif;
     background-color:#a3c9ee;
-}
+    background-color:#FFFFFF;
+    border-radius: 8px;
 
-.header{
-	width:100%;
-	height: 100px;
-    }
-
-.navbar-middle {
-	text-align: center;
-	margin-top: 50px;
-}
-
-.navbar-right {
-	margin-top: 40px;
-}
-
-.header-message {
-　margin-left: 300px;
-}
-
-.navbar{
-    border-radius: 0;
-    border: none;
-}
-
-.navbar-default .navbar-nav >li > a{
-    color: #fff;
-}
-
-.navbar-default .navbar-nav >li > a:hover{
-    color: #aaa;
 }
 
         .container {
@@ -153,8 +127,7 @@ header,nav,footer{
 /* body */
 body{
     padding-top: 100px;
-    background-image: image-url("back4.png");
-    background-size: auto;
+    background-color:#a3c9ee;
     font-family: 'yasashisa';
     }
 
@@ -169,8 +142,20 @@ body{
     height: auto;
     margin: auto;
     background:rgba(255,255,255,0.9);
+    background-image: image-url("back4.png");
     border-radius: 8px;
         }
+  main{
+  width:100%;
+  }
+  .top-image{
+  width:100%;
+  height:800px;
+  border-radius:8px;
+  background-image: image-url("beagle1.jpg");
+  background-size: contain;
+    }
+
 
         .content-box{
             margin: 10px;
@@ -215,18 +200,14 @@ overflow: auto; margin-top: 0; padding: 0;
     padding: 0;
   }
 
-
-
 /* footer */
 
 .footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color:#a3c9ee;
     height: 100px;
-    color: white;
-    background-color: #a3c9ee; /* ロゴの青 */
-    border-radius: 8px;
         }
 
 .portrait-box{
@@ -264,6 +245,6 @@ border-bottom: solid 5px #627295;
 
 /* イメージ */
 .img-circle{
-	width:50px;
+	width:90px;
   margin:5px;
 }

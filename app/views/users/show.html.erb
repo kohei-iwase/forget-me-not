@@ -1,31 +1,14 @@
 <div class="container content">
 <div class="row content">
 <div class="content-box">
-	<div class="col-xs-6">
-		<%= attachment_image_tag @user, :image, class: "img-circle pull-left profile-img inline-box", fallback: "no_image.jpg" %>
-	<br>
-    <h3 class="profile-name"><%= @user.name %>さん</h3>
     <%= render 'users/status' %>
-    <br>
-		<% if @user.id == current_user.id %>
-			<div class="edit">
-				<%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-success" %>
-    		</div>
-    	<% else %>
-    		 <%= render 'follow_form'  %>
-    	<% end %>
-    </div>
-    <div class="col-xs-3">
-    	<%= @user.introduction %>
-    </div>
-    <div class="col-xs-3">
-    	<%= render 'anniversaries/index', anniversaries: @anniversaries %>
+    <%= render 'anniversaries/index', anniversaries: @anniversaries %>
     </div>
 </div>
 </div>
 <div class="row portrait">
 <h2><%= @user.name %>さんのアルバム</h2>
-	<div class="col-xs-12 content-box">
+	<div class="col-xs-9 content-box">
 		<div class="portraits_box">
 			<%= render 'portraits/index' %>
 		</div>

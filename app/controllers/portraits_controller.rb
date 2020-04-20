@@ -1,5 +1,6 @@
 class PortraitsController < ApplicationController
     before_action :baria_user, only: [:edit,:update]
+
 	def new
 		@portrait = Portrait.new
 	end
@@ -16,9 +17,8 @@ class PortraitsController < ApplicationController
 	end
 
 	def index
-		@portraits = Portrait.page(params[:page])
-		@memrories = Memory.all
-
+		@portraits = Portrait.order(created_at: :desc).page(params[:page]).per(8)
+		@memrories = Memory.order(created_at: :desc).page(params[:page]).per(4)
 	end
 
 	def show
@@ -59,6 +59,6 @@ class PortraitsController < ApplicationController
     	def baria_user
     		unless params[:id].to_i == current_user.id
       		redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
-    	end
-
+    		end
+		end
 end

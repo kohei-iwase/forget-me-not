@@ -14,26 +14,28 @@
     <script src="https://kit.fontawesome.com/696371b99a.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="header-wrapper">
-          <div class="header-box-wrapper">
-              <div class="header-content">
-                  <%= render 'layouts/header' %>
-              </div>
-          </div>
+    <div class="header">
+     
+      <%= render 'layouts/header' %>
+     
+     </div>
+     
+     <div class="content-wrapper">
+      <div class="col-xs-2 sidebar">
+         <%= render 'layouts/sidebar'%>
       </div>
-      <div class="content-wrapper">
-        <div class="main-content">
+        <div class="col-xs-10 main-content">
           <%#= render partial: 'layouts/flash', flash: flash %>
+    
               <%= yield %>
+    
         </div>
-<!--         <div class="side-bar-content ">
-          <%= render 'layouts/sidebar' %>
-        </div>
- -->      </div>
-      <div class="footer">
-          <%= render 'layouts/footer' %>
       </div>
-    </div>
+    
+      <div class="footer">
+
+          <%= render 'layouts/footer' %>
+      
+      </div>
   </body>
 </html>
