@@ -7,13 +7,13 @@
         <%= link_to "ワスレナグサについて", homes_about_path %>
       </li>
       <li class="">
-        <%= link_to 'マイページ', user_path(current_user.id) %>
+        <%= link_to 'アルバム一覧', user_path(current_user.id) %>
       </li>
       <li class="">
         <%= link_to 'アルバムを作る', new_portrait_path %>
       </li>
       <li class="">
-        <%= link_to 'アルバム一覧', portraits_path %>
+        <%= link_to 'タイムライン', timelines_user_path %>
       </li>
       <li class="">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

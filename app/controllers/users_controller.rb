@@ -42,8 +42,7 @@ class UsersController < ApplicationController
 
   def timelines
     @portraits = current_user.portraits.build
-    @timelines  = current_user.timeline.all
-    # @timeline  = current_user.timeline.paginate(params[:page])
+    @timelines  = current_user.timeline.order(created_at: :desc).page(params[:page]).per(4)
   end
 
 

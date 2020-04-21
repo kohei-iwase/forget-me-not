@@ -33,13 +33,12 @@
       <%= render 'memories/index', portrait: @portrait %>
     </div>
   <hr>
-  <div class="row new_memories">
-      <div class="subtitle">
-        <h3>思い出を加える</h3>
-      </div>
-       <%= render 'memories/form', portrait:@portrait, memory: @memory%>
+    <% if @portrait.user.id == current_user.id %>
+    <div class="row new_memories">
+        <div class="subtitle">
+          <h3>思い出を加える</h3>
+        </div>
+        <%= render 'memories/form', portrait:@portrait, memory: @memory%>
     </div>
-  </div>
-</div>
-
+  <% end %>
 </div>

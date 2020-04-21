@@ -19,7 +19,7 @@ class PortraitsController < ApplicationController
 	end
 
 	def index
-		@portraits = Portrait.order(created_at: :desc).page(params[:page]).per(8)
+		@portraits = Portrait.order(created_at: :desc).page(params[:page]).per(4)
 		@memrories = Memory.order(created_at: :desc).page(params[:page]).per(4)
 	end
 
