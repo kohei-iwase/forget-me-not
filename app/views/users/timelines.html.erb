@@ -1,12 +1,16 @@
-<div class="timeline-index">
-   <div class ="paginate">
-      <%= paginate @timelines %>
+<div class="content-box">
+  <div class="row">
+    <div class="timeline-index">
+      <div class ="paginate">
+        <%= paginate @timelines %>
+      </div>
+    <div class="album-index">
+      <%= render 'users/timeline' %>
+    <hr>
+      <div class ="paginate">
+        <%= paginate @timelines %>
+      </div>
     </div>
-  <div class="album-index">
-    <%= render 'users/timeline' %>
-   <hr>
-  <div class ="paginate">
-    <%= paginate @timelines %>
   </div>
 </div>
 

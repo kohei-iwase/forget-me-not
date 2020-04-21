@@ -79,6 +79,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     justify-content: var(--justify-important);
+    min-height: 2000px;
 }
 
 section aside {

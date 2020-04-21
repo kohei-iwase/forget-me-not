@@ -19,7 +19,7 @@
         <%= portrait.more_about_me %>
       </p>
       <%= render 'bouquets/bouquet', portrait: portrait %>
-            <% if portrait.user.id == current_user.id %>
+            <% if portrait.user_id == current_user.id %>
       <div class="buttons">
             <%= link_to "編集", edit_portrait_path(portrait), class: "btn btn-success" %>
       </div>

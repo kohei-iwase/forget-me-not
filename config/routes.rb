@@ -27,4 +27,6 @@ Rails.application.routes.draw do
    get 'homes/top' => 'homes#top'
    get 'homes/about' => 'homes#about'
 
+   # 検索用
+   get 'search' => 'searches#search', as: 'search'
 end

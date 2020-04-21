@@ -1,3 +1,8 @@
+	<div class="row album">
+		<div class="ribbon6"><h2>命日通知設定</h2></div>
+	</div>
+	<div class ="row album">
+	 	<div class="form-body">
 <%= form_with model:[@portrait, @anniversary], local: true do |f| %>
   <div><%= f.label :title %></div>
   <div><%= f.text_field :title %></div>
@@ -5,7 +10,11 @@
   <div><%= f.text_area :memo %></div>
     <div><%= f.label :date %></div>
   <div><%= f.date_field :date, placeholder:@portrait.anniversary %></div>
-  <div><%= f.submit %>
-  	   <%= link_to '戻る', portrait_path(@portrait) %>
- </div>
+
+  <div><%= f.submit %></div>
+      <div class="back">
+        <%= link_to "アルバムに戻る", portrait_path(@portrait), class: "btn btn-primary" %>
+    </div>
 <% end %>
+</div>
+</div>

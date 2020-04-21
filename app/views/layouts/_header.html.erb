@@ -13,7 +13,7 @@
         <%= link_to 'アルバムを作る', new_portrait_path %>
       </li>
       <li class="">
-        <%= link_to 'タイムライン', timelines_user_path %>
+        <%= link_to 'タイムライン', timelines_user_path(current_user.id) %>
       </li>
       <li class="">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
