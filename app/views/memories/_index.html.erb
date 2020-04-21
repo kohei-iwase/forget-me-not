@@ -1,33 +1,23 @@
+<div class="memory-index">
         <% portrait.memories.each do |memory| %>
-      <div class="col-xs-3">
         <%= link_to portrait_memory_path(portrait,memory) do %>
         <div class="memory-box">
-          <table>
-            <tbody>
-            <tr>
-              <td>
-                <h4><%= memory.title %></h4>
-              </td>
-            </tr>
-            <tr>
-              <td>
-              <%= attachment_image_tag memory, :image, width: "90%" %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h4><%= memory.when %></h4>
-              </td>
-            </tr>
-            <tr>
-              <td>
+          <div class="memory-title">
+            <h4><%= memory.title %></h4>
+          </div>
+          <div class="memory-index-image">
+            <%= attachment_image_tag memory, :image, width: "90%" %>
+          </div>
+          <div class="memory-content">
+            <div class="memory-text">
                 <h5><%= memory.memory %></h5>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
+            </div>
+              <div class="memory-when">
+                <h4><%= memory.when %></h4>
+              </div>
           <% end %>
         <%= render 'flowers/flowers', portrait: portrait, memory: memory %>
-      </div>
+          </div>
+        </div>
         <% end %>
+</div>

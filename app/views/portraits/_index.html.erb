@@ -1,36 +1,41 @@
-<div class ="row album">
-  <h2>タイムライン</h2>
-  <% @portraits.reverse_each do |portrait| %>
-  <div class="row album">
-  <div class="portrait-box">
+<div class="index">
+   <div class ="paginate">
+      <%= paginate @portraits %>
+    </div>
+  <div class="album-index">
+    <% @portraits.reverse_each do |portrait| %>
     <%= link_to portrait_path(portrait) do %>
-      <h2>
-        <i class="fa fa-bell"></i>
-        <%= portrait.name %>
-      </h2>
-      <%= attachment_image_tag portrait, :image, width: "90%" %>
+    <div class="subtitle"> 
+      <h3>
+        <%= portrait.name %>について
+      </h3>
+    </div>
+  <div class="pet-image">
+    <%= attachment_image_tag portrait, :image, width:"100%", height:"100%" %>
+  </div>
     <% end %>
-    <h3>僕について</h3>
+    <h3>この子について</h3>
       <p>
         <%= portrait.more_about_me %>
       </p>
       <%= render 'bouquets/bouquet', portrait: portrait %>
             <% if portrait.user.id == current_user.id %>
-          <div class="edit">
+      <div class="buttons">
             <%= link_to "編集", edit_portrait_path(portrait), class: "btn btn-success" %>
-          </div>
+      </div>
         <% end %>
-  </div>
-  <div class="memories-list">
-    <div class="ribbon6">
-      <h2><%= link_to "#{portrait.name}との思い出", portrait_memories_path(portrait) %></h2>
+  　</div>
+<div class="memory-index">
+  <div class="subtitle">
+       <h3><%= portrait.name%>との思い出(<%= portrait.memories.count %> 個）</h3>
     </div>
     <%= render 'memories/index', portrait: portrait %>
   </div>
-</div>
+<hr>
   <% end %>
-  <div class ="row">
+  <div class ="paginate">
     <%= paginate @portraits %>
   </div>
 </div>
+
 

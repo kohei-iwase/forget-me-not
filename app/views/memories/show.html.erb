@@ -1,41 +1,39 @@
-<div class="container">
-  <div class="row">
-        <div class="memory-box">
-          <table class="memory-table">
-            <tbody>
-            <tr>
-              <td>
-                <h4><%= @memory.title %></h4>
-              </td>
-            </tr>
-            <tr>
-              <td>
-              <%= attachment_image_tag @memory, :image, width: "90%" %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h4><%= @memory.when %></h4>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <h5><%= @memory.memory %></h5>
-              </td>
-            </tr>
-            </tbody>
-          </table>
+<div class="content-box">
+  <div class="row memory">
+   <div class="ribbon6">
+        <h2><%= @memory.title %></h2>
+    </div>
+    <div class="when">
+      <h3>いつ頃？<%= @memory.when %></h3>
+    </div>
+    <div class="back">
+        <%= link_to "アルバムに戻る", portrait_path(@portrait), class: "btn btn-primary" %>
+    </div>
+    <div class="pet-image">
+      <%= attachment_image_tag @memory, :image, width: "100%" %>
+     </div>
+      <div class="pet-memory">
+        <div class="memory-text">
+          <h5><%= @memory.memory %></h5>
+        </div>
           <% if @user = current_user %>
-            <div class="edit">
+            <div class="buttons">
               <%= link_to "思い出に書き加える", edit_portrait_memory_path(@portrait,@memory), class: "btn btn-success" %>
               <%= link_to "この思い出と別れる", portrait_memory_path(@portrait,@memory), method: :delete,class: "btn btn-danger" %>
             </div>
-            <% else %>
-            <div class="flower_button">
-            <%= render 'flowers/flowers', memory: @memory %>
-          </div>
-      <% end %>
-        </div>
-        <%= link_to "アルバムに戻る", portrait_path(@portrait), class: "btn btn-primary" %>
+              <% else %>
+                <div class="flower_button">
+                  <%= render 'flowers/flowers', memory: @memory %>
+                </div>
+            <% end %>
       </div>
+
+    </div>
+
+  <hr>
+  <div class="row memories">
+      <div class="subtitle">
+        <h3><%= @memory.portrait.name%>との思い出(<%= @portrait.memories.count %> 個）</h3>
+      </div>
+      <%= render 'memories/index', portrait: @portrait %>
     </div>

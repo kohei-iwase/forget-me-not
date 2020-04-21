@@ -9,33 +9,33 @@
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" media="screen">
-      <link rel="stylesheet" href="https://andybrewer.github.io/mvp/mvp.css">
+      <link rel="stylesheet" href="mvp.css">
     <script src="https://kit.fontawesome.com/696371b99a.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="header">
-     
+<header>
       <%= render 'layouts/header' %>
-     
-     </div>
-     
+</header>
+
      <div class="content-wrapper">
-      <div class="col-xs-2 sidebar">
+      <article>
+        <aside>
          <%= render 'layouts/sidebar'%>
-      </div>
-        <div class="col-xs-10 main-content">
+       </aside>
+     </article>
+        <main>
+          <section>
           <%#= render partial: 'layouts/flash', flash: flash %>
-    
               <%= yield %>
-    
-        </div>
+        </section>
+      </main>
       </div>
-    
-      <div class="footer">
+      <footer>
 
           <%= render 'layouts/footer' %>
-      
-      </div>
+
+      </footer>
   </body>
 </html>
