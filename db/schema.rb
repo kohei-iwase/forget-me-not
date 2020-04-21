@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_011808) do
     t.string "title"
     t.text "memo"
     t.integer "portrait_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,7 +59,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_011808) do
   create_table "portraits", force: :cascade do |t|
     t.integer "user_id"
     t.string "image_id"
-    t.string "name"
+    t.string "name", default: "", null: false
     t.string "gender"
     t.integer "age"
     t.string "species"

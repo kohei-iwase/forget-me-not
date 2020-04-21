@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
-    before_action :baria_user, only: [:edit,:update]
+    before_action :baria_user, only: [:edit,:update, :timeline]
       #本人以外のアクセスを防ぐ
 
   def show
   	@user = User.find(params[:id])
   	@portraits = @user.portraits.page(params[:page])
   	@memories = Memory.all
-  	@anniversaries = Anniversary.all
+  	@anniversaries = @user.anniversaries.page(params[:page])
   end
 
   def edit
@@ -40,6 +40,11 @@ class UsersController < ApplicationController
 	render 'show_follow'
   end
 
+  def timelines
+    @portraits = current_user.portraits.build
+    @timelines  = current_user.timeline.all
+    # @timeline  = current_user.timeline.paginate(params[:page])
+  end
 
 
 	private

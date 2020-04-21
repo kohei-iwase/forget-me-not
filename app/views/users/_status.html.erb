@@ -21,9 +21,9 @@
 	<br>
 	    	<%= user.introduction %>
 		<% if user.id == current_user.id %>
-			<div class="edit">
+			<div class="button_form">
 				<%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-success" %>
     		</div>
     	<% else %>
-    		 <%= render 'follow_form'  %>
+    		 <%= render 'follow_form',user: user %>
     	<% end %>

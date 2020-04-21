@@ -20,6 +20,7 @@ class AnniversariesController < ApplicationController
     	@anniversary = Anniversary.new(anniversary_params)
     	@portrait = Portrait.find(params[:portrait_id])
 	    @anniversary.portrait_id = @portrait.id
+	    @anniversary.user_id = @user.id
     	if @anniversary.save
     		redirect_to portrait_anniversaries_path(@portrait,@anniversary)
     	else

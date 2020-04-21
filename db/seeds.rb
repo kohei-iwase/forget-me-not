@@ -35,7 +35,20 @@ Portrait.create!(user_id:1,
 Anniversary.create!(title: "デイジーの命日",
 					date:"20200309",
     				memo: "犬用チュール",
- 	   				portrait_id: 1)
+ 	   				portrait_id: 1,
+                    user_id: 1)
+
+Anniversary.create!(title: "ねこですの命日",
+                    date:"202003020",
+                    memo: "ねこはいます",
+                    portrait_id: 1,
+                    user_id: 1)
+
+Anniversary.create!(title: "見えちゃいけないやつ",
+                    date:"20200309",
+                    memo: "犬用チュール",
+                    portrait_id: 1,
+                    user_id: 2)
 
 Memory.create!(portrait_id: 1,
     			title:"初めてのお散歩",

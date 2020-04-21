@@ -1,4 +1,7 @@
+<% if user = current_user %>
 <div class="user-box">
-    <%= render 'users/status', user: current_user %>
-     <%#= render 'anniversaries/index', anniversaries: @anniversaries %>
+    <%= render 'users/status', user: user %>
+    <hr>
+     <%= render 'anniversaries/index', anniversaries: @anniversaries %>
 </div>
+<% end %>

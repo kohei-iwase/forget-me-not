@@ -10,8 +10,10 @@ class PortraitsController < ApplicationController
     	@portrait = Portrait.new(portrait_params)
     	@portrait.user_id = current_user.id
     	if @portrait.save
+    		flash[:success] = "アルバムを作成しました。"
     		redirect_to edit_portrait_path(@portrait.id)
     	else
+    		@timelines = []
     		redirect_to new_portrait_path
     	end
 	end
