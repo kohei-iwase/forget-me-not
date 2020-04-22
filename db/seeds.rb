@@ -39,7 +39,7 @@ Anniversary.create!(title: "デイジーの命日",
                     user_id: 1)
 
 Anniversary.create!(title: "ねこですの命日",
-                    date:"202003020",
+                    date:"20200302",
                     memo: "ねこはいます",
                     portrait_id: 1,
                     user_id: 1)
