@@ -46,13 +46,13 @@ describe 'ヘッダーのテスト' do
       it '新規登録画面に遷移する' do
         signup_link = find_all('a')[2].native.inner_text
         signup_link = signup_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link signup_link
+        click_link signup_link, match: :first
         is_expected.to eq(new_user_registration_path)
       end
       it 'ログイン画面に遷移する' do
         login_link = find_all('a')[3].native.inner_text
         login_link = login_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
-        click_link login_link
+        click_link login_link, match: :first
         is_expected.to eq(new_user_session_path)
       end
     end
@@ -78,17 +78,17 @@ describe 'ヘッダーのテスト' do
         home_link = find_all('a')[1].native.inner_text
         expect(home_link).to match("ワスレナグサについて")
       end
-      it 'マイページへのリンクが表示される' do
-        mypage_link = find_all('a')[2].native.inner_text
-        expect(mypage_link).to match("マイページ")
+      it 'アルバム一覧へのリンクが表示される' do
+        albums_link = find_all('a')[2].native.inner_text
+        expect(albums_link).to match("アルバム一覧")
       end
       it 'アルバム作成へのリンクが表示される' do
         album_link = find_all('a')[3].native.inner_text
         expect(album_link).to match("アルバムを作る")
       end
       it 'タイムラインへのリンクが表示される' do
-        albums_link = find_all('a')[4].native.inner_text
-        expect(albums_link).to match("アルバム一覧")
+        timelines_link = find_all('a')[4].native.inner_text
+        expect(timelines_link).to match("タイムライン")
       end
       it 'ログアウトリンクが表示される' do
         logout_link = find_all('a')[5].native.inner_text
@@ -129,7 +129,7 @@ describe 'ヘッダーのテスト' do
         albums_link = find_all('a')[4].native.inner_text
         albums_link = albums_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
         click_link albums_link
-        is_expected.to eq('/portraits')
+        is_expected.to eq('/users/' + user.id.to_s + '/timelines')
       end
       it 'ログアウトする' do
         logout_link = find_all('a')[5].native.inner_text

@@ -59,7 +59,7 @@ describe 'アルバム投稿のテスト' do
 		context '他人の投稿の編集画面への遷移' do
 		  it '遷移できない' do
 		    visit edit_portrait_path(portrait2)
-		    expect(current_path).to eq('/portraits')
+		    expect(current_path).to eq('/portraits/' + portrait2.id.to_s)
 		  end
 		end
 		context '表示の確認' do
@@ -87,10 +87,10 @@ describe 'アルバム投稿のテスト' do
         visit edit_portrait_path(portrait)
       end
 			it '編集に成功する' do
-        fill_in 'portrait[name]', with: Faker::Lorem.characters(number:5)
+        fill_in 'portrait[name]', with: "hoge"
 				click_button '変更を保存'
 				# expect(page).to have_content 'successfully'
-				expect(current_path).to eq '/portraits/' + portrait.id.to_s
+        expect(page).to have_content "hoge"
 			end
 			it '編集に失敗する' do
 				fill_in 'portrait[name]', with: ''

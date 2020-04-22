@@ -1,5 +1,5 @@
 class PortraitsController < ApplicationController
-    before_action :baria_user, only: [:edit,:update]
+    #before_action :baria_user, only: [:edit,:update]
 
 	def new
 		@portrait = Portrait.new
@@ -11,8 +11,8 @@ class PortraitsController < ApplicationController
     	@portrait.user_id = current_user.id
     	@user = current_user
     	if @portrait.save
-    		WelcomeMailer.welcome(@user).deliver
-    		flash[:success] = "アルバムを作成しました。"
+#    		WelcomeMailer.welcome(@user).deliver
+ #   		flash[:success] = "アルバムを作成しました。"
     		redirect_to edit_portrait_path(@portrait.id)
     	else
     		@timelines = []
@@ -35,15 +35,18 @@ class PortraitsController < ApplicationController
 	def edit
 		@user = current_user
 		@portrait = Portrait.find(params[:id])
+		if @portrait.user_id != current_user.id
+			redirect_to portrait_path(@portrait)
+		end
 		#正規ユーザー以外の編集を認めない
 	end
 
 	def update
 		@portrait = Portrait.find(params[:id])
     	if @portrait.update(portrait_params)
-	    	redirect_to portrait_path(@portrait.id)
+	    	redirect_to portrait_path(@portrait)
 		else
-			redirect_to edit_portrait_path(@portrait.id)
+			redirect_to edit_portrait_path(@portrait)
 		end
 	end
 
@@ -61,7 +64,7 @@ class PortraitsController < ApplicationController
         								:more_about_me)
     	end
     	def baria_user
-    		unless params[:id].to_i == current_user.id
+    		unless params[:user_id].to_i == current_user.id
       		redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
     		end
 		end
