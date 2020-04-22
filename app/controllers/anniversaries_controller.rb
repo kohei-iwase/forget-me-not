@@ -46,8 +46,20 @@ class AnniversariesController < ApplicationController
     	end
     end
 
+    def reminder
+    	if pre_anniversary
+    	@anniversary = Anniversary.find(params[:id])
+    	@user = User.find([:user_id])
+    	NotificationMailer.remind_to_user(user_id).deliver
+    end
+
     private
 		def anniversary_params
     		params.require(:anniversary).permit(:title, :memo, :portrait_id, :user_id,:date)
 		end
+
+		def pre_anniversary
+
+		end
+
 end

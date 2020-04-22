@@ -9,7 +9,9 @@ class PortraitsController < ApplicationController
 	def create
     	@portrait = Portrait.new(portrait_params)
     	@portrait.user_id = current_user.id
+    	@user = current_user
     	if @portrait.save
+    		WelcomeMailer.welcome(@user).deliver
     		flash[:success] = "アルバムを作成しました。"
     		redirect_to edit_portrait_path(@portrait.id)
     	else
