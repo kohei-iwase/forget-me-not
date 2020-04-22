@@ -1,5 +1,6 @@
 class PortraitsController < ApplicationController
     before_action :baria_user, only: [:edit,:update]
+
 	def new
 		@portrait = Portrait.new
 	end
@@ -8,17 +9,20 @@ class PortraitsController < ApplicationController
 	def create
     	@portrait = Portrait.new(portrait_params)
     	@portrait.user_id = current_user.id
+    	@user = current_user
     	if @portrait.save
+    		WelcomeMailer.welcome(@user).deliver
+    		flash[:success] = "アルバムを作成しました。"
     		redirect_to edit_portrait_path(@portrait.id)
     	else
+    		@timelines = []
     		redirect_to new_portrait_path
     	end
 	end
 
 	def index
-		@portraits = Portrait.page(params[:page])
-		@memrories = Memory.all
-
+		@portraits = Portrait.order(created_at: :desc).page(params[:page]).per(4)
+		@memrories = Memory.order(created_at: :desc).page(params[:page]).per(4)
 	end
 
 	def show
@@ -59,6 +63,6 @@ class PortraitsController < ApplicationController
     	def baria_user
     		unless params[:id].to_i == current_user.id
       		redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
-    	end
-
+    		end
+		end
 end

@@ -1,15 +1,29 @@
+<%= attachment_image_tag user, :image, class: "img-circle inline-box", fallback: "no_image.jpg" %>
+	<p>
+    <h3 class="profile-name">
+        <%= user.name %>さん
+    </h3>
 <% @user ||= current_user %> 
 	<div class="status">
-		<a href="<%= following_user_path(@user) %>"> 
+		<a href="<%= following_user_path(user) %>"> 
 			<strong id="following" class="status">
-				<%= @user.following.count %> 
+				<%= user.following.count %> 
 			</strong>
 			following
 		</a>
-		<a href="<%= followers_user_path(@user) %>">
+		<a href="<%= followers_user_path(user) %>">
 			<strong id="followers" class="status"> 
-				<%= @user.followers.count %>
+				<%= user.followers.count %>
 			</strong>
 			followers
 		</a> 
 	</div>
+	<br>
+	    	<%= user.introduction %>
+		<% if user.id == current_user.id %>
+			<div class="button_form">
+				<%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-success" %>
+    		</div>
+    	<% else %>
+    		 <%= render 'follow_form',user: user %>
+    	<% end %>

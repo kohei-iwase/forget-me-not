@@ -1,11 +1,5 @@
-<div class="content-box">
-  <div class="row album">
-<div class="index">
-   <div class ="paginate">
-      <%= paginate @portraits %>
-    </div>
-  <div class="album-index">
-    <% @portraits.reverse_each do |portrait| %>
+<% if @timelines.any? %>
+    <% @timelines.reverse_each do |portrait| %>
     <%= link_to portrait_path(portrait) do %>
     <div class="subtitle"> 
       <h3>
@@ -27,21 +21,6 @@
       </div>
         <% end %>
   　</div>
-<div class="memory-index">
-  <div class="subtitle">
-       <h3><%= portrait.name%>との思い出(<%= portrait.memories.count %> 個）</h3>
-    </div>
-    <%= render 'memories/index', portrait: portrait %>
-  </div>
-<hr>
   <% end %>
-  <div class ="paginate">
-    <%= paginate @portraits %>
-  </div>
-</div>
 
-
-
-</div>
-</div>
-
+<% end %>

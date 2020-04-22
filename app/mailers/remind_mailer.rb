@@ -5,10 +5,15 @@ class RemindMailer < ApplicationMailer
   #
   #   en.remind_mailer.remind.subject
   #
-  def remind(user)
-  	@user = User.find_by(id: user)
-  	@aniversaries = @user.portrait.aniversaries
-  	@aniversaries = @aniversaries.select{|Aniversary| anivesaries.todays? && aniversaries.reminder_mail }
-  	mail(to: @user.email,subject: "[#{Dart.today}]"は)
+  def remind_to_user(user)
+  	@user = user
+  	@anniversaries = @user.anniversaries
+    @anniversary = @aniversaries.select{|Aniversary| annivesaries.todays? && aniversaries.reminder_mail }
+  	mail(
+      subject: "#{Dart.tommorrow}"は"<%=@anniversary.name%>", #メールのタイトル
+      to: user.email #宛先
+    ) do |format|
+      format.text
+    end
   end
 end

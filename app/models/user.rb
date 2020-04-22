@@ -9,11 +9,14 @@ class User < ApplicationRecord
   #写真アップロード用
   attachment :image
 
-  #アルバム
+  #アルバム用
   has_many 	:portraits, dependent: :destroy
 
   #アルバム用献花
   has_many	:bouquets, dependent: :destroy
+
+  #命日用
+  has_many  :anniversaries, dependent: :destroy
 
   #思い出用献花
   has_many	:flowers,	dependent: :destroy
@@ -32,6 +35,8 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'user_id', dependent: :destroy
+
+
 
   #バリデーション
   validates :email, length: {minimum: 3, maximum: 80}
@@ -52,10 +57,12 @@ class User < ApplicationRecord
 		following.include?(other_user) 
 	end
 
-	# ユーザーのステータスフィードを返す 
-	def feed
-		following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
-		Portrait.where("user_id IN (#{following_ids})OR user_id = :user_id", user_id: id)
+	# ユーザーのタイムラインを返す 
+	def timeline
+		following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+		Portrait.where("user_id IN (#{following_ids})
+                    OR user_id = :user_id", user_id: id)
 	end
 
 end

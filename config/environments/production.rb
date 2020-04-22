@@ -60,7 +60,20 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
-
+  #deviseが認証用のURLなどを生成するのに必要になる（らしい）
+  config.action_mailer.default_url_options = {  :host => 'forget-me-not.work' }
+  #送信方法を指定（この他に:sendmail/:file/:testなどがあります)
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.gmail.com',
+    domain:               'smtp.gmail.com',
+    user_name:            ENV['EMAIL_ADDRESS'],
+    password:             ENV['EMAIL_PASSWORD'],
+    authentication:       'login',
+    enable_starttls_auto: true
+  }
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "forget-me-not_#{Rails.env}"

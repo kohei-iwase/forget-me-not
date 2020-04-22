@@ -1,1 +1,10 @@
-サイドバー
+<% if user = current_user %>
+<div class="user-box">
+    <%= render 'users/status', user: user %>
+    <hr>
+     <%= render 'anniversaries/index', anniversaries: @anniversaries %>
+
+<% end %>
+<div class="search-box">
+	<%= render 'searches/search_form' %>
+</div>

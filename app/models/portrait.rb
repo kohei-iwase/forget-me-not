@@ -5,8 +5,12 @@ class Portrait < ApplicationRecord
 	has_many 	:anniversaries, dependent: :destroy
 	attachment 	:image
 
-	validates :name, presence: true, length: {minimum: 2, maximum: 30}
+  #バリデーション
+  validates :user_id, presence: true
+  validates :name, presence: true, length: {minimum: 2, maximum: 30}
   validates :more_about_me, length: {maximum: 200}
+  # validate :picture_size
+
 
  #献花したユーザーが存在するか？
 	def bouquet_by?(user)
@@ -48,8 +52,12 @@ class Portrait < ApplicationRecord
         notification.save if notification.valid?
      end
 
-
-
-
+    private
+      # アップロードされた画像のサイズをバリデーションする 
+      # def picture_size
+      #   if picture.size > 5.megabytes 
+      #     errors.add(:picture, "should be less than 5MB")
+      #   end 
+      # end
 
 end
