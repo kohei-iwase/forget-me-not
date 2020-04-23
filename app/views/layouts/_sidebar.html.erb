@@ -6,7 +6,7 @@
         <%= current_user.name %>さん
     </h3>
     </p>
-<%# @user ||= current_user %> 
+<% @user ||= current_user %> 
 	<div class="status row">
 		<a href="<%= following_user_path(user) %>"> 
 			<strong id="current_user_following" class="status">
@@ -27,7 +27,7 @@
 				<%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %>
     		</div>
     <hr>
-     <%= render 'anniversaries/index', anniversaries: @anniversaries %>
+     <%#= render 'anniversaries/index', anniversaries: @anniversaries %>
 </div>
 <div class="search-box">
 	<%= render 'searches/search_form' %>
