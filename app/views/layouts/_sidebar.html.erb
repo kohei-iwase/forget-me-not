@@ -1,9 +1,9 @@
 <% if user = current_user %>
 <div class="user-box">
-    <%= render 'users/status', user: user %>
+    <%= render 'users/status', user: current_user %>
     <hr>
      <%= render 'anniversaries/index', anniversaries: @anniversaries %>
-     <hr>
+
 <div class="search-box">
 	<%= render 'searches/search_form' %>
 </div>

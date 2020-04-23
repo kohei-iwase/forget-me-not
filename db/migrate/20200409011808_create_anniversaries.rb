@@ -8,5 +8,9 @@ class CreateAnniversaries < ActiveRecord::Migration[5.2]
     	t.integer	:user_id
       	t.timestamps
     end
+
+        add_index :anniversaries, :title
+        add_index :anniversaries, :portrait_id
+        add_index :anniversaries, :user_id
   end
 end

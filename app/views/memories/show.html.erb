@@ -1,4 +1,6 @@
 <div class="content-box">
+
+  </div>
   <div class="row memory">
    <div class="ribbon6">
         <h2><%= @memory.title %></h2>
@@ -16,14 +18,14 @@
         <div class="memory-text">
           <h5><%= @memory.memory %></h5>
         </div>
-          <% if @memory.portrait.user = current_user %>
+          <% if @user == current_user %>
             <div class="buttons">
               <%= link_to "思い出に書き加える", edit_portrait_memory_path(@portrait,@memory), class: "btn btn-success" %>
               <%= link_to "この思い出と別れる", portrait_memory_path(@portrait,@memory), method: :delete,class: "btn btn-danger" %>
             </div>
               <% else %>
                 <div class="flower_button">
-                  <%= render 'flowers/flowers', memory: @memory %>
+                  <%= render 'flowers/flowers', portrait:@portrait,memory: @memory %>
                 </div>
             <% end %>
       </div>

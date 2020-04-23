@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2020_04_09_011808) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["portrait_id"], name: "index_anniversaries_on_portrait_id"
+    t.index ["title"], name: "index_anniversaries_on_title"
+    t.index ["user_id"], name: "index_anniversaries_on_user_id"
   end
 
   create_table "bouquets", force: :cascade do |t|
@@ -27,6 +30,8 @@ ActiveRecord::Schema.define(version: 2020_04_09_011808) do
     t.integer "portrait_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["portrait_id"], name: "index_bouquets_on_portrait_id"
+    t.index ["user_id"], name: "index_bouquets_on_user_id"
   end
 
   create_table "flowers", force: :cascade do |t|
@@ -34,16 +39,20 @@ ActiveRecord::Schema.define(version: 2020_04_09_011808) do
     t.integer "memory_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["memory_id"], name: "index_flowers_on_memory_id"
+    t.index ["user_id"], name: "index_flowers_on_user_id"
   end
 
   create_table "memories", force: :cascade do |t|
     t.integer "portrait_id"
-    t.string "title"
+    t.string "title", default: "", null: false
     t.string "when"
     t.text "memory"
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["portrait_id"], name: "index_memories_on_portrait_id"
+    t.index ["title"], name: "index_memories_on_title"
   end
 
   create_table "notificarions", force: :cascade do |t|
@@ -74,6 +83,9 @@ ActiveRecord::Schema.define(version: 2020_04_09_011808) do
     t.text "more_about_me"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_portraits_on_name"
+    t.index ["species"], name: "index_portraits_on_species"
+    t.index ["user_id"], name: "index_portraits_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -94,7 +106,7 @@ ActiveRecord::Schema.define(version: 2020_04_09_011808) do
     t.datetime "remember_created_at"
     t.string "image_id"
     t.text "introduction"
-    t.string "name"
+    t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

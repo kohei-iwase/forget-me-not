@@ -146,8 +146,8 @@ describe 'アルバム投稿のテスト' do
   		it '投稿の編集リンクが表示される' do
   			expect(page).to have_link '編集', href: edit_portrait_path(portrait)
   		end
-  		it '献花のリンクが表示される' do
-  		  	expect(page).to have_link '献花', href: portrait_bouquets_path(portrait)
+  		it '献花のリンクが表示されない' do
+  		  	expect(page).to have_no_link '献花する', href: portrait_bouquets_path(portrait)
   		end
       it 'アルバムの思い出が表示される' do
         expect(page).to have_link memory.title, href: portrait_memory_path(portrait,memory)
@@ -199,7 +199,7 @@ describe 'アルバム投稿のテスト' do
   		end
       it '献花のリンクが表示される' do
         visit portrait_path portrait
-        expect(page).to have_link '献花', href: portrait_bouquets_path(portrait)
+        expect(page).to have_link '献花する', href: portrait_bouquets_path(portrait)
       end
       it '思い出投稿フォームが表示されない' do
         expect(page).to have_no_content '思い出を加える'

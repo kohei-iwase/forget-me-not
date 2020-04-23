@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
   def timelines
     @portraits = current_user.portraits.build
-    @timelines  = current_user.timeline.order(created_at: :desc).page(params[:page]).per(10)
+    @timelines  = current_user.timeline.order(created_at: :desc).page(params[:page]).per(4)
   end
 
 
@@ -57,9 +57,9 @@ class UsersController < ApplicationController
     		params.require(:user).permit(:name, :image, :password,:introduction)
 		end
 
-    def baria_user
-    unless params[:id].to_i == current_user.id
-      redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
-    end
-  end
+  #   def baria_user
+  #   unless params[:id].to_i == current_user.id
+  #     redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
+  #   end
+  # end
 end

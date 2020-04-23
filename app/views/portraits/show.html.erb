@@ -16,9 +16,10 @@
     <h3>プロフィール</h3>
     <%= render 'portraits/table', portrait: @portrait %>
       <br>
-    <% if @portrait.user.id == current_user.id %>
+    <% if @portrait.user == current_user %>
       <div class="buttons">
         <%= link_to "編集", edit_portrait_path(@portrait), class: "btn btn-success" %>
+        <% else %>
         <%= render 'bouquets/bouquet', portrait: @portrait %>
       </div>
      <% end %>
@@ -33,7 +34,7 @@
       <%= render 'memories/index', portrait: @portrait %>
     </div>
   <hr>
-    <% if @portrait.user.id == current_user.id %>
+    <% if @portrait.user == current_user %>
     <div class="row new_memories">
         <div class="subtitle">
           <h3>思い出を加える</h3>
