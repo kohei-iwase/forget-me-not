@@ -8,7 +8,7 @@
 		</tr>
 	</thead>
     <tbody>
-      <% @user.anniversaries.each do |anniversary| %>
+      <% current_user.anniversaries.each do |anniversary| %>
           <tr>
         	<td><%= anniversary.date %></td>
 			<td><%= anniversary.title %></td>
