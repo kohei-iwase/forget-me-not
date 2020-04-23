@@ -44,18 +44,19 @@ class SearchesController < ApplicationController
 
 	def partical(model, content)
 		if model == 'user'
-			User.where("name like ?", "%#{content}%")
+			User.where("name like ?", "%#{content}%").page(params[:page]).per(10)
 		elsif model == 'portrait_name'
-			Portrait.where("name like ?", "%#{content}%")
+			Portrait.where("name like ?", "%#{content}%").page(params[:page]).per(10)
 		elsif model == 'portrait_species'
-			Portrait.where("species like ?", "%#{content}%")
+			Portrait.where("species like ?", "%#{content}%").page(params[:page]).per(10)
 		else model == 'memory'
-			Memory.where("title like ?", "%#{content}%")
+			Memory.where("title like ?", "%#{content}%").page(params[:page]).per(10)
 		end
 	end
 
 	def search_for(how, model, content)
 	  case how
+	  	#完全一致等のメソッド
 		# when 'match'
 		# 	match(model, content)
 		# when 'forward'

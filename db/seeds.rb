@@ -29,7 +29,7 @@ Portrait.create!(user_id:1,
     			specialty:"お行儀がとても良かったです",
 		    	family:"子供が二人います。",
     			personality:"甘えん坊でおっちょこちょい",
-    			found:"単身赴任がおおっ飼った時に、妻が誕生日に贈ってくれました",
+    			found:"単身赴任がおおかった時に、妻が誕生日に贈ってくれました",
 				more_about_me:  "亡き妻の最期の贈り物でした、私に安らぎを与えてくれました")
 
 Anniversary.create!(title: "デイジーの命日",
@@ -39,7 +39,7 @@ Anniversary.create!(title: "デイジーの命日",
                     user_id: 1)
 
 Anniversary.create!(title: "ねこですの命日",
-                    date:"202003020",
+                    date:"20200302",
                     memo: "ねこはいます",
                     portrait_id: 1,
                     user_id: 1)
@@ -81,7 +81,7 @@ User.create!(name: name,
 			password_confirmation: password)
 end
 
-#最初の20名のユーザーにポートレートを作成
+#最初の20名のユーザーにアルバムを作成
 users = User.order(:created_at).take(30)
 2.times do
 name = Faker::Creature::Cat.name
@@ -97,7 +97,7 @@ memory = Faker::Quotes::Shakespeare.hamlet_quote
 portraits.each { |portrait| portrait.memories.create!(title: title,memory: memory) } 
 end
 
-# リレーションシップ
+# フォロイーとフォロワーを作成
 users = User.all
 user = users.first 
 following = users[2..30] 

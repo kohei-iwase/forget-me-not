@@ -12,8 +12,6 @@
  *
  *= require_tree .
  *= require_self
- *= require mvp.css
-
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
@@ -191,7 +189,7 @@ a{
   text-align:center;
 }
 .status {
-overflow: auto; 
+overflow: auto;
 margin-top: 0; padding: 0;
   a{
     float: left;
@@ -201,7 +199,7 @@ margin-top: 0; padding: 0;
       padding-left: 70px;
       border: 0; }
       &:hover { text-decoration: none; color: blue;
-      } 
+      }
     }
   strong {
     display: block;

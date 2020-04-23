@@ -119,7 +119,7 @@ describe 'ユーザーのテスト' do
         expect(page).to have_button '変更を保存'
       end
       it '編集に成功する' do
-        fill_in 'user[name]', with: Faker::Lorem.characters(number:5)
+        fill_in 'user[name]', "hoge"
         click_button '変更を保存'
 #        expect(page).to have_content 'successfully'
         expect(current_path).to eq('/users/' + user.id.to_s)

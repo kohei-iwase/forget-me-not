@@ -7,9 +7,9 @@
 					<%= attachment_image_tag user, :image, class: "img-circle pull-left profile-img inline-box", fallback: "no_image.jpg" %>
 					<h3><%= user.name %></h3>
 					<% end %>
-					<% if user != current_user %>
-					<%= render "users/follow_form", user: user %>
-					<% end %>
+<!-- 					<% if user != current_user %>
+					<%#= render "users/follow_form", user: user %>
+					<% end %> -->
 				</ul>
 				<hr>
 			<% end %>

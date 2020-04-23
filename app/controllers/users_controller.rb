@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :baria_user, only: [:edit,:update, :timeline]
+    #before_action :baria_user, only: [:edit,:update, :timeline]
       #本人以外のアクセスを防ぐ
 
   def show
@@ -11,6 +11,9 @@ class UsersController < ApplicationController
 
   def edit
   	@user = User.find(params[:id])
+    if @user != current_user
+      redirect_to user_path(current_user)
+    end
   end
 
   def index
@@ -19,6 +22,9 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to user_path(current_user)
+    end
     if  @user.update(user_params)
         redirect_to user_path(@user)
     else
@@ -42,7 +48,7 @@ class UsersController < ApplicationController
 
   def timelines
     @portraits = current_user.portraits.build
-    @timelines  = current_user.timeline.order(created_at: :desc).page(params[:page]).per(8)
+    @timelines  = current_user.timeline.order(created_at: :desc).page(params[:page]).per(4)
   end
 
 
@@ -51,9 +57,9 @@ class UsersController < ApplicationController
     		params.require(:user).permit(:name, :image, :password,:introduction)
 		end
 
-    def baria_user
-    unless params[:id].to_i == current_user.id
-      redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
-    end
-  end
+  #   def baria_user
+  #   unless params[:id].to_i == current_user.id
+  #     redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
+  #   end
+  # end
 end

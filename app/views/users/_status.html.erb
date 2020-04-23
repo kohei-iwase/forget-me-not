@@ -3,8 +3,8 @@
     <h3 class="profile-name">
         <%= user.name %>さん
     </h3>
-<% @user ||= current_user %> 
-	<div class="status">
+<%# @user ||= current_user %> 
+	<div class="status row">
 		<a href="<%= following_user_path(user) %>"> 
 			<strong id="following" class="status">
 				<%= user.following.count %> 

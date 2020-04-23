@@ -6,5 +6,8 @@ class CreateBouquets < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    add_index :bouquets, :user_id
+    add_index :bouquets, :portrait_id
   end
 end

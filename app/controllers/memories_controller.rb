@@ -13,6 +13,7 @@ class MemoriesController < ApplicationController
     def show
         @portrait = Portrait.find(params[:portrait_id])
         @memory = Memory.find(params[:id])
+        @user = @portrait.user
     end
 
     def index
@@ -28,9 +29,9 @@ class MemoriesController < ApplicationController
         @portrait = Portrait.find(params[:portrait_id])
         @memory = Memory.find(params[:id])
         if @memory.update(memory_params)
-            redirect_to portrait_memory_path(@memory)
+            redirect_to portrait_memory_path(@portrait,@memory)
         else
-            redirect_to portrait_path(@portrait)
+            redirect_to edit_portrait_memory_path(@portrait,@memory)
         end
     end
 

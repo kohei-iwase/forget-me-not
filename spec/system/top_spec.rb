@@ -53,12 +53,12 @@ describe 'トップページのテスト' do
     context 'ログインしていない場合の挙動を確認' do
       it 'ログインリンクをクリックしたらログイン画面へ遷移する' do
         login_link = find_all('a')[3].native.inner_text
-        click_link login_link
+        click_link login_link, match: :first
         expect(current_path).to eq(new_user_session_path)
       end
       it '新規登録リンクをクリックしたら新規登録画面に遷移する' do
         signup_link = find_all('a')[2].native.inner_text
-        click_link signup_link
+        click_link signup_link, match: :first
         expect(current_path).to eq(new_user_registration_path)
       end
     end

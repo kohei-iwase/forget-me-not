@@ -1,8 +1,11 @@
 <div class="content-box">
   <div class="row">
-<h3><strong>「<%= @content %>」</strong>の検索結果</h3>
-<br>
 
+<h3><strong>「<%= @content %>」</strong>の検索結果</h3>
+<hr>
+      <div class ="paginate">
+        <%= paginate @datas %>
+      </div>
 	<% if @model == 'user' %>
 			<% if @datas.any? %>
 				<% @datas.each do |data| %>
@@ -60,5 +63,8 @@
 			<% end %>
 
 	<% end %>
+	<div class ="paginate">
+        <%= paginate @datas %>
+    </div>
 </div>
 </div>

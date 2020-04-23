@@ -89,6 +89,9 @@ gem 'kaminari','~> 1.1.1'
 gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
 
+# crontab管理
+gem 'whenever', require: false
+
 #カレンダー設定
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'

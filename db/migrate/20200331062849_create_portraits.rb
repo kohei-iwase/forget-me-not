@@ -20,5 +20,9 @@ class CreatePortraits < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+        add_index :portraits, :user_id
+        add_index :portraits, :name
+        add_index :portraits, :species
   end
 end

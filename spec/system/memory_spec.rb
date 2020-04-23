@@ -22,7 +22,7 @@ describe '思い出投稿のテスト' do
         expect(page).to have_content memory.title
       end
       it '画像が表示される' do
-        expect(all('img').size).to eq(1)
+        expect(all('img').size).to eq(2)
       end
   		it '投稿の編集リンクが表示される' do
   			expect(page).to have_link '思い出に書き加える', href: edit_portrait_memory_path(portrait,memory)
@@ -67,7 +67,7 @@ describe '思い出投稿のテスト' do
         expect(page).to have_content memory2.title
       end
       it '画像が表示される' do
-        expect(all('img').size).to eq(1)
+        expect(all('img').size).to eq(2)
       end
       it '献花ボタンが表示される' do
         expect(page).to have_button '献花する'
@@ -117,11 +117,11 @@ describe '思い出投稿のテスト' do
       end
       it '思い出編集に失敗する' do
         fill_in 'memory[title]', with: ''
-        fill_in 'memory[memory]', with: 'hallo'
+        fill_in 'memory[memory]', with: '表示されない'
         click_button '思い出を更新！'
         # expect(page).to have_content 'error'
-        expect(page).to have_no_content 'hallo'
-        expect(current_path).to eq('/portraits/' + portrait.id.to_s)
+        expect(page).to have_no_content '表示されない'
+        expect(current_path).to eq('/portraits/' + portrait.id.to_s + '/memories/' + memory.id.to_s + '/edit')
       end
     end
   end

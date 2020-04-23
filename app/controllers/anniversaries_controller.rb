@@ -23,8 +23,8 @@ class AnniversariesController < ApplicationController
 	end
 
 	def create
-    	@anniversary = Anniversary.new(anniversary_params)
     	@portrait = Portrait.find(params[:portrait_id])
+    	@anniversary = Anniversary.new(anniversary_params)
 	    @anniversary.portrait_id = @portrait.id
 	    @anniversary.user_id = current_user.id
     	if @anniversary.save
@@ -35,8 +35,8 @@ class AnniversariesController < ApplicationController
     end
 
 	def update
-    	@anniversary = Anniversary.new(anniversary_params)
     	@portrait = Portrait.find(params[:portrait_id])
+    	@anniversary = Anniversary.find(params[:id])
 	    @anniversary.portrait_id = @portrait.id
 	    @anniversary.user_id = current_user.id
     	if @anniversary.update
@@ -46,11 +46,12 @@ class AnniversariesController < ApplicationController
     	end
     end
 
-    def reminder
-    	if pre_anniversary
-    	@anniversary = Anniversary.find(params[:id])
-    	@user = User.find([:user_id])
-    	NotificationMailer.remind_to_user(user_id).deliver
+    def reminder #一周忌にuserにメールを送る
+    	if one_anniversary.exist?
+    	@one_anniversary = one_anniversary
+    	@user = @one_anniversary.user
+    	NotificationMailer.remind_to_user(@user).deliver
+    end
     end
 
     private
@@ -58,8 +59,9 @@ class AnniversariesController < ApplicationController
     		params.require(:anniversary).permit(:title, :memo, :portrait_id, :user_id,:date)
 		end
 
-		def pre_anniversary
-
-		end
+		def one_anniversary #通知用の一周忌の前日を定義
+			Anniversary.where("DATE(date) ='#{Date.yesterday.since(1.years)}'")
+			#Anniversary.date.yesterday<= date.since(1.years) && date.since(1.years) < Anniversary.date.today
+  		end
 
 end

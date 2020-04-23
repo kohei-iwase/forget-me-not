@@ -15,7 +15,7 @@
               <%= f.attachment_field :image, placeholder: "ペット画像", class: "portrait-edit-form" %>
         </div>
       </div>
-      <div class="col-xs-5 portrait-box">
+      <div class="portrait-box">
         <table class = "form-table">
           <tbody>
             <tr>
@@ -64,8 +64,8 @@
               <td><%= f.text_area :found, autofocus: true, class:"form-control",　placeholder:"出会い"%></td>
             </tr>
             <tr>
-              <th>その他、もっと<br>僕について</th>
-              <td><%= f.text_area :more_about_me, autofocus: true, class:"form-control",　placeholder:"もっと僕について！"%></td>
+              <th>その他、もっと<br>この子について</th>
+              <td><%= f.text_area :more_about_me, rows:"5",autofocus: true, class:"form-control",　placeholder:"もっとこの子について！"%></td>
             </tr>
           </tbody>
         </table>
