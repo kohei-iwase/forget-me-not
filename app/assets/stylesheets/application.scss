@@ -34,7 +34,23 @@ a{
 	clear:both;
 }
 
-/* ribon */
+/* font (font-family: 'kodomo','yasashisa';で使用可能)*/
+@font-face {
+  font-family: 'kodomo';
+  src: font-url('KodomoRounded-Light.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'yasashisa';
+  src: font-url('07yasashisa.ttf')format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* titles */
+
 .ribbon6 {
   display: inline-block;
   position: relative;
@@ -121,29 +137,66 @@ a{
 .content-wrapper {
     display: flex;
     width:1000px;
-    background-image: image-url("back4.png");
     margin:auto;
     }
 
 /* top */
   .top-image{
+  margin-left:0;
+  height:800px;
   width:800px;
-  height:400px;
   border-radius:8px;
-  background-image: image-url("beagle1.jpg");
+  background-image: image-url("icon/girl6_l.png");
   background-size: contain;
+  background-repeat: no-repeat;
     }
+ 
+  .top-text{
+  text-align:left;
+  margin-left:20px;
+  }
 
+  .top-text h3 {
+  position: relative;
+  color: #333;
+  text-shadow: 0 0 2px white;
+  background: #e0f3ff;
+  z-index: -2;
+  border-radius: 0 10px 10px;
+  padding:3px;
+}
+
+  .top-text h3:before {
+  content: "";
+  position: absolute;
+  background: #9de5ff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 50%;
+  left: -15px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: -1;
+}
   .top-title{
-  text-align:right;
-  padding-top:150px;
-  margin-right:150px;
+  margin-left:570px;
+  text-align:left;
+  margin-top:150px;
+  padding: 0.1em 0.5em;
+  padding-left: 20px;
+  background: -webkit-linear-gradient(to right, rgb(255, 186, 115), transparent);
+  background: linear-gradient(to right, rgb(255, 186, 115), transparent);
+  color: #545454;
+  border-radius:24px;
   }
 
   .top-buttons{
-  margin-left:100px;
-  text-align:left;
-  vertical-align:middle;
+  margin-top:300px;
+  padding:30px;
+  padding-right:70px;
+  text-align:right;
+  background-color:rgba(255,255,255,0.6);
   }
 
 
@@ -214,7 +267,7 @@ margin-top: 0; padding: 0;
 .follow_users{
   text-align:left;
   padding-left:80px;
-  height:130px;
+  height:160px;
 }
 
 .follow_form{
@@ -224,12 +277,15 @@ margin-top: 0; padding: 0;
 
 /* footer */
 
-.footer {
+footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color:#a3c9ee;
-    height: 100px;
+    padding-top:60px;
+    height: 150px;
+    background-image: image-url("flowers/nemophila1.png");
+    background-size: cover;
+    background-position: 0;
         }
 
 .portrait-box{
@@ -266,7 +322,10 @@ border-bottom: solid 5px #627295;
 
 /* イメージ */
 .img-circle{
-	width:90px;
-  margin:10px;
+	width:100px;
+  max-height:140px;
+  margin:5px;
 }
+
+
 

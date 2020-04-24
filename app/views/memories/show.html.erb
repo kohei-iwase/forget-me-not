@@ -12,7 +12,7 @@
         <%= link_to "アルバムに戻る", portrait_path(@portrait), class: "btn btn-primary" %>
     </div>
     <div class="pet-image">
-      <%= attachment_image_tag @memory, :image, width: "100%" %>
+      <%= attachment_image_tag @memory, :image, width: "100%",class: "img-circle inline-box", fallback: "pets/cat.png"%>
      </div>
       <div class="pet-memory">
         <div class="memory-text">

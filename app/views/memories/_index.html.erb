@@ -6,7 +6,7 @@
             <h4><%= memory.title %></h4>
           </div>
           <div class="memory-index-image">
-            <%= attachment_image_tag memory, :image, width: "90%" %>
+          <%= attachment_image_tag memory, :image, width: "100%", fallback: "pets/cat.png"%>
           </div>
           <div class="memory-content">
             <div class="memory-text">
