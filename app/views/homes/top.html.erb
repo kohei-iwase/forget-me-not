@@ -1,36 +1,66 @@
-<div class="container">
-	<div class="top-image">
-		<div class="top-title">
-			<h1>勿忘草</h1>
-			<p><b>〜ワスレナグサ〜</b></p>
-		</div>
-		<div class="top-buttons">
-			<p>
-				<a href="users/sign_in"><i>ログイン</i></a>
-				<a href="users/sign_up"><b>新規登録</b></a>
-			</p>
+<div class="content-box">
+	<div class="row top">
+		<div class="top-image">
+			<div class="top-text">
+				<h3><i>〜　ペットとの大切な思い出を綴るSNS　〜</i></h3>
+			</div>
+			<div class="top-title">
+				<h1>勿忘草</h1>
+				<p><b>〜ワスレナグサ〜</b></p>
+			</div>
+			<div class="top-buttons">
+				<p>
+					<a href="users/sign_in"><i>ログイン</i></a>
+					<a href="users/sign_up"><b>新規登録</b></a>
+				</p>
 
-			<p>
-	   		<%= link_to ">勿忘草について", homes_about_path, class: "btn btn-success" %>
-			</p>
+				<p>
+		   		<%= link_to ">勿忘草について", homes_about_path, class: "btn btn-success" %>
+				</p>
+			</div>
 		</div>
+	</div>
 	<hr>
-		<aside>
-			<div class="top-contents">
-			<p>サービス</p>
+	<div class="top-contents">
+		<div class="top-text">
+			<h3><i>　ワスレナグサの花言葉 〜私を忘れないで〜　</i></h3>
+			<br>
+			<h4>
+			●サイトテーマ　「あなたは一人ではない」というメッセージ
+			</h4>
+			　<br>・あなたの大切なペットに「あなたは一人ではない」と発信する場
+			　<br>・あなたも「一人ではない」と発信する場
+		</div>
+		<hr>
+		<div class="top-content">
+			<aside>
+			<%= image_tag('icon/remember.png', class: "cover", style: "width:400px;")%>
+			<h4>悲しみを分かち合う場</h4>
+				</aside>
+		</div>
+		<hr>
+		<div class="top-content">
+			<aside>
+			<%= image_tag('icon/stationery_letter01_01.png', class: "cover", style: "width:400px;")%>
+			<h4>思いを整理する場所</h4>
+			</aside>
+			<div class="content-text">
+			忘れたくない思い出を描き出せる場所
 			</div>
-		</aside>
-	<hr>		
-		<aside>
-			<div class="top-contents">
-			<p>サービス</p>
+		</div>
+		<hr>
+			<div class="top-content">
+			<aside>
+				<%= image_tag('icon/book_memo.png', class: "cover", style: "width:400px;")%>
+				<p>供養の準備ができるよう命日を通知する</p>
+			</aside>
 			</div>
-		</aside>
-	<hr>		
-		<aside>
-			<div class="top-contents">
-			<p>サービス</p>
-			</div>
-		</aside>
-	<hr>
+				<div class="content-text">
+					設定された命日、記念日が近くなると通知をして
+					供養の準備ができるよう思い出させてくれるリマインダー
+				</div>
+		</secttion>
+		<hr>
+ 	</div>
+ </div>
 </div>
