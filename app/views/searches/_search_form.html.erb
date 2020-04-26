@@ -5,6 +5,6 @@
   <!-- 部分一致以外で検索する場合 -->
   <%#= select_tag 'search[how]', options_for_select({"前方一致": "forward","完全一致": "match", "後方一致": "backward", "部分一致": "partical"}) %>
   <span class="glyphicon glyphicon-search"></span>
-  <%= text_field_tag 'search[content]' %>
+  <%= text_field_tag 'search[content]'%>
   <%= f.submit "検索" %>
 <% end %>

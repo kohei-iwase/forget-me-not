@@ -351,6 +351,18 @@ footer {
   height:130px;
 }
 
+#search_content{
+  position:relative;
+}
+
+#search_content::before{
+  font-family:FontAwesome;
+  content:"\e003";
+  position:absolute;
+  left:0.5em;
+
+}
+
 /*動くボタン用*/
 .btn {
 border-radius:8px;
