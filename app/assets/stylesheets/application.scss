@@ -135,8 +135,8 @@ a{
 /* body */
 
 .content-wrapper {
-    display: flex;
     width:1000px;
+    height:2000px;
     margin:auto;
     }
 
@@ -150,7 +150,7 @@ a{
   background-size: contain;
   background-repeat: no-repeat;
     }
- 
+
   .top-text{
   text-align:left;
   margin-left:20px;
@@ -324,7 +324,7 @@ margin-top: 0; padding: 0;
 /* footer */
 
 footer {
-    display: flex;
+    clear:both;
     align-items: center;
     justify-content: center;
     padding-top:60px;
