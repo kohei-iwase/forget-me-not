@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="ja">
 <html>
   <head>
@@ -14,15 +13,20 @@
     <script src="https://kit.fontawesome.com/696371b99a.js" crossorigin="anonymous"></script>
   </head>
   <body>
-<header>
+
+    <header>
       <%= render 'layouts/header' %>
-</header>
+    </header>
+
      <div class="content-wrapper">
+      <div class="col-xs-4 sidebar">
       <article>
         <aside>
          <%= render 'layouts/sidebar'%>
        </aside>
      </article>
+      </div>
+      <div class="col-xs-8 main-content">
         <main>
           <section>
           <%#= render partial: 'layouts/flash', flash: flash %>
@@ -30,10 +34,13 @@
         </section>
       </main>
       </div>
+      </div>
       <footer>
 
           <%= render 'layouts/footer' %>
 
       </footer>
+    </div>
+    </div>
   </body>
 </html>
