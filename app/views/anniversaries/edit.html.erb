@@ -1,11 +1,23 @@
+<div class="content-box">
+	<div class="row album">
+		<div class="ribbon6"><h2>供養日の設定</h2></div>
+	</div>
+	<div class ="row album">
+	 	<div class="form-body">
 <%= form_with model:[@portrait, @anniversary], local: true do |f| %>
-  <div><%= f.label :title %></div>
+  <div><%= f.label :タイトル %></div>
   <div><%= f.text_field :title %></div>
-    <div><%= f.label :memo %></div>
+    <div><%= f.label :メモ %></div>
   <div><%= f.text_area :memo %></div>
-    <div><%= f.label :date %></div>
-  <div><%= f.date_field :date, placeholder:@portrait.anniversary %></div>
-  <div><%= f.submit %>
-  	   <%= link_to '戻る', portrait_path(@portrait) %>
- </div>
+    <div><%= f.label :命日 %></div>
+  <%= @portrait.anniversary %>
+  <div><%= f.date_field :date %></div>
+  <div><%= f.submit "供養日の設定", class:"btn btn-success" %></div>
 <% end %>
+    <div class="buttons">
+        <%= link_to "アルバムに戻る", portrait_path(@portrait), class: "btn btn-primary" %>
+        <%= link_to "供養日一覧", portrait_anniversaries_path(@portrait), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
+</div>

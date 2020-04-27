@@ -62,7 +62,20 @@ describe 'ユーザー権限のテスト'  do
         end
       end
     end
-    describe 'ログインしていない場合に検索機能' do
+    describe 'ログインしていない場合に供養日関連のURLにアクセス' do
+      context '供養日関連のURLにアクセス' do
+        it '供養日編集画面に遷移できない' do
+          visit edit_portrait_anniversary_path(portrait,anniversary)
+          expect(current_path).to eq('/users/sign_in')
+        end
+        it '供養日一覧画面に遷移できない' do
+          visit portrait_anniversaries_path(portrait)
+          expect(current_path).to eq('/users/sign_in')
+        end
+      end
+    end
+
+    describe 'ログインしていない場合の検索機能' do
       context '検索機能ボタンをクリック' do
         it 'ペット名を選んで検索結果が表示される' do
           visit root_path

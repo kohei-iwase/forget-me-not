@@ -70,7 +70,6 @@ describe 'トップページのテスト' do
       it 'ログインボタンをクリックしたらログイン画面へ遷移する' do
           click_on "ログイン", match: :first
           expect(current_path).to eq(new_user_session_path)
-        end
       end
       it '新規登録ボタンをクリックしたら新規登録画面に遷移する' do
         click_on "新規登録", match: :first

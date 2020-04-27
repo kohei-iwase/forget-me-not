@@ -1,20 +1,36 @@
-<h3>通知リスト</h3>
+<div class="content-box">
+	<h3>供養日一覧</h3>
+  <div class="row memory">
 <table class = "anniversary-table">
 	<thead>
 		<tr>
+			<th></th>
 			<th>日付</th>
 			<th>要件</th>
 			<th>メモ</th>
+			<th></th>
+			<th></th>
 		</tr>
 	</thead>
     <tbody>
       <% @anniversaries.each do |anniversary| %>
           <tr>
+          	<td>
+          		<div class="icon">
+          			<%= attachment_image_tag anniversary.portrait, :image, width:"100%", fallback: "pets/no_image.png"%>
+          		</div>
+          	</td>
+        	<!-- <td><%#= anniversary.date.strftime('%m/%d') %></td> -->
         	<td><%= anniversary.date %></td>
 			<td><%= anniversary.title %></td>
 			<td><%= anniversary.memo %></td>
+			<td><%= link_to "編集", edit_portrait_anniversary_path(anniversary.portrait_id,anniversary), class: "btn btn-success" %>
+			</td>
+			<td><%= link_to "削除", portrait_anniversary_path(anniversary.portrait_id,anniversary), method: :delete,class: "btn btn-danger" %></td>
 		</tr>
 	   <% end %>
 	</tbody>
 </table>
+</div>
+</div>
 

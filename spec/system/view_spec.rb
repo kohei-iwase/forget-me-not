@@ -87,8 +87,12 @@ describe 'ページ表示のテスト' do
 			end
 		end
 		context '命日設定関連画面' do
-			it '編集' do
+			it '編集画面' do
 				visit edit_portrait_anniversary_path(portrait,anniversary)
+				expect(page).to have_selector('.content-box')
+			end
+			it '一覧画面' do
+				visit portrait_anniversaries_path(portrait)
 				expect(page).to have_selector('.content-box')
 			end
 		end
