@@ -125,8 +125,6 @@ a{
   color: #def3ff;
 }
 
-/* header */
-
 /* pagginate */
 .paginate{
   text-align:center;
@@ -137,6 +135,7 @@ a{
 .content-wrapper {
     width:1000px;
     margin:auto;
+    height:auto;
     }
 
 /* top */
@@ -242,7 +241,6 @@ a{
   box-shadow: var(--box-shadow) var(--color-shadow);
   margin: 1rem;
   padding: 1.25rem;
- 
 }
 
 /* portraits */
@@ -250,10 +248,13 @@ a{
 .pet-image{
   max-width:700px;
   margin:auto;
-  border:solid 12px white;
+  border:solid 4px black;
   border-radius:16px;
 }
 
+.portrait-box{
+    margin:20px;
+}
 
 /* memories */
   .memory-index{
@@ -262,17 +263,33 @@ a{
     flex-flow:row wrap;
   }
   .memory-box{
-    height: 300px;
-    width: 30%;
+    height: 380px;
+    width: 29%;
     margin:10px;
     padding-left: 10px;
-    border: 2px solid #FFFFFF;
+    border: 2px solid gray;
     border-radius:16px;
     text-align: left;
+  }
+  .memory-text{
+  height:100px;
+  overflow:hidden;
+  }
+  .memory-when{
+  height:30px;
+  padding:5px;
+  text-align:center;
+  vertical-align:middle;
+  overflow:hidden;
+  background-color:#fce6e8;
   }
   .memory-index-image{
   width:90%;
   height :150px;
+  }
+
+  .memory-table{
+    margin:auto;
   }
 
   .memory-index-image image{
@@ -286,6 +303,7 @@ a{
   text-align:center;
 }
 .status {
+margin:auto;
 overflow: auto;
 margin-top: 0; padding: 0;
   a{
@@ -293,7 +311,7 @@ margin-top: 0; padding: 0;
     padding: 0 10px;
     border-left: 1px solid $gray-lighter; color: gray;
     &:first-child {
-      padding-left: 70px;
+      padding-left:65px;
       border: 0; }
       &:hover { text-decoration: none; color: blue;
       }
@@ -301,6 +319,9 @@ margin-top: 0; padding: 0;
   strong {
     display: block;
     }
+}
+.status center{
+  padding-left:200px;
 }
 
 .timeline-index{
@@ -318,7 +339,6 @@ margin-top: 0; padding: 0;
   border: none;
   box-shadow: none;
 }
-
 /* footer */
 
 footer {
@@ -332,26 +352,51 @@ footer {
     background-position: 0;
         }
 
-.portrait-box{
-    margin:20px;
-}
+
 .form-table{
     width:100%;
     border: solid 1px;
-}
-
-.memory-table{
-    margin:auto;
 }
 
 /*検索用*/
 .searched-box{
   padding-left:80px;
   text-align:left;
-  height:130px;
+  height:150px;
 }
 
-/*動くボタン用*/
+.sidebar h3{
+  text-align:center;
+}
+
+.images{
+    float:left;
+    width:200px;
+    max-height:140px;
+}
+.profiles{
+    float:left;
+    margin-left:40px;
+}
+
+#search_content{
+  position:relative;
+}
+
+#search_content::before{
+  font-family:FontAwesome;
+  content:"\e003";
+  position:absolute;
+  left:0.5em;
+
+}
+
+/*ボタン用*/
+.buttons{
+  margin:auto;
+  margin-top:30px;
+}
+
 .btn {
 border-radius:8px;
 border-bottom: solid 5px #627295;
@@ -366,10 +411,11 @@ border-bottom: solid 5px #627295;
 
 /* イメージ */
 .img-circle{
-	width:100px;
   max-height:140px;
   margin:5px;
 }
 
-
+.icon{
+  max-width:80px;
+}
 

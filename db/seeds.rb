@@ -32,16 +32,32 @@ Portrait.create!(user_id:1,
     			found:"単身赴任がおおかった時に、妻が誕生日に贈ってくれました",
 				more_about_me:  "亡き妻の最期の贈り物でした、私に安らぎを与えてくれました")
 
+Portrait.create!(user_id:1,
+                image: File.open("./app/assets/images/neko1.jpg"),
+                name: "ねこ",
+                gender:1,
+                age:10,
+                species:"猫",
+                birthday:"20100109",
+                anniversary:"20200319",
+                likes_and_dislikes:"チュールが大好物でした",
+                interest:"晴れた日のお散歩、ボール遊び",
+                specialty:"お行儀がとても良かったです",
+                family:"子供が二人います。",
+                personality:"甘えん坊でおっちょこちょい",
+                found:"単身赴任がおおかった時に、妻が誕生日に贈ってくれました",
+                more_about_me:  "亡き妻の最期の贈り物でした、私に安らぎを与えてくれました")
+
 Anniversary.create!(title: "デイジーの命日",
 					date:"20200309",
     				memo: "犬用チュール",
  	   				portrait_id: 1,
                     user_id: 1)
 
-Anniversary.create!(title: "ねこですの命日",
+Anniversary.create!(title: "ねこの命日",
                     date:"20200302",
                     memo: "ねこはいます",
-                    portrait_id: 1,
+                    portrait_id: 2,
                     user_id: 1)
 
 Anniversary.create!(title: "見えちゃいけないやつ",

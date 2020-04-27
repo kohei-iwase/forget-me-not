@@ -1,36 +1,29 @@
 class AnniversariesController < ApplicationController
 	def index
 		@user = current_user
-		@anniversaries = Anniversary.all
-	end
-
-	def new
-		@user = current_user
-		@portrait = Portrait.find(params[:portrait_id])
-		@anniversary = Anniversary.new
+		@anniversaries = @user.anniversaries.page(params[:page]).per(10)
 	end
 
 	def edit
 		@user = current_user
 		@portrait = Portrait.find(params[:portrait_id])
-		@anniversary = Anniversary.new
-	end
-
-	def show
-		@user = current_user
-		@portrait = Portrait.find(params[:portrait_id])
-		@anniversary = Anniversary.find(params[:id])
+		if @portrait.anniversary.nil?
+			@anniversary = Anniversary.new
+		else
+			@anniversary = @portrait.anniversary
+		end
 	end
 
 	def create
     	@portrait = Portrait.find(params[:portrait_id])
     	@anniversary = Anniversary.new(anniversary_params)
 	    @anniversary.portrait_id = @portrait.id
-	    @anniversary.user_id = current_user.id
+	    @user = current_user
+	    @anniversary.user_id = @user.id
     	if @anniversary.save
-    		redirect_to portrait_anniversaries_path(@portrait,@anniversary)
+    		redirect_to portrait_anniversaries_path(@portrait)
     	else
-    		render :new
+    		render :edit
     	end
     end
 
@@ -40,13 +33,21 @@ class AnniversariesController < ApplicationController
 	    @anniversary.portrait_id = @portrait.id
 	    @anniversary.user_id = current_user.id
     	if @anniversary.update
-    		redirect_to portrait_anniversaries_path(@portrait,@anniversary)
+    		redirect_to portrait_anniversaries_path(@portrait)
     	else
     		render :edit
     	end
     end
 
-    def reminder #一周忌にuserにメールを送る
+    def destroy
+        @portrait = Portrait.find(params[:portrait_id])
+        @anniversary = Anniversary.find(params[:id])
+        @anniversary.destroy
+        redirect_to portrait_anniversaries_path(@portrait)
+    end
+
+
+    def reminder #一周忌にuserにメールを送る(未実装)
     	if one_anniversary.exist?
     	@one_anniversary = one_anniversary
     	@user = @one_anniversary.user

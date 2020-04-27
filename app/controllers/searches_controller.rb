@@ -1,8 +1,9 @@
 class SearchesController < ApplicationController
+    before_action :authenticate_user!, except: [:search]
+
 	def search
 		@user = User.new
 		@portrait = Portrait.new
-		@anniversaries = current_user.anniversaries.page(params[:page])
 		@model = params["search"]["model"]
 		@content = params["search"]["content"]
 		@how = params["search"]["how"]

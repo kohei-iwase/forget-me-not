@@ -2,12 +2,12 @@
     <nav>
       <%=link_to image_tag('logo.jpg', class: "cover", style: "height:200px;"),homes_top_path %>
         <ul>
-              <% if user_signed_in? %>
+      <% if user_signed_in? %>
       <li class="">
         <%= link_to "ワスレナグサについて", homes_about_path %>
       </li>
       <li class="">
-        <%= link_to 'アルバム一覧', user_path(current_user.id) %>
+        <%= link_to 'マイアルバム', user_path(current_user.id) %>
       </li>
       <li class="">
         <%= link_to 'アルバムを作る', new_portrait_path %>
@@ -15,12 +15,24 @@
       <li class="">
         <%= link_to 'タイムライン', timelines_user_path(current_user.id) %>
       </li>
+       <li class="">
+        <%= link_to "ユーザー一覧", users_path %>
+      </li>
+      <li class="">
+        <%= link_to "アルバム一覧", portraits_path %>
+      </li>
       <li class="">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li class="">
         <%= link_to "ワスレナグサについて", homes_about_path %>
+      </li>
+      <li class="">
+        <%= link_to "ユーザー一覧", users_path %>
+      </li>
+      <li class="">
+        <%= link_to "アルバム一覧", portraits_path %>
       </li>
       <li class="">
         <%= link_to "新規登録", new_user_registration_path %>

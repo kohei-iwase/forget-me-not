@@ -9,14 +9,16 @@
           <%= attachment_image_tag memory, :image, width: "100%", fallback: "pets/cat.png"%>
           </div>
           <div class="memory-content">
+            <div class="memory-when">
+                時期：<%= memory.when %>
+            </div>
             <div class="memory-text">
                 <h5><%= memory.memory %></h5>
             </div>
-              <div class="memory-when">
-                <h4><%= memory.when %></h4>
-              </div>
           <% end %>
+      <% if portrait.user != current_user %>
         <%= render 'flowers/flowers', portrait: portrait, memory: memory %>
+      <% end %>
           </div>
         </div>
         <% end %>

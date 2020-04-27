@@ -4,7 +4,8 @@
         <%= user.name %>さん
     </h3>
 <%# @user ||= current_user %> 
-	<div class="status row">
+	<div class="status">
+		<div class="center">
 		<a href="<%= following_user_path(user) %>"> 
 			<strong id="following" class="status">
 				<%= user.following.count %> 
@@ -18,12 +19,18 @@
 			followers
 		</a> 
 	</div>
+	</div>
 	<br>
+		<div class="introduction">
+		<h4>自己紹介</h4>
 	    	<%= user.introduction %>
+	    </div>
+	    <% if user_signed_in? %>
 		<% if user.id == current_user.id %>
-			<div class="button_form">
-				<%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-success" %>
+			<div class="buttons">
+			<%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-success" %>
+				    	<% else %>
+    		 <%= render 'users/follow_form',user: user %>
     		</div>
-    	<% else %>
-    		 <%= render 'follow_form',user: user %>
+    	<% end %>
     	<% end %>

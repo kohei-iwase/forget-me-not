@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-    #before_action :baria_user, only: [:edit,:update, :timeline]
-      #本人以外のアクセスを防ぐ
+    before_action :authenticate_user!, except: [:index,:show]
 
   def show
   	@user = User.find(params[:id])
@@ -17,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def index
-  	@users = User.all
+  	@users = User.page(params[:page]).per(10)
   end
 
   def update
@@ -26,6 +25,7 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
     if  @user.update(user_params)
+        flash[:success] = "更新に成功しました！"
         redirect_to user_path(@user)
     else
         redirect_to edit_user_path(@user)
@@ -35,14 +35,14 @@ class UsersController < ApplicationController
   def following
 	@title = "Following"
 	@user = User.find(params[:id])
-	@users = @user.following.all
+	@users = @user.following.page(params[:page]).per(10)
 	render 'show_follow'
   end
 
   def followers
 	@title = "Followers"
 	@user = User.find(params[:id])
-	@users = @user.followers.all
+	@users = @user.followers.page(params[:page]).per(10)
 	render 'show_follow'
   end
 

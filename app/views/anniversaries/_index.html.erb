@@ -1,18 +1,22 @@
-<h3>通知リスト</h3>
+<h3>供養日通知</h3>
 <table class = "anniversary-table">
 	<thead>
 		<tr>
+			<th></th>
 			<th>日付</th>
 			<th>要件</th>
-			<th>メモ</th>
 		</tr>
 	</thead>
     <tbody>
-      <% current_user.anniversaries.each do |anniversary| %>
+      <% anniversaries.each do |anniversary| %>
           <tr>
+          	<td>
+          		<div class="icon">
+          		<%= attachment_image_tag anniversary.portrait, :image, width:"100%", fallback: "pets/no_image.png"%>
+          		</div>
+          	</td>
         	<td><%= anniversary.date %></td>
 			<td><%= anniversary.title %></td>
-			<td><%= anniversary.memo %></td>
 		</tr>
 	   <% end %>
 	</tbody>

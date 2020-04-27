@@ -1,13 +1,15 @@
-<% if user = current_user %>
+<% if user ||= current_user %>
 <div class="user-box">
+<%= link_to user_path(current_user) do %>
 <%= attachment_image_tag user, :image, class: "img-circle inline-box", fallback: "no_image.jpg" %>
 	<p>
     <h3 class="profile-name">
         <%= current_user.name %>さん
     </h3>
     </p>
+    <% end %>
 <% @user ||= current_user %> 
-	<div class="status row">
+	<div class="status">
 		<a href="<%= following_user_path(user) %>"> 
 			<strong id="current_user_following" class="status">
 				<%= current_user.following.count %> 
@@ -21,15 +23,17 @@
 			followers
 		</a> 
 	</div>
-	<br>
+	<div class="introduction">
+		<h4>自己紹介</h4>
 	    	<%= current_user.introduction %>
-			<div class="button_form">
-				<%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %>
-    		</div>
+	</div>
+	<div class="buttons">
+		<%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-success" %>
+    </div>
     <hr>
-     <%#= render 'anniversaries/index', anniversaries: @anniversaries %>
+     <%= render 'anniversaries/index', anniversaries: current_user.anniversaries %>
 </div>
+<% end %>
 <div class="search-box">
 	<%= render 'searches/search_form' %>
 </div>
-<% end %>

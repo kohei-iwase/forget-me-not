@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   	resources :memories, only: [:create,:edit,:update,:destroy,:show,:index] do
   		  resource :flowers,only: [:create,:destroy]
   		end
-  	resources :anniversaries
+  	resources :anniversaries,only: [:create,:edit,:update,:destroy,:index]
   	resource :bouquets, only: [:create,:destroy]
   end
 

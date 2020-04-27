@@ -1,7 +1,21 @@
-<h2>ユーザー検索</h2>
-<% @users.each do |user| %>
-<li>
-<%= link_to user.name, user_path(user) %> 
-<!-- 画像データがエラーの原因になっていたため一旦削除 -->
-</li>
-<% end %> 
+<div class="content-box">
+  <div class ="paginate">
+        <%= paginate @users %>
+  </div>
+	<div class="row">
+		<% if @users.any? %>
+			<% @users.each do |user| %>
+				<ul class="follow_users">
+					<%= link_to user_path(user) do %> 
+					<%= attachment_image_tag user, :image, class: "img-circle pull-left profile-img inline-box", fallback: "users/no_image.png" %>
+					<h3><%= user.name %></h3>
+					<% end %>
+				</ul>
+				<hr>
+			<% end %>
+		<% end %>
+	</div>
+	<div class ="paginate">
+        <%= paginate @users %>
+  </div>
+</div>
