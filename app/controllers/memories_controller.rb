@@ -1,4 +1,5 @@
 class MemoriesController < ApplicationController
+    before_action :authenticate_user!, except: [:index,:show]
 	def create
     @portrait = Portrait.find(params[:portrait_id])
     @memory = Memory.new(memory_params)

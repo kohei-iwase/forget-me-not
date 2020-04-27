@@ -16,7 +16,9 @@
                 <h4><%= memory.when %></h4>
               </div>
           <% end %>
+      <% if portrait.user == current_user %>
         <%= render 'flowers/flowers', portrait: portrait, memory: memory %>
+      <% end %>
           </div>
         </div>
         <% end %>

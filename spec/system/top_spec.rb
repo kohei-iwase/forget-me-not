@@ -18,12 +18,12 @@ describe 'トップページのテスト' do
         expect(page).to have_link about_link, href: homes_about_path
       end
       it '新規登録リンクが表示される' do
-        signup_link = find_all('a')[2].native.inner_text
+        signup_link = find_all('a')[4].native.inner_text
         expect(signup_link).to match(/新規登録/i)
         expect(page).to have_link signup_link, href: new_user_registration_path
       end
       it 'ログインリンクが表示される' do
-        login_link = find_all('a')[3].native.inner_text
+        login_link = find_all('a')[5].native.inner_text
         expect(login_link).to match(/ログイン/i)
         expect(page).to have_link login_link, href: new_user_session_path
       end
@@ -48,17 +48,32 @@ describe 'トップページのテスト' do
         click_link album_link
         expect(page).to have_content'アルバム'
       end
+      it 'タイムラインをクリックしたらタイムラインに遷移する' do
+        timeline_link = find_all('a')[4].native.inner_text
+        click_link timeline_link
+        expect(page).to have_content'タイムライン'
+      end
+      it 'ユーザー一覧ページに遷移する' do
+        users_link = find_all('a')[5].native.inner_text
+        click_link users_link
+        expect(page).to have_content'ユーザー一覧'
+      end
+      it 'アルバム一覧に遷移する' do
+        albums_link = find_all('a')[6].native.inner_text
+        click_link albums_link
+        expect(page).to have_content'アルバム一覧'
+      end
+
     end
 
     context 'ログインしていない場合の挙動を確認' do
-      it 'ログインリンクをクリックしたらログイン画面へ遷移する' do
-        login_link = find_all('a')[3].native.inner_text
-        click_link login_link, match: :first
-        expect(current_path).to eq(new_user_session_path)
+      it 'ログインボタンをクリックしたらログイン画面へ遷移する' do
+          click_on "ログイン", match: :first
+          expect(current_path).to eq(new_user_session_path)
+        end
       end
-      it '新規登録リンクをクリックしたら新規登録画面に遷移する' do
-        signup_link = find_all('a')[2].native.inner_text
-        click_link signup_link, match: :first
+      it '新規登録ボタンをクリックしたら新規登録画面に遷移する' do
+        click_on "新規登録", match: :first
         expect(current_path).to eq(new_user_registration_path)
       end
     end

@@ -19,12 +19,18 @@
       <p>
         <%= portrait.more_about_me %>
       </p>
-      <%= render 'bouquets/bouquet', portrait: portrait %>
-            <% if portrait.user == current_user %>
+          <% if user_signed_in? %>
+
+
       <div class="buttons">
+          <% if portrait.user == current_user %>
             <%= link_to "編集", edit_portrait_path(portrait), class: "btn btn-success" %>
+          <% else %>
+            <%= render 'bouquets/bouquet', portrait: portrait %>
+          <% end %>
       </div>
         <% end %>
+          
   　</div>
 <div class="memory-index">
   <div class="subtitle">

@@ -1,4 +1,7 @@
 <div class="content-box">
+  <div class ="paginate">
+        <%= paginate @users %>
+  </div>
 	<div class="row">
 		<% if @users.any? %>
 			<% @users.each do |user| %>
@@ -15,4 +18,7 @@
 			<% end %>
 		<% end %>
 	</div>
+	<div class ="paginate">
+        <%= paginate @users %>
+  </div>
 </div>

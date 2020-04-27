@@ -1,3 +1,4 @@
+<div class="content-box">
 <div class="container">
   <div class="row">
         <div class="memory-box">
@@ -30,13 +31,14 @@
             </tr>
             </tbody>
           </table>
-            <div class="edit">
+            <div class="buttons">
             <%= f.submit "思い出を更新！", class:"btn btn-success" %>
             <% end %>
+            <%= link_to "アルバムに戻る", portrait_path(@portrait), class: "btn btn-primary" %>
             </div>
         </div>
-                <%= link_to "アルバムに戻る", portrait_path(@portrait), class: "btn btn-primary" %>
       </div>
     </div>
+  </div>
 
 

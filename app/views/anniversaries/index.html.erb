@@ -1,1 +1,20 @@
-<%= render 'anniversaries/index', anniversaries: @anniversaries %>
+<h3>通知リスト</h3>
+<table class = "anniversary-table">
+	<thead>
+		<tr>
+			<th>日付</th>
+			<th>要件</th>
+			<th>メモ</th>
+		</tr>
+	</thead>
+    <tbody>
+      <% @anniversaries.each do |anniversary| %>
+          <tr>
+        	<td><%= anniversary.date %></td>
+			<td><%= anniversary.title %></td>
+			<td><%= anniversary.memo %></td>
+		</tr>
+	   <% end %>
+	</tbody>
+</table>
+

@@ -1,13 +1,7 @@
 class AnniversariesController < ApplicationController
 	def index
 		@user = current_user
-		@anniversaries = Anniversary.all
-	end
-
-	def new
-		@user = current_user
-		@portrait = Portrait.find(params[:portrait_id])
-		@anniversary = Anniversary.new
+		@anniversaries = @user.anniversaries
 	end
 
 	def edit
@@ -26,7 +20,8 @@ class AnniversariesController < ApplicationController
     	@portrait = Portrait.find(params[:portrait_id])
     	@anniversary = Anniversary.new(anniversary_params)
 	    @anniversary.portrait_id = @portrait.id
-	    @anniversary.user_id = current_user.id
+	    @user = current_user
+	    @anniversary.user_id = @user.id
     	if @anniversary.save
     		redirect_to portrait_anniversaries_path(@portrait,@anniversary)
     	else

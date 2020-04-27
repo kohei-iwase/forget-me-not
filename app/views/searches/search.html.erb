@@ -11,55 +11,69 @@
 				<% @datas.each do |data| %>
 					<ul class="searched-box">
 						<%= link_to user_path(data) do %>
-							<%= attachment_image_tag data, :image, class: "img-circle pull-left inline-box", fallback: "users/no_image.png" %>
-							<h3><%= data.name %></h3>
-							<h4><%= data.introduction %></h4>
-						<% end %>
-						<% if data.id != current_user.id %>
-							<%#= render "users/follow_form", user: data.id %>
+						<div class="images">
+							<%= attachment_image_tag data, :image, class: "img-circle inline-box", fallback: "users/no_image.png" %>
+						</div>
+						<div class="profiles">
+							<h4>名前：<%= data.name %></h4>
+							<h4>自己紹介</h4>
+							<%= data.introduction %>
+						</div>
 						<% end %>
 					</ul>
+					<hr>
 				<% end %>
-				<hr>
 			<% end %>
 	<% elsif @model == 'portrait_name' %>
 		<% if @datas.any? %>
 				<% @datas.each do |data| %>
 					<ul class="searched-box">
 						<%= link_to portrait_path(data) do %>
-    						<%= attachment_image_tag portrait, :image, width:"70%", height:"100%", fallback: "pets/no_image.png"%>
-							<h3><%= data.name %></h3>
+						<div class ="images">
+    						<%= attachment_image_tag data, :image,class: "img-circle inline-box", fallback: "pets/no_image.png"%>
+    					</div>
+    					<div class ="profiles">
+							<h4>名前：<%= data.name %></h4>
 							<h4>種類：<%= data.species %></h4>
+						</div>
 						<% end %>
 					</ul>
+					<hr>
 				<% end %>
-				<hr>
 			<% end %>
 	<% elsif @model == 'portrait_species' %>
 		<% if @datas.any? %>
 				<% @datas.each do |data| %>
 					<ul class="searched-box">
 						<%= link_to portrait_path(data) do %>
-							<%= attachment_image_tag portrait, :image, width:"70%", height:"100%", fallback: "pets/no_image.png"%>
-							<h3><%= data.name %></h3>
+						<div class ="images">
+							<%= attachment_image_tag data, :image,class: "img-circle inline-box",fallback: "pets/no_image.png"%>
+						</div>
+						<div class ="profiles">
+							<h4>名前：<%= data.name %></h4>
 							<h4>種類：<%= data.species %></h4>
+						</div>
 						<% end %>
 					</ul>
+					<hr>
 				<% end %>
-				<hr>
 			<% end %>
 	<% else @model == 'memory' %>
 		<% if @datas.any? %>
 				<% @datas.each do |data| %>
 					<ul class="searched-box">
 						<%= link_to portrait_memory_path(data.portrait_id,data) do %>
-					          <%= attachment_image_tag memory, :image, width: "100%", fallback: "pets/cat.png"%>
-							<h3><%= data.title %></h3>
-							<h4>いつの思い出？：<%= data.when %></h4>
+						<div class ="images">
+					          <%= attachment_image_tag data, :image,class: "img-circle inline-box", fallback: "pets/cat.png"%>
+					      </div>
+					    <div class="profiles">
+							<h4>タイトル：<%= data.title %></h4>
+							<h4>いつ？：<%= data.when %></h4>
+						</div>
 						<% end %>
 					</ul>
+					<hr>
 				<% end %>
-				<hr>
 			<% end %>
 
 	<% end %>

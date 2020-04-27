@@ -1,5 +1,5 @@
 class PortraitsController < ApplicationController
-    #before_action :baria_user, only: [:edit,:update]
+    before_action :authenticate_user!, except: [:index,:show]
 
 	def new
 		@portrait = Portrait.new
@@ -26,8 +26,8 @@ class PortraitsController < ApplicationController
 	end
 
 	def show
-		@user = current_user
 		@portrait = Portrait.find(params[:id])
+		@user = @portrait.user
 		@memrories = @portrait.memories.all
 		@memory = Memory.new
 	end
@@ -63,9 +63,9 @@ class PortraitsController < ApplicationController
         								:likes_and_dislikes,:interest,:specialty,:family,:personality,:found,
         								:more_about_me)
     	end
-    	def baria_user
-    		unless params[:user_id].to_i == current_user.id
-      		redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
-    		end
-		end
+  #   	def baria_user
+  #   		unless params[:user_id].to_i == current_user.id
+  #     		redirect_to user_path(current_user)  #現在のユーザー詳細に戻る
+  #   		end
+		# end
 end

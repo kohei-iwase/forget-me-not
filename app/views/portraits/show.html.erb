@@ -1,6 +1,6 @@
 
 <div class="content-box">
-  <div class="row album">
+   <div class="row album">
    <div class="ribbon6">
       <h2><%= @portrait.name %>について</h2>
    </div>
@@ -16,6 +16,7 @@
     <h3>プロフィール</h3>
     <%= render 'portraits/table', portrait: @portrait %>
       <br>
+    <% if user_signed_in? %>
     <% if @portrait.user == current_user %>
       <div class="buttons">
         <%= link_to "編集", edit_portrait_path(@portrait), class: "btn btn-success" %>
@@ -23,8 +24,8 @@
         <%= render 'bouquets/bouquet', portrait: @portrait %>
       </div>
      <% end %>
+     <% end %>
    </div>
-
   </div>
     <hr>
   <div class="row memories">
@@ -41,5 +42,9 @@
         </div>
         <%= render 'memories/form', portrait:@portrait, memory: @memory%>
     </div>
+    <% else %>
+    <div class="user-profile">
+    <%= render 'users/status',user: @user %>
+  </div>
   <% end %>
 </div>
