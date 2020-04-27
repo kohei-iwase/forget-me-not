@@ -25,6 +25,7 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
     if  @user.update(user_params)
+        flash[:success] = "更新に成功しました！"
         redirect_to user_path(@user)
     else
         redirect_to edit_user_path(@user)

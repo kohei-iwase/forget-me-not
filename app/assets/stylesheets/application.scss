@@ -241,7 +241,6 @@ a{
   box-shadow: var(--box-shadow) var(--color-shadow);
   margin: 1rem;
   padding: 1.25rem;
- 
 }
 
 /* portraits */
@@ -253,6 +252,9 @@ a{
   border-radius:16px;
 }
 
+.portrait-box{
+    margin:20px;
+}
 
 /* memories */
   .memory-index{
@@ -261,7 +263,7 @@ a{
     flex-flow:row wrap;
   }
   .memory-box{
-    height: 300px;
+    height: 380px;
     width: 29%;
     margin:10px;
     padding-left: 10px;
@@ -269,9 +271,25 @@ a{
     border-radius:16px;
     text-align: left;
   }
+  .memory-text{
+  height:100px;
+  overflow:hidden;
+  }
+  .memory-when{
+  height:30px;
+  padding:5px;
+  text-align:center;
+  vertical-align:middle;
+  overflow:hidden;
+  background-color:#fce6e8;
+  }
   .memory-index-image{
   width:90%;
   height :150px;
+  }
+
+  .memory-table{
+    margin:auto;
   }
 
   .memory-index-image image{
@@ -334,16 +352,10 @@ footer {
     background-position: 0;
         }
 
-.portrait-box{
-    margin:20px;
-}
+
 .form-table{
     width:100%;
     border: solid 1px;
-}
-
-.memory-table{
-    margin:auto;
 }
 
 /*検索用*/
@@ -351,6 +363,10 @@ footer {
   padding-left:80px;
   text-align:left;
   height:150px;
+}
+
+.sidebar h3{
+  text-align:center;
 }
 
 .images{
