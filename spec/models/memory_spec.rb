@@ -9,13 +9,13 @@ RSpec.describe '思い出モデルのテスト', type: :model do
     context 'titleカラム' do
       it '空欄でないこと' do
         memory.title = ''
-        expect(memory.valid?).to eq false;
+        expect(memory.valid?).to eq false
       end
     end
     context '本文カラム' do
       it '200文字以下であること' do
-        memory.memory = Faker::Lorem.characters(number:201)
-        expect(memory.valid?).to eq false;
+        memory.memory = Faker::Lorem.characters(number: 201)
+        expect(memory.valid?).to eq false
       end
     end
   end

@@ -9,13 +9,13 @@ RSpec.describe 'anniversaryモデルのテスト', type: :model do
     context 'titleカラム' do
       it '空欄でないこと' do
         anniversary.title = ''
-        expect(anniversary.valid?).to eq false;
+        expect(anniversary.valid?).to eq false
       end
     end
     context 'メモカラム' do
       it '200文字以下であること' do
-        anniversary.memo = Faker::Lorem.characters(number:201)
-        expect(anniversary.valid?).to eq false;
+        anniversary.memo = Faker::Lorem.characters(number: 201)
+        expect(anniversary.valid?).to eq false
       end
     end
   end

@@ -7,7 +7,7 @@ describe 'ユーザー認証のテスト' do
     end
     context '新規登録画面に遷移' do
       it '新規登録に成功する' do
-        fill_in 'user[name]', with: "TEST"
+        fill_in 'user[name]', with: 'TEST'
         fill_in 'user[email]', with: Faker::Internet.email
         fill_in 'user[password]', with: 'password'
         fill_in 'user[password_confirmation]', with: 'password'
@@ -118,17 +118,17 @@ describe 'ユーザーのテスト' do
       it '自己紹介編集フォームに自分の自己紹介が表示される' do
         expect(page).to have_button '変更を保存'
       end
-#       it '編集に成功する' do
-#         fill_in 'user[name]', "hoge"
-#         click_button '変更を保存'
-# #        expect(page).to have_content 'successfully'
-#         expect(current_path).to eq('/users/' + user.id.to_s)
-#       end
+      #       it '編集に成功する' do
+      #         fill_in 'user[name]', "hoge"
+      #         click_button '変更を保存'
+      # #        expect(page).to have_content 'successfully'
+      #         expect(current_path).to eq('/users/' + user.id.to_s)
+      #       end
       it '編集に失敗する' do
         fill_in 'user[name]', with: ''
         click_button '変更を保存'
-#        expect(page).to have_content 'error'
-				#もう少し詳細にエラー文出したい
+        #        expect(page).to have_content 'error'
+        # もう少し詳細にエラー文出したい
         expect(current_path).to eq('/users/' + user.id.to_s + '/edit')
       end
     end
