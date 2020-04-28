@@ -141,11 +141,6 @@ a{
   background-repeat: no-repeat;
     }
 
-  .top-text{
-  text-align:left;
-  margin-left:20px;
-  }
-
   .top-text h3{
   position: relative;
   color: #333;
@@ -188,30 +183,18 @@ a{
   background-color:rgba(255,255,255,0.6);
   }
 
-.top-contents{
-  width:100%;
-}
-.top-content{
-  clear:both;
-  border: 1px solid var(--color-bg-secondary);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow) var(--color-shadow);
-  margin: 1rem;
-  padding: 1.25rem;
-  width:100%;
-  height:400px;
-  display:flex;
-  flex-flow: row nowrap;
-}
-
-.content-image{
-  width:40%;
-}
-.content-text{
-  padding-top:150px;
-  vertical-align:middle;
-  width:50%;
-}
+  .top-content{
+  margin-top:30px;
+  height:300px;
+  }
+  .top-content-image{
+  padding-top:40px;
+  margin-bottom:20px;
+  }
+  .top-content-text{
+  padding-top:80px;
+  vertical-align:middle
+  }
 
 /* about */
 .topic{
@@ -224,7 +207,9 @@ a{
   padding: 1.25rem;
 
 }
-
+.topic-text{
+  padding:20px;
+}
 .how-to-use{
   clear:both;
   margin-top:50px;
