@@ -25,9 +25,10 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
     if  @user.update(user_params)
-        flash[:success] = "更新に成功しました！"
+        flash[:success] = "プロフィールの更新に成功しました！"
         redirect_to user_path(@user)
     else
+        flash[:danger] = "プロフィールの更新に失敗しました"
         redirect_to edit_user_path(@user)
     end
   end
@@ -48,7 +49,7 @@ class UsersController < ApplicationController
 
   def timelines
     @portraits = current_user.portraits.build
-    @timelines  = current_user.timeline.order(created_at: :desc).page(params[:page]).per(4)
+    @timelines  = current_user.timeline.order(created_at: :desc).page(params[:page]).per(8)
   end
 
 

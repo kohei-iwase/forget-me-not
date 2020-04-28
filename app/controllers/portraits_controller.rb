@@ -11,11 +11,12 @@ class PortraitsController < ApplicationController
     	@portrait.user_id = current_user.id
     	@user = current_user
     	if @portrait.save
-#    		WelcomeMailer.welcome(@user).deliver
- #   		flash[:success] = "アルバムを作成しました。"
+#    		WelcomeMailer.welcome(@user).deliver　メールのテスト用
+    		flash[:success] = "アルバムを作成しました。"
     		redirect_to edit_portrait_path(@portrait.id)
     	else
-    		@timelines = []
+#    		@timelines = []
+    		flash[:danger] = "アルバムを作成に失敗しました。"
     		redirect_to new_portrait_path
     	end
 	end
@@ -44,15 +45,19 @@ class PortraitsController < ApplicationController
 	def update
 		@portrait = Portrait.find(params[:id])
     	if @portrait.update(portrait_params)
+    		flash[:success] = "アルバムの更新に成功しました！"
 	    	redirect_to portrait_path(@portrait)
 		else
+			flash[:danger] = "アルバムの更新に失敗しました"
 			redirect_to edit_portrait_path(@portrait)
 		end
 	end
 
 	def destroy
 		@portrait = Portrait.find(params[:id])
-		@portrait.destroy
+		if @portrait.destroy
+			flash[:danger] = "アルバムを削除しました"
+		end
 		redirect_to portraits_path
 	end
 

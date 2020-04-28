@@ -34,14 +34,7 @@ a{
 	clear:both;
 }
 
-/* font (font-family: 'kodomo','yasashisa';で使用可能)*/
-@font-face {
-  font-family: 'kodomo';
-  src: font-url('KodomoRounded-Light.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
+/* font (font-family: yasashisa';で使用可能)*/
 @font-face {
   font-family: 'yasashisa';
   src: font-url('07yasashisa.ttf')format('truetype');
@@ -131,7 +124,6 @@ a{
 }
 
 /* body */
-
 .content-wrapper {
     width:1000px;
     margin:auto;
@@ -148,11 +140,6 @@ a{
   background-size: contain;
   background-repeat: no-repeat;
     }
-
-  .top-text{
-  text-align:left;
-  margin-left:20px;
-  }
 
   .top-text h3{
   position: relative;
@@ -196,44 +183,21 @@ a{
   background-color:rgba(255,255,255,0.6);
   }
 
-.top-contents{
-  width:100%;
-}
-.top-content{
-  clear:both;
-  border: 1px solid var(--color-bg-secondary);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow) var(--color-shadow);
-  margin: 1rem;
-  padding: 1.25rem;
-  width:100%;
-  height:400px;
-  display:flex;
-  flex-flow: row nowrap;
-}
-
-.content-image{
-  width:40%;
-}
-.content-text{
-  padding-top:150px;
-  vertical-align:middle;
-  width:50%;
-
-}
+  .top-content{
+  margin-top:30px;
+  height:300px;
+  }
+  .top-content-image{
+  padding-top:40px;
+  margin-bottom:20px;
+  }
+  .top-content-text{
+  padding-top:80px;
+  vertical-align:middle
+  }
 
 /* about */
 .topic{
-  clear:both;
-  border: 1px solid var(--color-bg-secondary);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow) var(--color-shadow);
-  margin: 1rem;
-  padding: 1.25rem;
-
-}
-
-.how-to-use{
   margin-top:100px;
   clear:both;
   border: 1px solid var(--color-bg-secondary);
@@ -241,8 +205,20 @@ a{
   box-shadow: var(--box-shadow) var(--color-shadow);
   margin: 1rem;
   padding: 1.25rem;
-}
 
+}
+.topic-text{
+  padding:20px;
+}
+.how-to-use{
+  clear:both;
+  margin-top:50px;
+  margi-bottom:50px;
+  }
+
+.how-to-use-image{
+  margin-bottom:30px;
+}
 /* portraits */
 
 .pet-image{
@@ -263,7 +239,7 @@ a{
     flex-flow:row wrap;
   }
   .memory-box{
-    height: 380px;
+    height: 430px;
     width: 29%;
     margin:10px;
     padding-left: 10px;
@@ -276,7 +252,7 @@ a{
   overflow:hidden;
   }
   .memory-when{
-  height:30px;
+  height:50px;
   padding:5px;
   text-align:center;
   vertical-align:middle;
@@ -285,16 +261,16 @@ a{
   }
   .memory-index-image{
   width:90%;
-  height :150px;
+  height :200px;
   }
 
   .memory-table{
     margin:auto;
   }
 
-  .memory-index-image image{
+  .memory-index-image img{
    max-height:100%;
-   max-widht:100%;
+   border-radius:16px;
    }
 
 /* users */
