@@ -24,7 +24,7 @@
               <th>命日</th>
               <td><%= portrait.anniversary %>
                 <% if @portrait.user == current_user %>
-                <%= link_to "命日の通知設定", edit_portrait_anniversary_path(portrait), class: "btn btn-success" %>
+                <%= link_to "供養日の通知設定", edit_portrait_anniversary_path(portrait), class: "btn btn-success" %>
                 <% end %>
               </td>
             </tr>

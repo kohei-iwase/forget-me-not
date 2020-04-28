@@ -1,10 +1,10 @@
       <%= form_with model: [ portrait, memory ],local: true do |f| %>
           <div class="row">
             <div class="col-xs-6">
-            <%= f.text_field :title, class:"form-control", placeholder:"思い出のタイトル" %>
+            <%= f.text_field :title, class:"form-control", placeholder:"思い出のタイトル（必須）" %>
             <%= f.attachment_field :image%>
             <%= f.text_field :when, class:"form-control", placeholder:"いつの思い出" %>
-            <%= f.text_area :memory, class:"form-control", rows:"5", placeholder:"思い出を書いて！" %>
+            <%= f.text_area :memory, class:"form-control", rows:"5", placeholder:"思い出を書いて！（２００文字以内）" %>
             </div>
           </div>
           <%= f.submit "思い出を作る！", class:"btn btn-primary" %>

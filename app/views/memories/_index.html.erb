@@ -16,8 +16,10 @@
                 <h5><%= memory.memory %></h5>
             </div>
           <% end %>
+      <% if user_signed_in? %>
       <% if portrait.user != current_user %>
         <%= render 'flowers/flowers', portrait: portrait, memory: memory %>
+      <% end %>
       <% end %>
           </div>
         </div>

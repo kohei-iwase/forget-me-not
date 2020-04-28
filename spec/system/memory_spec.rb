@@ -53,6 +53,7 @@ describe '思い出投稿のテスト' do
         click_on 'この思い出と別れる'
         # expect.to change(portrait.memory.count).by(-1)
         expect(current_path).to eq('/portraits/' + portrait.id.to_s)
+        expect(page).to have_content "削除しました"
       end
       it 'アルバムに戻るする' do
         click_on 'アルバムに戻る'
@@ -112,14 +113,15 @@ describe '思い出投稿のテスト' do
         fill_in 'memory[when]', with: Faker::Lorem.characters(number:5)
         fill_in 'memory[memory]', with: Faker::Lorem.characters(number:20)
         click_button '思い出を更新！'
-        expect(page).to have_content '懐かしい'
+        expect(page).to have_content "成功しました"
+        expect(page).to have_content "懐かしい"
         expect(current_path).to eq('/portraits/' + portrait.id.to_s + '/memories/' + memory.id.to_s)
       end
       it '思い出編集に失敗する' do
         fill_in 'memory[title]', with: ''
         fill_in 'memory[memory]', with: '表示されない'
         click_button '思い出を更新！'
-        # expect(page).to have_content 'error'
+        expect(page).to have_content '失敗しました'
         expect(page).to have_no_content '表示されない'
         expect(current_path).to eq('/portraits/' + portrait.id.to_s + '/memories/' + memory.id.to_s + '/edit')
       end

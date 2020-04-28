@@ -263,7 +263,7 @@ a{
     flex-flow:row wrap;
   }
   .memory-box{
-    height: 380px;
+    height: 430px;
     width: 29%;
     margin:10px;
     padding-left: 10px;
@@ -276,7 +276,7 @@ a{
   overflow:hidden;
   }
   .memory-when{
-  height:30px;
+  height:50px;
   padding:5px;
   text-align:center;
   vertical-align:middle;
@@ -285,16 +285,16 @@ a{
   }
   .memory-index-image{
   width:90%;
-  height :150px;
+  height :200px;
   }
 
   .memory-table{
     margin:auto;
   }
 
-  .memory-index-image image{
+  .memory-index-image img{
    max-height:100%;
-   max-widht:100%;
+   border-radius:16px;
    }
 
 /* users */

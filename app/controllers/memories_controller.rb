@@ -5,8 +5,10 @@ class MemoriesController < ApplicationController
     @memory = Memory.new(memory_params)
     @memory.portrait_id = @portrait.id
         if @memory.save
+            flash[:success] = "思い出を作成しました！"
             redirect_to portrait_memory_path(@portrait,@memory)
         else
+            flash[:danger] = "思い出の作成に失敗しました"
             redirect_to portrait_path(@portrait)
         end
 	end
@@ -30,8 +32,10 @@ class MemoriesController < ApplicationController
         @portrait = Portrait.find(params[:portrait_id])
         @memory = Memory.find(params[:id])
         if @memory.update(memory_params)
+            flash[:success] = "思い出を更新に成功しました！"
             redirect_to portrait_memory_path(@portrait,@memory)
         else
+            flash[:danger] = "思い出の更新に失敗しました"
             redirect_to edit_portrait_memory_path(@portrait,@memory)
         end
     end
@@ -39,7 +43,9 @@ class MemoriesController < ApplicationController
     def destroy
         @portrait = Portrait.find(params[:portrait_id])
         @memory = Memory.find(params[:id])
-        @memory.destroy
+        if @memory.destroy
+            flash[:danger] = "思い出を削除しました"
+        end
         redirect_to portrait_path(@portrait)
     end
 

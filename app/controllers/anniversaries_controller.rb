@@ -21,8 +21,10 @@ class AnniversariesController < ApplicationController
 	    @user = current_user
 	    @anniversary.user_id = @user.id
     	if @anniversary.save
+    		flash[:success] = "供養日を設定しました"
     		redirect_to portrait_anniversaries_path(@portrait)
     	else
+    		flash[:danger] = "供養日設定に失敗しました"
     		render :edit
     	end
     end
@@ -33,8 +35,10 @@ class AnniversariesController < ApplicationController
 	    @anniversary.portrait_id = @portrait.id
 	    @anniversary.user_id = current_user.id
     	if @anniversary.update
+    		 flash[:success] = "供養日を設定しました"
     		redirect_to portrait_anniversaries_path(@portrait)
     	else
+    		 flash[:danger] = "供養日設定に失敗しました"
     		render :edit
     	end
     end
@@ -42,8 +46,10 @@ class AnniversariesController < ApplicationController
     def destroy
         @portrait = Portrait.find(params[:portrait_id])
         @anniversary = Anniversary.find(params[:id])
-        @anniversary.destroy
+        if @anniversary.destroy
+        flash[:success] = "供養日を設定しました"
         redirect_to portrait_anniversaries_path(@portrait)
+        end
     end
 
 
