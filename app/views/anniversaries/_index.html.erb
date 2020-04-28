@@ -9,15 +9,20 @@
 	</thead>
     <tbody>
       <% anniversaries.each do |anniversary| %>
+
           <tr>
           	<td>
           		<div class="icon">
-          		<%= attachment_image_tag anniversary.portrait, :image, width:"100%", fallback: "pets/no_image.png"%>
+          			<%= link_to portrait_anniversaries_path(anniversary.portrait) do %>
+          				<%= attachment_image_tag anniversary.portrait, :image, width:"100%", fallback: "pets/no_image.png"%>
+          			<% end %>
           		</div>
           	</td>
         	<td><%= anniversary.date %></td>
 			<td><%= anniversary.title %></td>
-		</tr>
+
+		  </tr>
+
 	   <% end %>
 	</tbody>
 </table>

@@ -34,14 +34,7 @@ a{
 	clear:both;
 }
 
-/* font (font-family: 'kodomo','yasashisa';で使用可能)*/
-@font-face {
-  font-family: 'kodomo';
-  src: font-url('KodomoRounded-Light.otf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
+/* font (font-family: yasashisa';で使用可能)*/
 @font-face {
   font-family: 'yasashisa';
   src: font-url('07yasashisa.ttf')format('truetype');
@@ -131,7 +124,6 @@ a{
 }
 
 /* body */
-
 .content-wrapper {
     width:1000px;
     margin:auto;
@@ -219,11 +211,11 @@ a{
   padding-top:150px;
   vertical-align:middle;
   width:50%;
-
 }
 
 /* about */
 .topic{
+  margin-top:100px;
   clear:both;
   border: 1px solid var(--color-bg-secondary);
   border-radius: var(--border-radius);
@@ -234,15 +226,14 @@ a{
 }
 
 .how-to-use{
-  margin-top:100px;
   clear:both;
-  border: 1px solid var(--color-bg-secondary);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow) var(--color-shadow);
-  margin: 1rem;
-  padding: 1.25rem;
-}
+  margin-top:50px;
+  margi-bottom:50px;
+  }
 
+.how-to-use-image{
+  margin-bottom:30px;
+}
 /* portraits */
 
 .pet-image{
