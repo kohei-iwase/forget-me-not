@@ -37,21 +37,19 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capistrano'
   gem 'capistrano-rails'
-  gem 'capistrano3-puma'
   gem 'capistrano-rbenv'
-   gem 'rubocop', require: false
+  gem 'capistrano3-puma'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance'
   gem 'rubocop-rails'
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'web-console', '>= 3.3.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
@@ -63,17 +61,16 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 
-    # テスト用
-  gem 'rspec-rails'
-  gem "factory_bot_rails"
-  gem 'rspec-parameterized'
-  gem 'shoulda-matchers'
+  # テスト用
+  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
-
+  gem 'rspec-parameterized'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # ログイン機能
 gem 'devise'
@@ -82,19 +79,18 @@ gem 'devise'
 gem 'bootstrap-sass', '~>3.4.1'
 gem 'jquery-rails'
 
-
-gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 # ページャー
-gem 'kaminari','~> 1.1.1'
+gem 'kaminari', '~> 1.1.1'
 
 # 画像投稿
-gem 'refile', require: "refile/rails", github: 'manfe/refile'
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 
 # crontab管理
 gem 'whenever', require: false
 
-#カレンダー設定
+# カレンダー設定
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
@@ -104,4 +100,3 @@ gem 'dotenv-rails', require: 'dotenv/rails-now'
 group :production do
   gem 'mysql2'
 end
-

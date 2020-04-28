@@ -8,13 +8,13 @@ RSpec.describe 'アルバムモデルのテスト', type: :model do
     context 'nameカラム' do
       it '空欄でないこと' do
         portrait.name = ''
-        expect(portrait.valid?).to eq false;
+        expect(portrait.valid?).to eq false
       end
     end
     context '本文カラム' do
       it '200文字以下であること' do
-        portrait.more_about_me = Faker::Lorem.characters(number:201)
-        expect(portrait.valid?).to eq false;
+        portrait.more_about_me = Faker::Lorem.characters(number: 201)
+        expect(portrait.valid?).to eq false
       end
     end
   end

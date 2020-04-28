@@ -13,22 +13,22 @@ RSpec.describe 'Userモデルのテスト', type: :model do
       let(:test_user) { user }
       it '空欄でないこと' do
         test_user.name = ''
-        is_expected.to eq false;
+        is_expected.to eq false
       end
       it '2文字以上であること' do
-        test_user.name = Faker::Lorem.characters(number:1)
-        is_expected.to eq false;
+        test_user.name = Faker::Lorem.characters(number: 1)
+        is_expected.to eq false
       end
       it '30文字以下であること' do
-        test_user.name = Faker::Lorem.characters(number:31)
-        is_expected.to eq false;
+        test_user.name = Faker::Lorem.characters(number: 31)
+        is_expected.to eq false
       end
     end
 
     context 'introductionカラム' do
       let(:test_user) { user }
       it '200文字以下であること' do
-        test_user.introduction = Faker::Lorem.characters(number:201)
+        test_user.introduction = Faker::Lorem.characters(number: 201)
         is_expected.to eq false
       end
     end

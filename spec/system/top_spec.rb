@@ -27,7 +27,6 @@ describe 'トップページのテスト' do
         expect(login_link).to match(/ログイン/i)
         expect(page).to have_link login_link, href: new_user_session_path
       end
-
     end
 
     context 'ログインしている場合の挙動を確認' do
@@ -46,33 +45,32 @@ describe 'トップページのテスト' do
       it 'アルバムを作るをクリックしたらアルバム投稿画面に遷移する' do
         album_link = find_all('a')[3].native.inner_text
         click_link album_link
-        expect(page).to have_content'アルバム'
+        expect(page).to have_content 'アルバム'
       end
       it 'タイムラインをクリックしたらタイムラインに遷移する' do
         timeline_link = find_all('a')[4].native.inner_text
         click_link timeline_link
-        expect(page).to have_content'タイムライン'
+        expect(page).to have_content 'タイムライン'
       end
       it 'ユーザー一覧ページに遷移する' do
         users_link = find_all('a')[5].native.inner_text
         click_link users_link
-        expect(page).to have_content'ユーザー一覧'
+        expect(page).to have_content 'ユーザー一覧'
       end
       it 'アルバム一覧に遷移する' do
         albums_link = find_all('a')[6].native.inner_text
         click_link albums_link
-        expect(page).to have_content'アルバム一覧'
+        expect(page).to have_content 'アルバム一覧'
       end
-
     end
 
     context 'ログインしていない場合の挙動を確認' do
       it 'ログインボタンをクリックしたらログイン画面へ遷移する' do
-          click_on "ログイン", match: :first
-          expect(current_path).to eq(new_user_session_path)
+        click_on 'ログイン', match: :first
+        expect(current_path).to eq(new_user_session_path)
       end
       it '新規登録ボタンをクリックしたら新規登録画面に遷移する' do
-        click_on "新規登録", match: :first
+        click_on '新規登録', match: :first
         expect(current_path).to eq(new_user_registration_path)
       end
     end
