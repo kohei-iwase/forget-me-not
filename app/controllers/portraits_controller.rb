@@ -16,7 +16,7 @@ class PortraitsController < ApplicationController
       redirect_to edit_portrait_path(@portrait.id)
     else
       #        @timelines = []
-      flash[:danger] = 'アルバムを作成に失敗しました。'
+      flash[:danger] = 'アルバムの作成に失敗しました。'
       redirect_to new_portrait_path
     end
   end

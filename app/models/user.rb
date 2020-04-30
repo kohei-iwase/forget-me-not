@@ -63,4 +63,18 @@ class User < ApplicationRecord
     Portrait.where("user_id IN (#{following_ids})
                     OR user_id = :user_id", user_id: id)
   end
+
+    #フォローの通知メソッド
+  def create_notification_follow!(current_user)
+      #現在のユーザーによるフォローにチェックが入っているか
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+
 end
