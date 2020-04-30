@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   	resource :bouquets, only: [:create,:destroy]
   end
 
+  #フォロイー、フォロワー作成用
   resources :relationships, only: [:create,:destroy]
   #通知用のルーティング
   resources :notifications, only: :index

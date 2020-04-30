@@ -1,6 +1,7 @@
 class Memory < ApplicationRecord
   belongs_to :portrait
-  has_many :flowers
+  has_many   :flowers
+  has_many 	 :notification
   attachment :image
 
   validates :title, presence: true, length: { minimum: 2, maximum: 30 }

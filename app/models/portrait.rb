@@ -3,6 +3,7 @@ class Portrait < ApplicationRecord
   has_many  :memories, dependent: :destroy
   has_many  :bouquets, dependent: :destroy
   has_many :anniversaries, dependent: :destroy
+  has_many   :notification
   attachment :image
 
   # バリデーション
@@ -16,42 +17,37 @@ class Portrait < ApplicationRecord
     bouquets.where(user_id: user.id).exists?
   end
 
-  # 誰によって献花されたか？
-  def create_notification_by(current_user)
-    notification = current_user.active_notifications.new(
-      portrait_id: id,
-      visited_id: user_id,
-      action: 'bouquet'
-    )
-    notification.save if notification.valid?
+  #献花の通知メソッド
+  def create_notification_bouquet!(current_user)
+    # 現在献花されているかの検索
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and portrait_id = ? and action = ? ", current_user.id, user_id, id, 'bouquet'])
+    # 現在アクションの「献花」がされていない場合のみ通知レコードを作成
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        portrait_id: id,
+        visited_id: user_id,
+        action: 'like'
+      )
+      # 自分の投稿に対するいいねの場合は、通知済みとする
+      if notification.visitor_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
   end
 
-  def create_notification_bouquet!(current_user, bouquet_id)
-    # 自分以外に献花している人をすべて取得し、全員に通知を送る
-    temp_ids = Bouquet.select(:user_id).where(portrait_id: id).where.not(user_id: current_user.id).distinct
-    temp_ids.each do |temp_id|
-      save_notification_bouquet!(current_user, bouquet_id, temp_id['user_id'])
+  #フォローの通知メソッド
+  def create_notification_follow!(current_user)
+      #現在のユーザーによるフォローにチェックが入っているか
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
     end
-    # まだ誰も献花していない場合は、投稿者に通知を送る
-    if temp_ids.blank?
-      save_notification_bouquet!(current_user, bouquet_id, user_id)
-     end
   end
-
-  def save_notification_comment!(current_user, comment_id, visited_id)
-    # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
-    notification = current_user.active_notifications.new(
-      item_id: id,
-      comment_id: comment_id,
-      visited_id: visited_id,
-      action: 'comment'
-    )
-    # 自分の投稿に対するコメントの場合は、通知済みとする
-    if notification.visiter_id == notification.visited_id
-      notification.checked = true
-    end
-    notification.save if notification.valid?
-     end
 
   private
 

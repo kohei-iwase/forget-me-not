@@ -1,0 +1,21 @@
+<div class= "col-xs-6.mx-auto">
+  <div class= "form-inline">
+      <%= link_to user_path(visitor) do %>
+        <%= attachment_image_tag user, :image, class: "img-circle pull-left profile-img inline-box", fallback: "users/no_image.png" %>
+        <strong><%= visitor.name %></strong>
+          さん
+      <% end %>
+          <% if notification.action = 'follow' %>
+            <%= "があなたをフォローしました" %>
+          <% elsif notification.action = 'bouquet' %> 
+            <%= link_to 'があなたのアルバム', notification.portrait, style: "font-weight: bold;" %>
+            <%= "に献花しました" %>
+          <% else notification.action = 'flower' %>
+            <%= link_to 'があなたの思い出', notification.portrait, style: "font-weight: bold;" %>
+            <%= "に献花しました" %>
+          <% end %>
+  </div>
+</div>
+        def unchecked_notifications
+    @notifications = current_user.passive_notifications.where(checked: false)
+  end

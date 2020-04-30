@@ -1,7 +1,7 @@
 <% if user ||= current_user %>
 <div class="user-box">
 <%= link_to user_path(current_user) do %>
-<%= attachment_image_tag user, :image, class: "img-circle inline-box", fallback: "no_image.jpg" %>
+<%= attachment_image_tag user, :image, class: "img-circle inline-box", fallback: "users/no_image.jpg" %>
 	<p>
     <h3 class="profile-name">
         <%= current_user.name %>さん

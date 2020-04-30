@@ -4,11 +4,12 @@ class BouquetsController < ApplicationController
     portrait = Portrait.find(params[:portrait_id])
     bouquet = current_user.bouquets.new(portrait_id: portrait.id)
     bouquet.save
-    # 通知の作成
-    # redirect_to portrait_path(portrait)
-    # portrait.create_notification_bouquet!(current_user)
+    # 通知の作成献花時のみ追加
+    post.create_notification_bouquet!(current_user)
+    redirect_to portrait_path(portrait_id)
   end
 
+  #そもそもdestroyメソッドがいるかは後で考える
   def destroy
     portrait = Portrait.find(params[:portrait_id])
     bouquet = current_user.bouquets.find_by(portrait_id: portrait.id)
