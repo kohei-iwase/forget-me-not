@@ -28,16 +28,16 @@ class Portrait < ApplicationRecord
 
   #献花の通知メソッド
   def create_notification_bouquet(current_user)
-     現在献花されているかの検索
+     #現在献花されているかの検索
     temp = Notification.where(["visiter_id = ? and visited_id = ? and portrait_id = ? and action = ? ", current_user.id, user_id, id, 'bouquet'])
-     現在アクションの「献花」がされていない場合のみ通知レコードを作成
+     #現在アクションの「献花」がされていない場合のみ通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
-        portrait_id: self.id,
-        visited_id: self.contributer.id,
+        portrait_id: id,
+        visited_id: user_id,
         action: 'bouquet'
       )
-       自分の投稿に対するいいねの場合は、通知済みとする
+       #自分の投稿に対するいいねの場合は、通知済みとする
       if notification.visiter_id == notification.visited_id
         notification.checked = true
       end
