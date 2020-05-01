@@ -48,7 +48,7 @@ class PortraitsController < ApplicationController
     else
       flash[:danger] = 'アルバムの更新に失敗しました'
       redirect_to edit_portrait_path(@portrait)
-  end
+    end
   end
 
   def destroy
@@ -57,14 +57,21 @@ class PortraitsController < ApplicationController
     redirect_to portraits_path
   end
 
-  # ポートレイトのストロングパラメータ
-  private
+  def create_notification_bouquet(current_user)
+    notification = current_user.active_notifications.new(
+      portrait_id:self.id,
+      visited_id:self.contributer.id,
+      action:"bouquet"
+    )
+    notification.save if notification.valid?
+  end
 
+  private
   def portrait_params
     params.require(:portrait).permit(:name, :image, :age, :gender, :species, :date_of_birth, :anniversary,
                                      :likes_and_dislikes, :interest, :specialty, :family, :personality, :found,
                                      :more_about_me)
-   end
+  end
   #     def baria_user
   #       unless params[:user_id].to_i == current_user.id
   #         redirect_to user_path(current_user)  #現在のユーザー詳細に戻る

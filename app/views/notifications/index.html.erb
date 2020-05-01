@@ -1,8 +1,34 @@
 <!-- 自分の投稿に対するいいね、コメントは通知に表示しない -->
-<%= notifications = @notifications.where.not(visitor_id: current_user.id) %>
-  <% if notifications.exists? %>
-  	<%= render 'notifications/notifications', visitor: notification.visitor, visited: notification.visited %>
-  	<%= paginate notifications %>
+<%# notifications = @notifications.where.not(visitor_id: current_user.id) %>
+
+  <% if @notifications.nil? %>
+	 <p>通知はありません</p>
   <% else %> 
-  	<p>通知はありません</p>
+<div class= "col-xs-6.mx-auto">
+  <div class= "form-inline">
+  	<% @notifications.each do |notification| %>
+
+  	  	<% visiter  = notification.visiter %>
+		<% portrait = notification.portrait %>
+		<% memory   = notification.memory %>
+
+      <%= link_to user_path(notification.visiter) do %>
+        <%= attachment_image_tag notification.visiter, :image, class: "img-circle inline-box", fallback: "users/no_image.png" %>
+        <bold><%= notification.visiter.name %></bold>
+          さん
+      <% end %>
+          <% if notification.action = 'follow' %>
+            <%= "があなたをフォローしました" %>
+          <% elsif notification.action = 'bouquet' %> 
+            <%= link_to 'があなたのアルバム', portrait_path(portrait), style: "font-weight: bold;" %>
+            <%= "に献花しました" %>
+          <% else notification.action = 'flower' %>
+            <%= link_to 'があなたの思い出', memory_path(memory), style: "font-weight: bold;" %>
+            <%= "に献花しました" %>
+          <% end %>
+          <hr>
+     <% end %>
+  </div>
+</div>
+  	<%= paginate @notifications %>
   <% end %>
