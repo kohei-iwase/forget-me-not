@@ -12,6 +12,7 @@ RSpec.describe 'anniversaryモデルのテスト', type: :model do
         expect(anniversary.valid?).to eq false
       end
     end
+
     context 'メモカラム' do
       it '200文字以下であること' do
         anniversary.memo = Faker::Lorem.characters(number: 201)
@@ -19,6 +20,7 @@ RSpec.describe 'anniversaryモデルのテスト', type: :model do
       end
     end
   end
+
   describe 'アソシエーションのテスト' do
     context 'Portraitモデルとの関係' do
       it 'N:1となっている' do

@@ -7,12 +7,14 @@ describe 'アルバム投稿のテスト' do
   let!(:portrait2) { create(:portrait, user: user2) }
   let!(:memory) { create(:memory, portrait: portrait) }
   let!(:memory2) { create(:memory, portrait: portrait2) }
+
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_button 'サインイン'
   end
+
   describe '投稿のテスト' do
     context 'アルバム作成' do
       before do
@@ -56,16 +58,19 @@ describe 'アルバム投稿のテスト' do
         expect(current_path).to eq('/portraits/' + portrait.id.to_s + '/edit')
       end
     end
+
     context '他人の投稿の編集画面への遷移' do
       it '遷移できない' do
         visit edit_portrait_path(portrait2)
         expect(current_path).to eq('/portraits/' + portrait2.id.to_s)
       end
     end
+
     context '表示の確認' do
       before do
         visit edit_portrait_path(portrait)
       end
+
       it 'アルバムのタイトルが表示される' do
         expect(page).to have_content(portrait.name)
       end
@@ -82,6 +87,7 @@ describe 'アルバム投稿のテスト' do
         expect(page).to have_link 'アルバムに戻る', href: portrait_path(portrait)
       end
     end
+
     context 'フォームの確認' do
       before do
         visit edit_portrait_path(portrait)
@@ -113,6 +119,7 @@ describe 'アルバム投稿のテスト' do
     before do
       visit portraits_path
     end
+
     context '表示の確認' do
       it 'タイムラインと表示される' do
         expect(page).to have_content 'タイムライン'
@@ -137,6 +144,7 @@ describe 'アルバム投稿のテスト' do
       before do
         visit portrait_path(portrait)
       end
+
       it 'アルバム名が正しく表示される' do
         expect(page).to have_content(portrait.name)
       end
@@ -147,10 +155,12 @@ describe 'アルバム投稿のテスト' do
         expect(page).to have_content portrait.more_about_me
       end
     end
+
     context '自分のアルバム詳細画面の表示を確認' do
       before do
         visit portrait_path portrait
       end
+
       it 'アルバムの編集リンクが表示される' do
         expect(page).to have_link '編集', href: edit_portrait_path(portrait)
       end
@@ -164,10 +174,12 @@ describe 'アルバム投稿のテスト' do
         expect(page).to have_no_link memory2.title, href: portrait_memory_path(portrait2, memory2)
       end
     end
+
     context '思い出投稿機能の確認' do
       before do
         visit portrait_path portrait
       end
+
       it '「思い出を加える」と表示される' do
         expect(page).to have_content '思い出を加える'
       end

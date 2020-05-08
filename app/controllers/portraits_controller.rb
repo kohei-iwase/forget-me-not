@@ -1,5 +1,5 @@
 class PortraitsController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i(index show)
 
   def new
     @portrait = Portrait.new
@@ -59,14 +59,15 @@ class PortraitsController < ApplicationController
 
   def create_notification_bouquet(current_user)
     notification = current_user.active_notifications.new(
-      portrait_id:self.id,
-      visited_id:self.contributer.id,
-      action:"bouquet"
+      portrait_id: id,
+      visited_id: contributer.id,
+      action: "bouquet"
     )
     notification.save if notification.valid?
   end
 
   private
+
   def portrait_params
     params.require(:portrait).permit(:name, :image, :age, :gender, :species, :date_of_birth, :anniversary,
                                      :likes_and_dislikes, :interest, :specialty, :family, :personality, :found,

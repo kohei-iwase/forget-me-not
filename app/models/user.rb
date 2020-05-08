@@ -33,7 +33,7 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-  #通知
+  # 通知
   has_many :active_notifications,  class_name: 'Notification', foreign_key: 'visiter_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
@@ -65,17 +65,16 @@ class User < ApplicationRecord
                     OR user_id = :user_id", user_id: id)
   end
 
-    #フォローの通知メソッド
+  # フォローの通知メソッド
   def create_notification_follow!(current_user)
-      #現在のユーザーによるフォローにチェックが入っているか
-     #temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
-     #if temp.blank?
-      notification = current_user.active_notifications.new(
-        visited_id: id,
-        action: 'follow'
-      )
-      notification.save if notification.valid?
-     #end
+    # 現在のユーザーによるフォローにチェックが入っているか
+    # temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    # if temp.blank?
+    notification = current_user.active_notifications.new(
+      visited_id: id,
+      action: 'follow'
+    )
+    notification.save if notification.valid?
+    # end
   end
-
 end

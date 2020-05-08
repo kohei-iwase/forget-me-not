@@ -14,8 +14,10 @@ describe 'サイドバーのテスト' do
     before do
       visit root_path
     end
+
     context 'サイドバーの表示を確認' do
       subject { page }
+
       it 'ユーザー名が表示されない' do
         expect(page).to have_no_content user.name
       end
@@ -26,6 +28,7 @@ describe 'サイドバーのテスト' do
         expect(page).to have_content '検索フォーム'
       end
     end
+
     context '機能を確認' do
       it 'ペット名を選んで検索結果が表示される' do
         visit root_path
@@ -61,6 +64,7 @@ describe 'サイドバーのテスト' do
       end
     end
   end
+
   describe 'ログインしている場合' do
     before do
       visit new_user_session_path
@@ -69,8 +73,10 @@ describe 'サイドバーのテスト' do
       click_button 'サインイン'
       visit root_path
     end
+
     context 'サイドバーの表示を確認' do
       subject { page }
+
       it 'ユーザー名が表示される' do
         expect(page).to have_content user.name
       end
@@ -90,8 +96,10 @@ describe 'サイドバーのテスト' do
         expect(page).to have_content '検索フォーム'
       end
     end
+
     context 'サイドバーの機能を確認' do
       subject { page }
+
       it 'ユーザー名をクリック、ユーザー詳細に遷移される' do
         click_on user.name
         expect(current_path).to eq '/users/' + user.id.to_s
