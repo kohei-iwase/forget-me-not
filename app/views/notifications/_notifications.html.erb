@@ -1,0 +1,23 @@
+<% visiter = notification.visiter %>
+<% portrait = notification.portrait %>
+<% memory = notification.memory %>
+
+<div class= "col-xs-6.mx-auto">
+  <div class= "form-inline">
+      <%= link_to user_path(visiter) do %>
+        <%= attachment_image_tag visiter, :image, class: "img-circle pull-left profile-img inline-box", fallback: "users/no_image.png" %>
+        <strong><%= visiter.name %></strong>
+          さん
+      <% end %>
+          <% if notification.action = 'follow' %>
+            <%= "があなたをフォローしました" %>
+          <% elsif notification.action = 'bouquet' %> 
+            <%= link_to 'があなたのアルバム', portrait, style: "font-weight: bold;" %>
+            <%= "に献花しました" %>
+          <% else notification.action = 'flower' %>
+            <%= link_to 'があなたの思い出', memory, style: "font-weight: bold;" %>
+            <%= "に献花しました" %>
+          <% end %>
+  </div>
+</div>
+        

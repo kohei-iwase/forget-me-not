@@ -47,6 +47,15 @@ class MemoriesController < ApplicationController
     redirect_to portrait_path(@portrait)
   end
 
+  def create_notification_flower(current_user)
+    notification = current_user.active_notifications.new(
+      mrmoty_id:self.id,
+      visited_id:self.contributer.id,
+      action:"flower"
+    )
+  notification.save if notification.valid?
+  end
+
   private
 
   def memory_params

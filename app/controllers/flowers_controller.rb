@@ -3,8 +3,9 @@ class FlowersController < ApplicationController
     memory = Memory.find(params[:memory_id])
     flower = current_user.flowers.new(memory_id: memory.id)
     flower.save
+        # 通知の作成献花時のみ追加
+    memory.create_notification_flower(current_user)
     # redirect_to portrait_path(portrait)
-    # portrait.create_notification_bouquet!(current_user)
   end
 
   def destroy
