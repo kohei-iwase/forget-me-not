@@ -1,9 +1,6 @@
 <!-- 自分の投稿に対するいいね、コメントは通知に表示しない -->
 <%# notifications = @notifications.where.not(visitor_id: current_user.id) %>
-
-  <% if @notifications.nil? %>
-	 <p>通知はありません</p>
-  <% else %> 
+<% if @notifications.any? %>
 <div class= "col-xs-6.mx-auto">
   <div class= "form-inline">
   	<% @notifications.each do |notification| %>
@@ -31,4 +28,6 @@
   </div>
 </div>
   	<%= paginate @notifications %>
+<% else %> 
+     <h2>通知はありません</h2>
   <% end %>
