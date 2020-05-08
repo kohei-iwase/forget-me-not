@@ -11,6 +11,7 @@ RSpec.describe 'アルバムモデルのテスト', type: :model do
         expect(portrait.valid?).to eq false
       end
     end
+
     context '本文カラム' do
       it '200文字以下であること' do
         portrait.more_about_me = Faker::Lorem.characters(number: 201)
@@ -18,6 +19,7 @@ RSpec.describe 'アルバムモデルのテスト', type: :model do
       end
     end
   end
+
   describe 'アソシエーションのテスト' do
     context 'Userモデルとの関係' do
       it 'N:1となっている' do

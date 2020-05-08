@@ -12,6 +12,7 @@ RSpec.describe '思い出モデルのテスト', type: :model do
         expect(memory.valid?).to eq false
       end
     end
+
     context '本文カラム' do
       it '200文字以下であること' do
         memory.memory = Faker::Lorem.characters(number: 201)
@@ -19,6 +20,7 @@ RSpec.describe '思い出モデルのテスト', type: :model do
       end
     end
   end
+
   describe 'アソシエーションのテスト' do
     context 'Userモデルとの関係' do
       it 'N:1となっている' do

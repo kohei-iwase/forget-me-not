@@ -7,10 +7,13 @@ RSpec.describe 'Userモデルのテスト', type: :model do
   # エラーメッセージがなければ失敗
 
   describe 'バリデーションのテスト' do
-    let(:user) { build(:user) }
     subject { test_user.valid? }
+
+    let(:user) { build(:user) }
+
     context 'nameカラム' do
       let(:test_user) { user }
+
       it '空欄でないこと' do
         test_user.name = ''
         is_expected.to eq false
@@ -27,6 +30,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
 
     context 'introductionカラム' do
       let(:test_user) { user }
+
       it '200文字以下であること' do
         test_user.introduction = Faker::Lorem.characters(number: 201)
         is_expected.to eq false

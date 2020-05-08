@@ -4,9 +4,11 @@ describe 'トップページのテスト' do
   let(:user) { create(:user) }
   let!(:portrait) { create(:portrait, user: user) }
   let!(:memory) { create(:memory, portrait: portrait) }
+
   before do
     visit homes_top_path
   end
+
   describe 'ボディ部分のテスト' do
     context 'ヘッダー表示の確認' do
       it 'TOPページへのリンクが表示される' do
@@ -37,6 +39,7 @@ describe 'トップページのテスト' do
         click_button 'サインイン'
         visit root_path
       end
+
       it 'マイページをクリックしたらマイページへ遷移する' do
         mypage_link = find_all('a')[2].native.inner_text
         click_link mypage_link

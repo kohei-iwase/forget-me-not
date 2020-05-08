@@ -5,6 +5,7 @@ describe 'ページ表示のテスト' do
   let!(:portrait) { create(:portrait, user: user) }
   let!(:memory) { create(:memory, portrait: portrait) }
   let!(:anniversary) { create(:anniversary, portrait: portrait, user: user) }
+
   describe '表示のテスト' do
     before do
       visit new_user_session_path
@@ -12,6 +13,7 @@ describe 'ページ表示のテスト' do
       fill_in 'user[password]', with: user.password
       click_button 'サインイン'
     end
+
     context '全体画面' do
       it 'TOP画面' do
         visit homes_top_path
@@ -22,6 +24,7 @@ describe 'ページ表示のテスト' do
         expect(page).to have_selector('.content-box')
       end
     end
+
     context 'ユーザー関連画面' do
       it 'フォロワー画面' do
         visit followers_user_path(user)
@@ -65,6 +68,7 @@ describe 'ページ表示のテスト' do
         expect(page).to have_selector('.paginate')
       end
     end
+
     context 'アルバム関連画面' do
       it '新規投稿' do
         visit new_portrait_path
@@ -84,6 +88,7 @@ describe 'ページ表示のテスト' do
         expect(page).to have_selector('.content-box')
       end
     end
+
     context '命日設定関連画面' do
       it '編集画面' do
         visit edit_portrait_anniversary_path(portrait, anniversary)
@@ -94,6 +99,7 @@ describe 'ページ表示のテスト' do
         expect(page).to have_selector('.content-box')
       end
     end
+
     context '思い出画面' do
       it '詳細画面' do
         visit portrait_memory_path(portrait, memory)

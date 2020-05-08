@@ -7,17 +7,20 @@ describe '思い出投稿のテスト' do
   let!(:portrait2) { create(:portrait, user: user2) }
   let!(:memory) { create(:memory, portrait: portrait) }
   let!(:memory2) { create(:memory, portrait: portrait2) }
+
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_button 'サインイン'
   end
+
   describe '思い出詳細画面のテスト' do
     context '自分の思い出詳細画面の表示を確認' do
       before do
         visit portrait_memory_path(portrait, memory)
       end
+
       it 'タイトルが表示される' do
         expect(page).to have_content memory.title
       end
@@ -45,6 +48,7 @@ describe '思い出投稿のテスト' do
       before do
         visit portrait_memory_path(portrait, memory)
       end
+
       it '思い出編集画面に遷移する' do
         click_on '思い出に書き加える'
         expect(current_path).to eq('/portraits/' + portrait.id.to_s + '/memories/' + memory.id.to_s + '/edit')
@@ -60,10 +64,12 @@ describe '思い出投稿のテスト' do
         expect(current_path).to eq('/portraits/' + portrait.id.to_s)
       end
     end
+
     context '他人の思い出詳細画面の表示を確認' do
       before do
         visit portrait_memory_path(portrait2, memory2)
       end
+
       it 'タイトルが表示される' do
         expect(page).to have_content memory2.title
       end
@@ -91,6 +97,7 @@ describe '思い出投稿のテスト' do
       before do
         visit edit_portrait_memory_path(portrait, memory)
       end
+
       it 'titleフォームが表示される' do
         expect(page).to have_field 'memory[title]'
       end
@@ -104,10 +111,12 @@ describe '思い出投稿のテスト' do
         expect(page).to have_button '思い出を更新！'
       end
     end
+
     context '自分の編集画面の機能を確認' do
       before do
         visit edit_portrait_memory_path(portrait, memory)
       end
+
       it '思い出編集に成功する' do
         fill_in 'memory[title]', with: '懐かしい'
         fill_in 'memory[when]', with: Faker::Lorem.characters(number: 5)

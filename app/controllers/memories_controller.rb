@@ -1,5 +1,5 @@
 class MemoriesController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!, except: %i(index show)
   def create
     @portrait = Portrait.find(params[:portrait_id])
     @memory = Memory.new(memory_params)
@@ -49,11 +49,11 @@ class MemoriesController < ApplicationController
 
   def create_notification_flower(current_user)
     notification = current_user.active_notifications.new(
-      mrmoty_id:self.id,
-      visited_id:self.contributer.id,
-      action:"flower"
+      mrmoty_id: id,
+      visited_id: contributer.id,
+      action: "flower"
     )
-  notification.save if notification.valid?
+    notification.save if notification.valid?
   end
 
   private

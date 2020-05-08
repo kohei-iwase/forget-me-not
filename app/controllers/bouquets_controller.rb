@@ -9,7 +9,7 @@ class BouquetsController < ApplicationController
     redirect_to portrait_path(portrait)
   end
 
-  #そもそもdestroyメソッドがいるかは後で考える
+  # そもそもdestroyメソッドがいるかは後で考える
   def destroy
     portrait = Portrait.find(params[:portrait_id])
     bouquet = current_user.bouquets.find_by(portrait_id: portrait.id)

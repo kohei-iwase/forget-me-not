@@ -9,17 +9,20 @@ describe '供養日設定のテスト' do
   let!(:memory2) { create(:memory, portrait: portrait2) }
   let!(:anniversary) { create(:anniversary, user: user, portrait: portrait) }
   let!(:anniversary2) { create(:anniversary, user: user2, portrait: portrait2) }
+
   before do
     visit new_user_session_path
     fill_in 'user[email]', with: user.email
     fill_in 'user[password]', with: user.password
     click_button 'サインイン'
   end
+
   describe '供養日設定画面のテスト' do
     context '供養日設定画面の表示を確認' do
       before do
         visit edit_portrait_anniversary_path(portrait, anniversary)
       end
+
       it 'titleフォームが表示される' do
         expect(page).to have_field 'anniversary[title]'
       end
@@ -39,6 +42,7 @@ describe '供養日設定のテスト' do
         expect(page).to have_content '供養日一覧'
       end
     end
+
     context '設定画面の機能を確認' do
       before do
         visit edit_portrait_anniversary_path(portrait, anniversary)
@@ -52,6 +56,7 @@ describe '供養日設定のテスト' do
       #   expect(page).to have_content '設定しました'
       #   expect(page).to have_content '供養日一覧'
       # end
+
       it '供養日設定に失敗する' do
         fill_in 'anniversary[title]', with: ''
         fill_in 'anniversary[memo]', with: ''
@@ -70,11 +75,13 @@ describe '供養日設定のテスト' do
       end
     end
   end
+
   describe '供養日一覧画面のテスト' do
     context '自分の供養日一覧画面の表示確認' do
       before do
         visit portrait_anniversaries_path(portrait)
       end
+
       it 'titleが表示される' do
         expect(page).to have_content anniversary.title
       end
@@ -99,6 +106,7 @@ describe '供養日設定のテスト' do
       before do
         visit portrait_anniversaries_path(portrait)
       end
+
       it '編集ボタンをクリック' do
         click_on '編集'
         expect(current_path).to eq edit_portrait_anniversary_path(portrait, anniversary)

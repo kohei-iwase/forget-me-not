@@ -1,11 +1,9 @@
 class Flower < ApplicationRecord
   belongs_to :user
   belongs_to :memory
-  has_many 	 :notifications, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
-
-
-    def create_notification_flower(current_user)
+  def create_notification_flower(current_user)
     # 現在献花されているかの検索
     temp = Notification.where(["visitor_id = ? and visited_id = ? and memory_id = ? and action = ? ", current_user.id, user_id, id, 'flower'])
     # 現在アクションの「献花」がされていない場合のみ通知レコードを作成
@@ -21,6 +19,5 @@ class Flower < ApplicationRecord
       end
       notification.save if notification.valid?
     end
-  end
-
+end
 end

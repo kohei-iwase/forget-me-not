@@ -5,8 +5,10 @@ describe 'ヘッダーのテスト' do
     before do
       visit root_path
     end
+
     context 'ヘッダーの表示を確認' do
       subject { page }
+
       it 'タイトルが表示される' do
         is_expected.to have_content 'ワスレナグサ'
       end
@@ -34,8 +36,10 @@ describe 'ヘッダーのテスト' do
         expect(login_link).to match('ログイン')
       end
     end
+
     context 'ヘッダーのリンクを確認' do
       subject { current_path }
+
       it 'ロゴをクリックするとHome画面に遷移する' do
         home_link = find_all('a')[0].native.inner_text
         click_link home_link
@@ -85,8 +89,10 @@ describe 'ヘッダーのテスト' do
       fill_in 'user[password]', with: user.password
       click_button 'サインイン'
     end
+
     context 'ヘッダーの表示を確認' do
       subject { page }
+
       it 'タイトルが表示される' do
         is_expected.to have_content 'ワスレナグサ'
       end

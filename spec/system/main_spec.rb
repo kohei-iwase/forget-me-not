@@ -5,6 +5,7 @@ describe 'ユーザー権限のテスト' do
   let!(:portrait) { create(:portrait, user: user) }
   let!(:memory) { create(:memory, portrait: portrait) }
   let!(:anniversary) { create(:anniversary, portrait: portrait, user: user) }
+
   describe 'ログインしていない場合' do
     context 'アルバム関連のURLにアクセス' do
       it 'アルバム一覧画面に遷移できる' do
@@ -27,6 +28,7 @@ describe 'ユーザー権限のテスト' do
       end
     end
   end
+
   describe 'ログインしていない場合にユーザー関連のURLにアクセス' do
     context 'ユーザー関連のURLにアクセス' do
       it 'ユーザー一覧画面に遷移できる' do
@@ -49,6 +51,7 @@ describe 'ユーザー権限のテスト' do
       end
     end
   end
+
   describe 'ログインしていない場合に思い出関連のURLにアクセス' do
     context '思い出関連のURLにアクセス' do
       it '思い出詳細画面に遷移できる' do
@@ -62,6 +65,7 @@ describe 'ユーザー権限のテスト' do
       end
     end
   end
+
   describe 'ログインしていない場合に供養日関連のURLにアクセス' do
     context '供養日関連のURLにアクセス' do
       it '供養日編集画面に遷移できない' do
