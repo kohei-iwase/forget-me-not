@@ -77,7 +77,7 @@ gem 'devise'
 gem 'bootstrap-sass', '~>3.4.1'
 gem 'jquery-rails'
 
-gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+gem 'faker'
 # ページャー
 gem 'kaminari', '~> 1.1.1'
 
