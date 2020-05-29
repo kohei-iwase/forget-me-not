@@ -79,7 +79,7 @@ gem 'jquery-rails'
 
 gem 'faker'
 # ページャー
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 
 # 画像投稿
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
