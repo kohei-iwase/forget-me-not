@@ -71,8 +71,7 @@ end
 gem 'tzinfo-data', platforms: %i(mingw mswin x64_mingw jruby)
 
 # ログイン機能
-gem 'devise'
-
+gem 'devise', '4.4.3'
 # view装飾
 gem 'bootstrap-sass', '~>3.4.1'
 gem 'jquery-rails'
