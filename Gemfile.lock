@@ -221,7 +221,7 @@ GEM
       unparser
     procto (0.0.3)
     public_suffix (4.0.6)
-    puma (3.12.4)
+    puma (3.12.6)
     racc (1.6.0)
     rack (2.2.3)
     rack-protection (2.0.8.1)
@@ -422,7 +422,7 @@ DEPENDENCIES
   listen
   momentjs-rails
   mysql2
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 5.2.4, >= 5.2.4.2)
   rails-controller-testing
   refile!
